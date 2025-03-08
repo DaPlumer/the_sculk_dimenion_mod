@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.2,
+  "group": "pink_garnet",
+  "ingredient": {
+    "item": "sculk_dimension:raw_pink_garnet"
+  },
+  "result": {
+    "count": 9,
+    "id": "sculk_dimension:pink_garnet"
+  }
+}

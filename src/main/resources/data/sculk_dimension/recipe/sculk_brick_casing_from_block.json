@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "misc",
+  "ingredient": [
+    {
+      "item": "minecraft:end_stone"
+    },
+    {
+      "item": "minecraft:end_stone_bricks"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "sculk_dimension:sculk_brick_casing"
+  }
+}

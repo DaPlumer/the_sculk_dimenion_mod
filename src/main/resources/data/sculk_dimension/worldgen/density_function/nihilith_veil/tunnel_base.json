@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:square",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "sculk_dimension:nihilith_veil/tunnel_base_0",
+      "xz_scale": 1,
+      "y_scale": 1
+    }
+  },
+  "argument2": {
+    "type": "minecraft:square",
+    "argument": {
+      "type": "minecraft:noise",
+      "noise": "sculk_dimension:nihilith_veil/tunnel_base_1",
+      "xz_scale": 1,
+      "y_scale": 1
+    }
+  }
+}

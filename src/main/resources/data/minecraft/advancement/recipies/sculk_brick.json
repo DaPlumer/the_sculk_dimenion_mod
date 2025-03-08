@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "CraftCasing": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "sculk_dimension:sculk_brick_casing_from_block"
+      }
+    },
+    "CraftCasing2": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "sculk_dimension:sculk_brick_casing_from_slab"
+      }
+    },
+    "FoundEchoShard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "slots": {},
+        "items": [
+          {
+            "items": "minecraft:echo_shard"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "CraftCasing",
+      "CraftCasing2",
+      "FoundEchoShard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sculk_dimension:sculk_brick"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "seen_deep_dark": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "player": {
+          "location": {
+            "biomes": "minecraft:deep_dark"
+          }
+        }
+      }
+    },
+    "has_the_recipie": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sculk_dimension:mossy_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "seen_deep_dark",
+      "has_the_recipie"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sculk_dimension:mossy_boots"
+    ]
+  },
+  "sends_telemetry_event": false
+}

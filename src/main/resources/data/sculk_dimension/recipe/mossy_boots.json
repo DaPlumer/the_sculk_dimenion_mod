@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": [
+      {
+        "item": "minecraft:moss_block"
+      },
+      {
+        "item": "minecraft:moss_carpet"
+      }
+    ],
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "L L",
+    "M M"
+  ],
+  "result": {
+    "count": 1,
+    "id": "sculk_dimension:mossy_boots"
+  }
+}

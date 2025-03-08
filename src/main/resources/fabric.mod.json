@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "sculk_dimension",
+	"version": "${version}",
+	"name": "The sculk dimension",
+	"description": "Add a new dimension to minecraft found in the deep dark",
+	"authors": [
+		"DaPlumer42",
+		"Tutorial made by Kaupenjoe"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/sculk_dimension/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.daplumer.sculk_dimension.TheSculkDimension"
+		],
+		"fabric-datagen": [
+			"net.daplumer.sculk_dimension.TheSculkDimensionDataGenerator"
+		],
+		"client": [
+			"net.daplumer.sculk_dimension.TheSculkDimensionClient"
+		]
+	},
+	"mixins": [
+		"sculk_dimension.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

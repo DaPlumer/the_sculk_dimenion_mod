@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "sculk_dimension:resonation_gem_staff"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    " E ",
+    " SE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "sculk_dimension:resonation_gem"
+  },
+  "show_notification": false
+}

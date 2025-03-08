@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "sculk_dimension:mossy_boots"
+    },
+    "title": "Nature's Ninja",
+    "description": "Use Mossy Boots to avoid detection",
+    "frame": "task"
+  },
+  "parent": "minecraft:adventure/avoid_vibration",
+  "criteria": {
+    "Sneak": {
+      "trigger": "minecraft:avoid_vibration"
+    },
+    "WearMossBoots": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "slots": {
+                "armor.feet": {
+                  "items": "sculk_dimension:mossy_boots"
+                }
+              }
+            }
+          }
+        ],
+        "item": {
+          "items": "sculk_dimension:mossy_boots"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "Sneak",
+      "WearMossBoots"
+    ]
+  ]
+}

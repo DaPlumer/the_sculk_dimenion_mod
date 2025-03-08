@@ -1,0 +1,54 @@
+{
+  "criteria": {
+    "FoundEndStoneBase": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:end_stone"
+          }
+        ]
+      }
+    },
+    "FoundEndStoneBricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:end_stone_bricks"
+          }
+        ]
+      }
+    },
+    "FoundEndStoneBrickSlab": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:end_stone_brick_slab"
+          }
+        ]
+      }
+    },
+    "HasSculkBrickRecipie": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sculk_dimension:sculk_brick"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "FoundEndStoneBase",
+      "FoundEndStoneBricks",
+      "FoundEndStoneBrickSlab",
+      "HasSculkBrickRecipie"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sculk_dimension:sculk_brick_casing_from_block",
+      "sculk_dimension:sculk_brick_casing_from_slab"
+    ]
+  }
+}

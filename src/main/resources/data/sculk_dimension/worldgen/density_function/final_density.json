@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:mul",
+    "argument1": "sculk_dimension:bedrock_generation",
+    "argument2": 16
+  },
+  "argument2": "sculk_dimension:nihilith_veil/final_biome_density"
+}

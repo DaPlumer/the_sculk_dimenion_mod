@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "CraftStaff": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "sculk_dimension:resonation_gem_staff"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "CraftStaff"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sculk_dimension:resonation_gem"
+    ]
+  }
+}
