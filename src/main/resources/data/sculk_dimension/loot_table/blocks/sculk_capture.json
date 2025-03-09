@@ -492,10 +492,6 @@
       ],
       "functions": [
         {
-          "function": "minecraft:fill_player_head",
-          "entity": "attacking_player"
-        },
-        {
           "function": "minecraft:set_count",
           "count": {
             "type": "minecraft:binomial",

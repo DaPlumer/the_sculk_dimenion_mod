@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=east":{
+      "model": "sculk_dimension:block/sculk_capture1",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sculk_dimension:block/sculk_capture1"
+    },
+    "facing=south": {
+      "model": "sculk_dimension:block/sculk_capture1",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sculk_dimension:block/sculk_capture1",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "sculk_dimension:block/sculk_capture1",
+      "y": 270
+    },
+    "facing=down": {
+      "model": "sculk_dimension:block/sculk_capture1",
+      "y": 270
+    }
+  }
+}

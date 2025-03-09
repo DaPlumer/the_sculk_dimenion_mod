@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "resonation_growths",
+	"parent": "block/resonation_growth",
 	"textures": {
 		"1": "sculk_dimension:item/resonation_growths/resonation_growth_0",
 		"particle": "sculk_dimension:item/resonation_growths/resonation_growth_0"
@@ -9,7 +9,7 @@
 		{
 			"from": [8, 0, 3],
 			"to": [8, 6, 13],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 0]},
 			"faces": {
 				"east": {"uv": [13, 10, 3, 16], "texture": "#1"},
 				"west": {"uv": [3, 10, 13, 16], "texture": "#1"}
@@ -20,8 +20,8 @@
 			"to": [13, 6, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
 			"faces": {
-				"north": {"uv": [3, 10, 13, 16], "texture": "#1"},
-				"south": {"uv": [13, 10, 3, 16], "texture": "#1"}
+				"north": {"uv": [13, 10, 3, 16], "texture": "#1"},
+				"south": {"uv": [3, 10, 13, 16], "texture": "#1"}
 			}
 		}
 	]

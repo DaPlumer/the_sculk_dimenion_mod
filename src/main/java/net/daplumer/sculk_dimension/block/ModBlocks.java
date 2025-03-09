@@ -4,7 +4,6 @@ import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.SculkSensorPhase;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -65,13 +64,6 @@ public class ModBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
-    public static final Block RESONATION_BLOCK = registerBlock("resonation_block",new SculkSensorBlock(AbstractBlock.Settings.create()
-            .mapColor(MapColor.CYAN)
-            .strength(1.5F)
-            .sounds(BlockSoundGroup.SCULK_SENSOR)
-            .luminance(state -> 1)
-            .emissiveLighting((state, world, pos) -> SculkSensorBlock.getPhase(state) == SculkSensorPhase.ACTIVE)));
-
     private static Block registerBlock (String name, Block block){
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK,Identifier.of(TheSculkDimension.MOD_ID, name), block);
@@ -86,7 +78,7 @@ public class ModBlocks {
             entries.add(ModBlocks.RAW_PINK_GARNET_BLOCK);
             entries.add(ModBlocks.PINK_GARNET_ORE);
             entries.add(ModBlocks.DEEPSLATE_PINK_GARNET_ORE );
-            entries.add(ModBlocks.RESONATION_BLOCK);
+            entries.add(ModBlocks.SCULK_CAPTURE);
         });
     }
 }

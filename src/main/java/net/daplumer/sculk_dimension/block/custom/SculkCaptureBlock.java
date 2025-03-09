@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -14,7 +15,12 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SculkCaptureBlock extends HorizontalFacingBlock {
     public static final VoxelShape verticalOutline =
@@ -30,7 +36,24 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
     public SculkCaptureBlock(Settings settings) {
         super(settings);
     }
-
+    public static ArrayList<BlockPos> getContainedNeighbors(World world, BlockPos pos) throws IllegalArgumentException{
+        BlockState captureBlockState = world.getBlockState(pos);
+        if (!captureBlockState.getBlock().getClass().equals(SculkCaptureBlock.class)){
+            TheSculkDimension.LOGGER.warn("Block Class of the block in the position of X:{}, Y:{}, Z:{} is not equal to SculkCaptureBlock.class!", pos.getX(), pos.getY(), pos.getZ());
+        }
+        ArrayList<BlockPos> blockPositions = new java.util.ArrayList<>(List.of(pos.down()));
+        if (captureBlockState.getOrEmpty(VARIANT).isPresent()){
+            if (captureBlockState.get(VARIANT) != 2) {
+                Direction facing = captureBlockState.get(FACING);
+                blockPositions.add(pos.down());
+                blockPositions.add(pos.offset(facing));
+                blockPositions.add(pos.offset(facing.getOpposite()));
+                blockPositions.add(pos.offset(facing).down());
+                blockPositions.add(pos.offset(facing.getOpposite()).down());
+            }
+        }
+        return blockPositions;
+    }
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
 
@@ -67,19 +90,30 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
 
     @Override
    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-//        dir = switch (world.random.nextInt(4)) {
-//            case 0 -> Direction.NORTH;
-//            case 1 -> Direction.SOUTH;
-//            case 2 -> Direction.EAST;
-//            default -> Direction.WEST;
-//        };
-
+        if (!canPlace(world,pos)){
+            world.breakBlock(pos,true);
+        }
+//        for (BlockPos neighborPos : getContainedNeighbors(world,pos)) {
+//            BlockPos relativePos = neighborPos.subtract(pos);
+//            world.emitGameEvent(GameEvent.BLOCK_CHANGE, neighborPos, GameEvent.Emitter.of(null,
+//                    ModBlocks.SCULK_CAPTURE_NEIGHBOR.getDefaultState().
+//                            with(FACING,mapNullToUp(Direction.fromVector(
+//                                            relativePos.getX(),
+//                                            relativePos.getY(),
+//                                            relativePos.getZ())).getOpposite())));
+//        }
+    }
+    private static Direction mapNullToUp(@Nullable Direction direction){
+        if (direction == null){
+            return Direction.UP;
+        }
+        return direction;
     }
 
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (!canPlace(world,pos)){
-            world.breakBlock(pos,true);
+            world.breakBlock(pos,false);
         }
     }
 
@@ -91,18 +125,15 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
     protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return canPlace(((World) world),pos);
     }
-
-    private boolean canPlace(World world, BlockPos pos){
-        return 
-                world.getBlockState(pos.up()).isSideSolidFullSquare(world,pos.up(),Direction.DOWN)
-                && world.getBlockState(pos.down()).isAir()
-                && (variant == 2 ||
-                (world.getBlockState(pos.offset(dir)).isAir() 
-                && world.getBlockState(pos.offset(dir).down()).isAir()
-                && world.getBlockState(pos.offset(dir.getOpposite())).isAir()
-                && world.getBlockState(pos.offset(dir.getOpposite()).down()).isAir()))
-                
-                ;
+    private boolean acceptableNeighbor( World world, BlockPos pos){
+        return world.getBlockState(pos).isAir();
+    }
+    private boolean canPlace( World world, BlockPos pos){
+        boolean canPlace = world.getBlockState(pos.up()).isSideSolidFullSquare(world,pos.up(),Direction.DOWN);
+        for (BlockPos neighborPos : getContainedNeighbors(world, pos)){
+            canPlace &= acceptableNeighbor(world, neighborPos);
+        }
+        return canPlace;
     }
 
     @Override
