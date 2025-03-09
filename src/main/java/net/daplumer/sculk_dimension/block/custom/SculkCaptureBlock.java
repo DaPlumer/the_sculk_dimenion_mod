@@ -2,7 +2,6 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.daplumer.sculk_dimension.TheSculkDimension;
-import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,8 +14,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.event.GameEvent;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -93,21 +90,6 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
         if (!canPlace(world,pos)){
             world.breakBlock(pos,true);
         }
-//        for (BlockPos neighborPos : getContainedNeighbors(world,pos)) {
-//            BlockPos relativePos = neighborPos.subtract(pos);
-//            world.emitGameEvent(GameEvent.BLOCK_CHANGE, neighborPos, GameEvent.Emitter.of(null,
-//                    ModBlocks.SCULK_CAPTURE_NEIGHBOR.getDefaultState().
-//                            with(FACING,mapNullToUp(Direction.fromVector(
-//                                            relativePos.getX(),
-//                                            relativePos.getY(),
-//                                            relativePos.getZ())).getOpposite())));
-//        }
-    }
-    private static Direction mapNullToUp(@Nullable Direction direction){
-        if (direction == null){
-            return Direction.UP;
-        }
-        return direction;
     }
 
     @Override
