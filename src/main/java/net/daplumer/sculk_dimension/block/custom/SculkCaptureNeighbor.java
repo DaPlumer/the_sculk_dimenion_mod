@@ -6,11 +6,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 
 public class SculkCaptureNeighbor extends Block {
     public static final MapCodec<SculkCaptureNeighbor> CODEC = createCodec(SculkCaptureNeighbor::new);
@@ -40,5 +38,11 @@ public class SculkCaptureNeighbor extends Block {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return outline;
+    }
+
+    @Override
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        world.updateNeighbor(pos.up(),sourceBlock,pos);
+        super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
     }
 }

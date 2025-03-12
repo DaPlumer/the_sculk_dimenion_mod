@@ -24,14 +24,12 @@ import java.util.List;
 public class SculkCaptureBlock extends HorizontalFacingBlock {
     public static final VoxelShape verticalOutline =
             Block.createCuboidShape(0.0, -16.0, 0.0, 16.0, 16.0, 16.0);
-    private int variant = 0;//throws an error when these values are null
-    private Direction dir = Direction.DOWN;
     public static final IntProperty VARIANT = IntProperty.of("variant",0,3);
     public static final MapCodec<SculkCaptureBlock> CODEC = createCodec(SculkCaptureBlock::new);
     public SculkCaptureBlock(Settings settings) {
         super(settings);
     }
-    public static ArrayList<BlockPos> getContainedNeighbors(World world, BlockPos pos,AbstractBlockState captureBlockState) throws IllegalArgumentException{
+    public static ArrayList<BlockPos> getContainedNeighbors(BlockPos pos,AbstractBlockState captureBlockState) throws IllegalArgumentException{
         if (!captureBlockState.getBlock().getClass().equals(SculkCaptureBlock.class)){
             TheSculkDimension.LOGGER.warn("Block Class of the block in the position of X:{}, Y:{}, Z:{} is not equal to SculkCaptureBlock.class!", pos.getX(), pos.getY(), pos.getZ());
         }
@@ -42,36 +40,39 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
                 blockPositions.add(pos.down());
                 blockPositions.add(pos.offset(facing));
                 blockPositions.add(pos.offset(facing.getOpposite()));
-                blockPositions.add(pos.offset(facing).down());
-                blockPositions.add(pos.offset(facing.getOpposite()).down());
+                if (captureBlockState.get(VARIANT) == 3) {
+                    blockPositions.add(pos.offset(facing).down());
+                    blockPositions.add(pos.offset(facing.getOpposite()).down());
+                }
             }
         }
         return blockPositions;
     }
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        dir = switch (ctx.getWorld().random.nextInt(4)) {
+        Direction dir = switch (ctx.getWorld().random.nextInt(4)) {
             case 0 -> Direction.NORTH;
             case 1 -> Direction.SOUTH;
             case 2 -> Direction.EAST;
             default -> Direction.WEST;
         };
 
-        variant = ctx.getWorld().random.nextInt(4);
-        if (canPlace(ctx.getWorld(), ctx.getBlockPos(), this.getDefaultState().with(FACING,dir).with(VARIANT,variant))){
+        //throws an error when these values are null
+        int variant = ctx.getWorld().random.nextInt(4);
+        if (canPlace(ctx.getWorld(), ctx.getBlockPos(), this.getDefaultState().with(FACING, dir).with(VARIANT, variant))){
             return this.getDefaultState()
-                    .with(FACING,dir)
-                    .with(VARIANT,variant);
+                    .with(FACING, dir)
+                    .with(VARIANT, variant);
 
         }else{
             dir.rotateClockwise(Direction.Axis.Y);
-            if(canPlace(ctx.getWorld(),ctx.getBlockPos(), this.getDefaultState().with(FACING,dir).with(VARIANT, variant))){
+            if(canPlace(ctx.getWorld(),ctx.getBlockPos(), this.getDefaultState().with(FACING, dir).with(VARIANT, variant))){
                 return this.getDefaultState()
-                        .with(FACING,dir)
-                        .with(VARIANT,variant);
+                        .with(FACING, dir)
+                        .with(VARIANT, variant);
 
             }else {
-                return this.getDefaultState().with(FACING,dir).with(VARIANT,2);
+                return this.getDefaultState().with(FACING, dir).with(VARIANT,2);
             }
         }
     }
@@ -118,7 +119,7 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
     }
     private boolean canPlace( World world, BlockPos pos, AbstractBlockState captureBlockState){
         boolean can_place = world.getBlockState(pos.up()).isSideSolidFullSquare(world,pos.up(),Direction.DOWN);
-        for (BlockPos neighborPos : getContainedNeighbors(world, pos, captureBlockState)){
+        for (BlockPos neighborPos : getContainedNeighbors(pos, captureBlockState)){
             can_place &= acceptableNeighbor(world, neighborPos);
         }
         return can_place;
