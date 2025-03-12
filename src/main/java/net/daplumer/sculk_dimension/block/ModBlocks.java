@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.block;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureBlock;
+import net.daplumer.sculk_dimension.block.custom.SculkCaptureNeighbor;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -64,8 +65,26 @@ public class ModBlocks {
                             .pistonBehavior(PistonBehavior.DESTROY)
             )
     );
+    public static final Block SCULK_NEIGHBOR = registerBlock(
+            "sculk_neighbor",
+            new SculkCaptureNeighbor(
+                    AbstractBlock.Settings
+                            .create()
+                            .nonOpaque()
+                            .mapColor(MapColor.BLACK)
+                            .noCollision()
+                            .sounds(BlockSoundGroup.SCULK)
+                            .strength(0.2F)
+                            .pistonBehavior(PistonBehavior.DESTROY)
+            ), false
+    );
     private static Block registerBlock (String name, Block block){
+       return registerBlock(name, block, true);
+    }
+    private static Block registerBlock (String name, Block block,boolean includeItem ){
+        if (includeItem){
         registerBlockItem(name, block);
+        }
         return Registry.register(Registries.BLOCK,Identifier.of(TheSculkDimension.MOD_ID, name), block);
     }
     private static void registerBlockItem(String name, Block block){

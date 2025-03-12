@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -13,6 +14,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,10 +24,6 @@ import java.util.List;
 public class SculkCaptureBlock extends HorizontalFacingBlock {
     public static final VoxelShape verticalOutline =
             Block.createCuboidShape(0.0, -16.0, 0.0, 16.0, 16.0, 16.0);
-    public static final VoxelShape outlineX =
-            Block.createCuboidShape(-8.0, -16.0, 0.0, 24.0, 16.0, 16.0);
-    public static final VoxelShape outlineZ =
-            Block.createCuboidShape(0.0, -16.0, -8.0, 16.0, 16.0, 24.0);
     private int variant = 0;//throws an error when these values are null
     private Direction dir = Direction.DOWN;
     public static final IntProperty VARIANT = IntProperty.of("variant",0,3);
@@ -33,8 +31,7 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
     public SculkCaptureBlock(Settings settings) {
         super(settings);
     }
-    public static ArrayList<BlockPos> getContainedNeighbors(World world, BlockPos pos) throws IllegalArgumentException{
-        BlockState captureBlockState = world.getBlockState(pos);
+    public static ArrayList<BlockPos> getContainedNeighbors(World world, BlockPos pos,AbstractBlockState captureBlockState) throws IllegalArgumentException{
         if (!captureBlockState.getBlock().getClass().equals(SculkCaptureBlock.class)){
             TheSculkDimension.LOGGER.warn("Block Class of the block in the position of X:{}, Y:{}, Z:{} is not equal to SculkCaptureBlock.class!", pos.getX(), pos.getY(), pos.getZ());
         }
@@ -53,7 +50,6 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
     }
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-
         dir = switch (ctx.getWorld().random.nextInt(4)) {
             case 0 -> Direction.NORTH;
             case 1 -> Direction.SOUTH;
@@ -62,11 +58,22 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
         };
 
         variant = ctx.getWorld().random.nextInt(4);
-        TheSculkDimension.LOGGER.info("Direction{}", dir);
-        TheSculkDimension.LOGGER.info("Variant{}", variant);
-        return this.getDefaultState()
+        if (canPlace(ctx.getWorld(), ctx.getBlockPos(), this.getDefaultState().with(FACING,dir).with(VARIANT,variant))){
+            return this.getDefaultState()
+                    .with(FACING,dir)
+                    .with(VARIANT,variant);
+
+        }else{
+            dir.rotateClockwise(Direction.Axis.Y);
+            if(canPlace(ctx.getWorld(),ctx.getBlockPos(), this.getDefaultState().with(FACING,dir).with(VARIANT, variant))){
+                return this.getDefaultState()
                         .with(FACING,dir)
                         .with(VARIANT,variant);
+
+            }else {
+                return this.getDefaultState().with(FACING,dir).with(VARIANT,2);
+            }
+        }
     }
 
     @Override
@@ -76,19 +83,15 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (variant == 2){
-            return verticalOutline;
-        } else if (!(dir.equals(Direction.NORTH)||dir.equals(Direction.SOUTH))){
-            return outlineX;
-        } else {
-            return outlineZ;
-        }
+        return verticalOutline;
     }
 
     @Override
    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (!canPlace(world,pos)){
             world.breakBlock(pos,true);
+        }else {
+            world.setBlockState(pos.down(), ModBlocks.SCULK_NEIGHBOR.getDefaultState());
         }
     }
 
@@ -108,19 +111,34 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
         return canPlace(((World) world),pos);
     }
     private boolean acceptableNeighbor( World world, BlockPos pos){
-        return world.getBlockState(pos).isAir();
+        return world.getBlockState(pos).isAir() || world.getBlockState(pos).getBlock().getClass().equals(SculkCaptureNeighbor.class);
     }
-    private boolean canPlace( World world, BlockPos pos){
-        boolean canPlace = world.getBlockState(pos.up()).isSideSolidFullSquare(world,pos.up(),Direction.DOWN);
-        for (BlockPos neighborPos : getContainedNeighbors(world, pos)){
-            canPlace &= acceptableNeighbor(world, neighborPos);
+    private boolean canPlace(World world, BlockPos pos){
+        return canPlace(world, pos, world.getBlockState(pos));
+    }
+    private boolean canPlace( World world, BlockPos pos, AbstractBlockState captureBlockState){
+        boolean can_place = world.getBlockState(pos.up()).isSideSolidFullSquare(world,pos.up(),Direction.DOWN);
+        for (BlockPos neighborPos : getContainedNeighbors(world, pos, captureBlockState)){
+            can_place &= acceptableNeighbor(world, neighborPos);
         }
-        return canPlace;
+        return can_place;
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
         builder.add(VARIANT);
+    }
+
+    @Override
+    public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
+        world.breakBlock(pos.down(),false);
+        super.onBroken(world, pos, state);
+    }
+
+    @Override
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        world.breakBlock(pos.down(),false);
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 }

@@ -31,13 +31,13 @@ public class ModItemGroups  {
                         entries.add(ModBlocks.DEEPSLATE_PINK_GARNET_ORE);
                     })
                     .build());
-    public static ItemStack insaneEcho = new ItemStack(ModItems.BROKEN_ECHO);
     public static final ItemGroup SCULK_DIMENSION_ITEMS = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(TheSculkDimension.MOD_ID, "sculk_dimension_items"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.BROKEN_ECHO)
                     )
                     .displayName(Text.translatable("itemgroup.sculk_dimension.sculk_dimension_items"))
                     .entries((displayContext, entries) -> {
+                        entries.add(ModBlocks.SCULK_CAPTURE);
                         entries.add(ModItems.CRYSTALIZED_SOUL);
                         entries.add(ModItems.SCULK_BRICK);
                         entries.add(ModItems.SCULK_BRICK_CASING);
@@ -46,6 +46,7 @@ public class ModItemGroups  {
                         entries.add(ModItems.BROKEN_ECHO);
                         entries.add(ModItems.MOSSY_BOOTS);
                     })
+
                     .build());
 
     public static void registerItemGroups() {

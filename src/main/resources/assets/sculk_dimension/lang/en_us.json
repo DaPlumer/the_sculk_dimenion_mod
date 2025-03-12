@@ -3,6 +3,7 @@
   "block.sculk_dimension.pink_garnet_block": "Pink Garnet Block",
   "block.sculk_dimension.pink_garnet_ore": "Pink Garnet Ore",
   "block.sculk_dimension.raw_pink_garnet_block": "Raw Pink Garnet Block",
+  "block.sculk_dimension.sculk_capture": "Captured Body",
   "item.sculk_dimension.broken_echo": "Broken Echo",
   "item.sculk_dimension.crystalized_soul": "Soul Fragment",
   "item.sculk_dimension.mossy_boots": "Mossy Boots",
@@ -16,6 +17,13 @@
   "itemgroup.sculk_dimension.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.sculk_dimension.sculk_dimension_items": "The Sculk Dimension",
   "scoreboard.sculk_dimension.insanity": "Insanity",
+
+
+
+
+
+
+
   "tooltips.sculk_dimension.broken_echo.hinged_0":   "",
   "tooltips.sculk_dimension.broken_echo.sane_0":     "    You Feel a Soft Vibration    ",
   "tooltips.sculk_dimension.broken_echo.sane_1":     "Emanate From the Fragmented Shard",

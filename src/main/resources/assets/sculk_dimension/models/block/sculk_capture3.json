@@ -64,7 +64,8 @@
 			"faces": {
 				"north": {"uv": [12, 4, 16, 16], "texture": "#1"},
 				"east": {"uv": [8, 4, 12, 16], "texture": "#1"},
-				"south": {"uv": [12, 4, 16, 16], "texture": "#1"}
+				"south": {"uv": [12, 4, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#1", "cullface": "up"}
 			}
 		},
 		{
@@ -75,10 +76,50 @@
 			"faces": {
 				"north": {"uv": [0, 4, 4, 16], "texture": "#1"},
 				"south": {"uv": [4, 4, 8, 16], "texture": "#1"},
-				"west": {"uv": [4, 4, 8, 16], "texture": "#1"}
+				"west": {"uv": [4, 4, 8, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 0, 0], "texture": "#1", "cullface": "up"}
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [180, 0, 0],
+			"translation": [0, 2, 1],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [180, 0, 0],
+			"translation": [0, 2, 1],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [180, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [180, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"rotation": [180, 0, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [180, 0, 0],
+			"translation": [0, -4, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"head": {
+			"rotation": [180, 0, 0],
+			"translation": [0, 10.25, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"fixed": {
+			"translation": [0, 4.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
 	"groups": [
 		{
 			"name": "steve",

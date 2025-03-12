@@ -3,7 +3,6 @@
 	"package": "net.daplumer.sculk_dimension.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin",
 		"MossyMuffleMisstepMixin",
 		"MossyMuffleMovementMixin"
 	],
