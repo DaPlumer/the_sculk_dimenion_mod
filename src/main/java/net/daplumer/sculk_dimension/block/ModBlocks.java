@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.block;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.custom.EchoingBloom;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureBlock;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureNeighbor;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -22,7 +23,7 @@ public class ModBlocks {
             .requiresTool()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK
             )
-        )
+        ),true
     );
     public static final Block RAW_PINK_GARNET_BLOCK = registerBlock("raw_pink_garnet_block",
         new Block(
@@ -31,7 +32,7 @@ public class ModBlocks {
                 .requiresTool()
                 .sounds(BlockSoundGroup.STONE
             )
-        )
+        ),true
     );
     public static final Block PINK_GARNET_ORE = registerBlock("pink_garnet_ore",
             new ExperienceDroppingBlock(
@@ -40,7 +41,7 @@ public class ModBlocks {
                             .strength(3f)
                             .requiresTool()
                             .sounds(BlockSoundGroup.STONE)
-            )
+            ),true
     );
     public static final Block DEEPSLATE_PINK_GARNET_ORE = registerBlock(
             "deepslate_pink_garnet_ore",
@@ -51,7 +52,7 @@ public class ModBlocks {
                             .strength(4f)
                             .requiresTool()
                             .sounds(BlockSoundGroup.DEEPSLATE)
-            )
+            ), true
     );
     public static final Block SCULK_CAPTURE = registerBlock(
             "sculk_capture",
@@ -63,7 +64,7 @@ public class ModBlocks {
                             .sounds(BlockSoundGroup.SCULK)
                             .strength(0.2F)
                             .pistonBehavior(PistonBehavior.DESTROY)
-            )
+            ), true
     );
     public static final Block SCULK_NEIGHBOR = registerBlock(
             "sculk_neighbor",
@@ -77,6 +78,19 @@ public class ModBlocks {
                             .strength(0.2F)
                             .pistonBehavior(PistonBehavior.DESTROY)
             ), false
+    );
+    public static final Block ECHOING_BLOOM = registerBlock(
+            "echoing_bloom",
+            new EchoingBloom(
+                    AbstractBlock.Settings
+                            .create()
+                            .pistonBehavior(PistonBehavior.DESTROY)
+                            .breakInstantly()
+                            .nonOpaque()
+                            .breakInstantly()
+                            .luminance(state -> 6)
+                            .sounds(BlockSoundGroup.GRASS)
+            )
     );
     private static Block registerBlock (String name, Block block){
        return registerBlock(name, block, true);

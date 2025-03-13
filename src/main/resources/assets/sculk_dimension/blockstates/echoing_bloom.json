@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,half=upper": {
+      "model": "sculk_dimension:block/echoing_bloom_top",
+      "y": 90
+    },
+    "facing=north,half=upper": {
+      "model": "sculk_dimension:block/echoing_bloom_top"
+    },
+    "facing=south,half=upper": {
+      "model": "sculk_dimension:block/echoing_bloom_top",
+      "y": 180
+    },
+    "facing=west,half=upper": {
+      "model": "sculk_dimension:block/echoing_bloom_top",
+      "y": 270
+    },
+    "facing=east,half=lower": {
+      "model": "sculk_dimension:block/echoing_bloom_bottom",
+      "y": 90
+    },
+    "facing=north,half=lower": {
+      "model": "sculk_dimension:block/echoing_bloom_bottom"
+    },
+    "facing=south,half=lower": {
+      "model": "sculk_dimension:block/echoing_bloom_bottom",
+      "y": 180
+    },
+    "facing=west,half=lower": {
+      "model": "sculk_dimension:block/echoing_bloom_bottom",
+      "y": 270
+    }
+  }
+}
