@@ -47,6 +47,7 @@ public class ModItemGroups  {
                         entries.add(ModItems.MOSSY_BOOTS);
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);
+                        entries.add(ModItems.WAX_BRICK);
                         entries.add(ModBlocks.ECHOING_BLOOM);
                     })
 

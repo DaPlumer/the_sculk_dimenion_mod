@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "sculk_dimension:resonant_pollen",
+  "result": {
+    "id": "sculk_dimension:wax_brick"
+  },
+  "experience": 0.15,
+  "cookingtime": 200
+}

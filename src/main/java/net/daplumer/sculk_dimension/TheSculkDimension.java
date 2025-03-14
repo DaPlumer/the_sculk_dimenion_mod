@@ -8,6 +8,7 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.util.ModModelPredicates;
 import net.daplumer.sculk_dimension.util.statistics.ModStatistics;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,5 +28,7 @@ public class TheSculkDimension implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		FuelRegistry.INSTANCE.add(ModItems.MOSSY_BAG,100);
+		FuelRegistry.INSTANCE.add(ModItems.WAX_BRICK,1200);
 	}
 }

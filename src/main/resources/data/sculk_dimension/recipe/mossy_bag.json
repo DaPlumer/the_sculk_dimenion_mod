@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  S",
+    "M M",
+    " M "
+  ],
+  "key": {
+    "M": [
+      "minecraft:moss_block",
+      "minecraft:moss_carpet"
+    ],
+    "S": [
+      "minecraft:string"
+    ]
+  },
+  "result": {
+    "count": 1,
+    "id": "sculk_dimension:mossy_bag"
+  }
+}
