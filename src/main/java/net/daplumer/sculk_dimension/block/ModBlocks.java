@@ -90,6 +90,7 @@ public class ModBlocks {
                             .breakInstantly()
                             .luminance(state -> 6)
                             .sounds(BlockSoundGroup.GRASS)
+                            .noCollision()
             )
     );
     private static Block registerBlock (String name, Block block){
