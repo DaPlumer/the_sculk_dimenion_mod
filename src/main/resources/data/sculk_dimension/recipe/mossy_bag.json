@@ -8,11 +8,17 @@
   ],
   "key": {
     "M": [
-      "minecraft:moss_block",
-      "minecraft:moss_carpet"
+      {
+        "item": "minecraft:moss_block"
+      },
+      {
+        "item": "minecraft:moss_carpet"
+      }
     ],
     "S": [
-      "minecraft:string"
+      {
+        "item": "minecraft:string"
+      }
     ]
   },
   "result": {
