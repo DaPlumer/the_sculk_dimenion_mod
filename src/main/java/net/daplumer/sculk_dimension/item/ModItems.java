@@ -17,7 +17,7 @@ import net.minecraft.util.Rarity;
 public class ModItems {
     public static final Item PINK_GARNET =registerItem("pink_garnet", new Item(new Item.Settings()));
     public static final Item RAW_PINK_GARNET =registerItem("raw_pink_garnet", new Item(new Item.Settings()));
-    public static final Item SCULK_BRICK =registerItem("sculk_brick", new Item(new Item.Settings()));
+    public static final Item SCULK_BRICK =registerItem("sculk_brick", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SCULK_BRICK_CASING =registerItem("sculk_brick_casing", new Item(new Item.Settings()));
 
     public static final Item CRYSTALIZED_SOUL =registerItem("crystalized_soul", new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
