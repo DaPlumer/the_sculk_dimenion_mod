@@ -6,6 +6,8 @@ import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
 import net.daplumer.sculk_dimension.item.custom.ModArmorMaterials;
 import net.daplumer.sculk_dimension.item.custom.ResonationGem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -42,8 +44,12 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.DIAMOND,PINK_GARNET);
             entries.addBefore(Items.IRON_INGOT, WAX_BRICK);
+            FuelRegistry.INSTANCE.add(ModItems.WAX_BRICK,1200);
             entries.addBefore(WAX_BRICK, RESONANT_POLLEN);
+            CompostingChanceRegistry.INSTANCE.add(RESONANT_POLLEN,.025F);
             entries.addBefore(RESONANT_POLLEN, MOSSY_BAG);
+            FuelRegistry.INSTANCE.add(MOSSY_BAG,100);
+            CompostingChanceRegistry.INSTANCE.add(MOSSY_BAG,.02F);
             entries.addAfter(Items.GOLD_INGOT, SCULK_BRICK);
             entries.addAfter(SCULK_BRICK,SCULK_BRICK_CASING);
             entries.addAfter(Items.RAW_GOLD, RAW_PINK_GARNET);

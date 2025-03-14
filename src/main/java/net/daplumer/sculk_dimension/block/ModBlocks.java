@@ -5,6 +5,7 @@ import net.daplumer.sculk_dimension.block.custom.EchoingBloom;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureBlock;
 import net.daplumer.sculk_dimension.block.custom.SculkCaptureNeighbor;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -107,12 +108,13 @@ public class ModBlocks {
     }
     public static void registerModBlocks(){
         TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + TheSculkDimension.MOD_ID);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.ECHOING_BLOOM, 0.5F);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.PINK_GARNET_BLOCK);
             entries.add(ModBlocks.RAW_PINK_GARNET_BLOCK);
             entries.add(ModBlocks.PINK_GARNET_ORE);
             entries.add(ModBlocks.DEEPSLATE_PINK_GARNET_ORE );
-            entries.add(ModBlocks.SCULK_CAPTURE);
+            entries.addAfter(Blocks.SCULK,SCULK_CAPTURE);
         });
     }
 }
