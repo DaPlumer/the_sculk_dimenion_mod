@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -39,17 +40,16 @@ public class ModItems {
         BrokenEcho.registerCustomData();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.add(PINK_GARNET);
-            entries.add(RAW_PINK_GARNET);
-            entries.add(SCULK_BRICK);
-            entries.add(SCULK_BRICK_CASING);
-            entries.add(CRYSTALIZED_SOUL);
-            entries.add(RESOANATION_GEM_STAFF);
-            entries.add(BROKEN_ECHO);
-            entries.add(MOSSY_BAG);
-            entries.add(RESONANT_POLLEN);
-            entries.add(ModItems.WAX_BRICK);
+            entries.addAfter(Items.DIAMOND,PINK_GARNET);
+            entries.addBefore(Items.IRON_INGOT, WAX_BRICK);
+            entries.addBefore(WAX_BRICK, RESONANT_POLLEN);
+            entries.addBefore(RESONANT_POLLEN, MOSSY_BAG);
+            entries.addAfter(Items.GOLD_INGOT, SCULK_BRICK);
+            entries.addAfter(SCULK_BRICK,SCULK_BRICK_CASING);
+            entries.addAfter(Items.RAW_GOLD, RAW_PINK_GARNET);
+            entries.addBefore(Items.ECHO_SHARD,CRYSTALIZED_SOUL);
+            entries.addAfter(Items.DISC_FRAGMENT_5, RESOANATION_GEM_STAFF);
         });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(MOSSY_BOOTS));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS));
     }
 }
