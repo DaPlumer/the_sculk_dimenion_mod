@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.item.custom.ResonationHelmet;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
 import net.daplumer.sculk_dimension.item.custom.ModArmorMaterials;
 import net.daplumer.sculk_dimension.item.custom.ResonationGem;
@@ -23,6 +24,10 @@ public class ModItems {
     public static final Item MOSSY_BOOTS = registerItem("mossy_boots",
             new ArmorItem(ModArmorMaterials.MOSSY_ARMOR, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))));
+
+    public static final Item RESONATION_HELMET = registerItem("resonation_helmet",
+            new ResonationHelmet(ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
     public static final Item RESOANATION_GEM_STAFF = registerItem("resonation_gem_staff", new Item(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item RESOANATION_GEM = registerItem("resonation_gem", new ResonationGem(new Item.Settings().maxDamage(25).maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item BROKEN_ECHO = registerItem("broken_echo", new BrokenEcho(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));

@@ -45,6 +45,8 @@ public class ModItemGroups  {
                         entries.add(ModItems.RESOANATION_GEM);
                         entries.add(ModItems.BROKEN_ECHO);
                         entries.add(ModItems.MOSSY_BOOTS);
+                        entries.add(ModBlocks.ECHOING_BLOOM);
+                        entries.add(ModItems.RESONATION_HELMET);
                     })
 
                     .build());

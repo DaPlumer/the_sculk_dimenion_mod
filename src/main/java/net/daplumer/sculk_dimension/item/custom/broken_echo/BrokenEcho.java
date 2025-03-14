@@ -14,6 +14,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.Objects;
 import static net.daplumer.sculk_dimension.item.custom.broken_echo.EchoStageData.sanityToTooltip;
 
 public class BrokenEcho extends Item {
+    private static final Identifier ECHO_DISPLAY = Identifier.of(TheSculkDimension.MOD_ID, "textures/gui/echo_display.png");
 
 
     //update tooltips based on insanity level
@@ -45,11 +47,6 @@ public class BrokenEcho extends Item {
             if (entity instanceof PlayerEntity) {
                 stack.set(ModDataComponentTypes.INSANITY, Insanity.get((PlayerEntity) entity));
             }
-
-
-
-
-
         }
         super.inventoryTick(stack,world,entity,slot,selected);
     }

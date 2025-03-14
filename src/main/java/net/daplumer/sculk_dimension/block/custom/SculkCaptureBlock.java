@@ -124,7 +124,6 @@ public class SculkCaptureBlock extends HorizontalFacingBlock {
         }
         return can_place;
     }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
