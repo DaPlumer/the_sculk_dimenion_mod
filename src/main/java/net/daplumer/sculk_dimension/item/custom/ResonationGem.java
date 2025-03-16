@@ -36,18 +36,14 @@ public class ResonationGem extends Item{
         if (ray == null){
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
-        switch (ray.getType()){
-            case ENTITY -> {
-                EntityHitResult entityHit = (EntityHitResult) ray;
-                entity = entityHit.getEntity();
-                world.emitGameEvent(entity, GameEvent.RESONATE_6, entity.getPos());
-                user.getStackInHand(hand).damage(1, user, LivingEntity.getSlotForHand(hand));
-                entity.playSound(SoundEvents.BLOCK_SCULK_SHRIEKER_FALL,1,1);
-                Insanity.increment(user);
-                return TypedActionResult.pass(user.getStackInHand(hand));
-            }
-            case null, default -> {
-            }
+        if (ray.getType() == HitResult.Type.ENTITY){
+            EntityHitResult entityHit = (EntityHitResult) ray;
+            entity = entityHit.getEntity();
+            world.emitGameEvent(entity, GameEvent.RESONATE_6, entity.getPos());
+            user.getStackInHand(hand).damage(1, user, LivingEntity.getSlotForHand(hand));
+            entity.playSound(SoundEvents.BLOCK_SCULK_SHRIEKER_FALL,1,1);
+            Insanity.increment(user);
+            return TypedActionResult.pass(user.getStackInHand(hand));
         }
         return super.use(world, user, hand);
     }
