@@ -18,7 +18,7 @@ public class MossyBag extends Item {
         BlockState state = context.getWorld().getBlockState(context.getBlockPos());
         if (state.getBlock().getClass().equals(EchoingBloom.class) && context.getPlayer() != null){
             if (state.get(Properties.DOUBLE_BLOCK_HALF).equals(DoubleBlockHalf.UPPER)){
-                context.getPlayer().setStackInHand(context.getHand(),ModItems.RESONANT_POLLEN.getDefaultStack());
+                context.getPlayer().setStackInHand(context.getHand(), ModItems.RESONANT_POLLEN.getDefaultStack().copyWithCount(context.getStack().getCount()));
                 return ActionResult.SUCCESS;            }
         }
         return ActionResult.FAIL;
