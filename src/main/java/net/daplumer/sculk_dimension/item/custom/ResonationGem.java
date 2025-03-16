@@ -33,6 +33,7 @@ public class ResonationGem extends Item{
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         Entity entity;
         ray = raycastEntity(user, 256);
+        user.getItemCooldownManager().set(this,32);
         if (ray == null){
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
