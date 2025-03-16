@@ -1,17 +1,17 @@
 {
-	"required": true,
-	"package": "net.daplumer.sculk_dimension.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"AxeScrapeMixin",
-		"MossyMuffleMisstepMixin",
-		"MossyMuffleMovementMixin",
-		"SculkSensorBlockEntityMixin",
-		"SculkSensorBlockMixin",
-		"SculkShriekerBlockEntityMixin",
-		"SculkShriekerBlockMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "net.daplumer.sculk_dimension.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AxeScrapeMixin",
+    "MossyMuffleMisstepMixin",
+    "MossyMuffleMovementMixin",
+    "SculkSensorBlockEntityMixin",
+    "SculkSensorBlockMixin",
+    "SculkShriekerBlockEntityMixin",
+    "SculkShriekerBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }
