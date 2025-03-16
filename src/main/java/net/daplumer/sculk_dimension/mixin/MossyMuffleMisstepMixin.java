@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Entity.class)
 public class MossyMuffleMisstepMixin {
-    @SuppressWarnings("SpellCheckingInspection")
     @Redirect(method = "bypassesLandingEffects()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isSneaking()Z"))
     private boolean injected(Entity entity){
         if (entity instanceof LivingEntity) {

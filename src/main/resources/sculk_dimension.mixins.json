@@ -3,8 +3,13 @@
 	"package": "net.daplumer.sculk_dimension.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"AxeScrapeMixin",
 		"MossyMuffleMisstepMixin",
-		"MossyMuffleMovementMixin"
+		"MossyMuffleMovementMixin",
+		"SculkSensorBlockEntityMixin",
+		"SculkSensorBlockMixin",
+		"SculkShriekerBlockEntityMixin",
+		"SculkShriekerBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

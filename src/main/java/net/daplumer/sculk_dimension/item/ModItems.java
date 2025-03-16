@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.item.custom.MossyBag;
+import net.daplumer.sculk_dimension.item.custom.WaxBrick;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
 import net.daplumer.sculk_dimension.item.custom.ModArmorMaterials;
 import net.daplumer.sculk_dimension.item.custom.ResonationGem;
@@ -32,7 +33,7 @@ public class ModItems {
     public static final Item BROKEN_ECHO = registerItem("broken_echo", new BrokenEcho(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item MOSSY_BAG = registerItem("mossy_bag", new MossyBag(new Item.Settings().maxCount(16)));
     public static final Item RESONANT_POLLEN = registerItem("resonant_pollen", new Item(new Item.Settings().maxCount(16)));
-    public static final Item WAX_BRICK = registerItem("wax_brick", new Item(new Item.Settings()));
+    public static final Item WAX_BRICK = registerItem("wax_brick", new WaxBrick(new Item.Settings()));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, Identifier.of(TheSculkDimension.MOD_ID,name), item);

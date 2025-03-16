@@ -8,8 +8,6 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.util.ModModelPredicates;
 import net.daplumer.sculk_dimension.util.statistics.ModStatistics;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
