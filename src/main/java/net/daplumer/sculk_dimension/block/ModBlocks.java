@@ -19,42 +19,6 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 
 public class ModBlocks {
-    public static final Block PINK_GARNET_BLOCK = registerBlock("pink_garnet_block", new Block(AbstractBlock.Settings.create()
-            .strength(4f)
-            .requiresTool()
-            .sounds(BlockSoundGroup.AMETHYST_BLOCK
-            )
-        ),true
-    );
-    public static final Block RAW_PINK_GARNET_BLOCK = registerBlock("raw_pink_garnet_block",
-        new Block(
-            AbstractBlock.Settings.create()
-                .strength(3f)
-                .requiresTool()
-                .sounds(BlockSoundGroup.STONE
-            )
-        ),true
-    );
-    public static final Block PINK_GARNET_ORE = registerBlock("pink_garnet_ore",
-            new ExperienceDroppingBlock(
-                    UniformIntProvider.create(2,3),
-                    AbstractBlock.Settings.create()
-                            .strength(3f)
-                            .requiresTool()
-                            .sounds(BlockSoundGroup.STONE)
-            ),true
-    );
-    public static final Block DEEPSLATE_PINK_GARNET_ORE = registerBlock(
-            "deepslate_pink_garnet_ore",
-            new ExperienceDroppingBlock(
-                    UniformIntProvider.create(3,6),
-                    AbstractBlock.Settings
-                            .create()
-                            .strength(4f)
-                            .requiresTool()
-                            .sounds(BlockSoundGroup.DEEPSLATE)
-            ), true
-    );
     public static final Block SCULK_CAPTURE = registerBlock(
             "sculk_capture",
             new SculkCaptureBlock(
@@ -110,10 +74,6 @@ public class ModBlocks {
         TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + TheSculkDimension.MOD_ID);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ECHOING_BLOOM, 0.5F);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.add(ModBlocks.PINK_GARNET_BLOCK);
-            entries.add(ModBlocks.RAW_PINK_GARNET_BLOCK);
-            entries.add(ModBlocks.PINK_GARNET_ORE);
-            entries.add(ModBlocks.DEEPSLATE_PINK_GARNET_ORE );
             entries.addAfter(Blocks.SCULK,SCULK_CAPTURE);
         });
     }
