@@ -12,33 +12,13 @@ import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused")
 public class ModItemGroups  {
-    public static final ItemGroup PINK_GARNET_ITEMS_GROUP = Registry.register(Registries.ITEM_GROUP,
-            Identifier.of(TheSculkDimension.MOD_ID, "pink_garnet_items"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.PINK_GARNET))
-                    .displayName(Text.translatable("itemgroup.sculk_dimension.pink_garnet_items"))
-                    .entries((displayContext, entries) -> {
-                        entries.add(ModItems.PINK_GARNET);
-                        entries.add(ModItems.RAW_PINK_GARNET);
-                    })
-                    .build());
-    public static final ItemGroup PINK_GARNET_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
-            Identifier.of(TheSculkDimension.MOD_ID, "pink_garnet_blocks"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModBlocks.PINK_GARNET_BLOCK))
-                    .displayName(Text.translatable("itemgroup.sculk_dimension.pink_garnet_blocks"))
-                    .entries((displayContext, entries) -> {
-                        entries.add(ModBlocks.PINK_GARNET_BLOCK);
-                        entries.add(ModBlocks.RAW_PINK_GARNET_BLOCK);
-                        entries.add(ModBlocks.PINK_GARNET_ORE);
-                        entries.add(ModBlocks.DEEPSLATE_PINK_GARNET_ORE);
-                    })
-                    .build());
     public static final ItemGroup SCULK_DIMENSION_ITEMS = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(TheSculkDimension.MOD_ID, "sculk_dimension_items"),
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.BROKEN_ECHO)
                     )
                     .displayName(Text.translatable("itemgroup.sculk_dimension.sculk_dimension_items"))
                     .entries((displayContext, entries) -> {
-                        entries.add(ModBlocks.SCULK_CAPTURE);
+                        entries.add(ModBlocks.SCULK_CAPTURE_ITEM);
                         entries.add(ModItems.CRYSTALIZED_SOUL);
                         entries.add(ModItems.SCULK_BRICK);
                         entries.add(ModItems.SCULK_BRICK_CASING);
@@ -49,7 +29,7 @@ public class ModItemGroups  {
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);
                         entries.add(ModItems.WAX_BRICK);
-                        entries.add(ModBlocks.ECHOING_BLOOM);
+                        entries.add(ModBlocks.ECHOING_BLOOM_ITEM);
                     })
 
                     .build());

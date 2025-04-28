@@ -10,7 +10,7 @@ import net.minecraft.util.dynamic.Codecs;
 import java.util.function.UnaryOperator;
 
 public class ModDataComponentTypes {
-   public static final ComponentType<Integer> INSANITY = register(builder -> builder.codec(Codecs.NONNEGATIVE_INT));
+   public static final ComponentType<Integer> INSANITY = register(builder -> builder.codec(Codecs.NON_NEGATIVE_INT));
 
     private static <T>ComponentType<T> register(UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(TheSculkDimension.MOD_ID, "insanity"),

@@ -5,10 +5,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.block.WireOrientation;
+import org.jetbrains.annotations.Nullable;
 
 public class SculkCaptureNeighbor extends Block {
     public static final MapCodec<SculkCaptureNeighbor> CODEC = createCodec(SculkCaptureNeighbor::new);
@@ -30,9 +33,9 @@ public class SculkCaptureNeighbor extends Block {
     }
 
     @Override
-    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
         world.breakBlock(pos.up(),false);
-        super.onStateReplaced(state, world, pos, newState, moved);
+        super.onStateReplaced(state, world, pos, moved);
     }
 
     @Override
@@ -41,8 +44,8 @@ public class SculkCaptureNeighbor extends Block {
     }
 
     @Override
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        world.updateNeighbor(pos.up(),sourceBlock,pos);
-        super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
+        world.updateNeighbor(pos.up(),sourceBlock,wireOrientation);
+        super.neighborUpdate(state, world, pos, sourceBlock, wireOrientation, notify);
     }
 }

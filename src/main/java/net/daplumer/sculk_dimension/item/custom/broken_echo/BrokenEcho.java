@@ -6,18 +6,14 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.util.statistics.Insanity;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
-import net.minecraft.world.World;
-
-import java.util.List;
-import java.util.Map;
+import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 import static net.daplumer.sculk_dimension.item.custom.broken_echo.EchoStageData.sanityToTooltip;
@@ -39,19 +35,15 @@ public class BrokenEcho extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
+
         if (!world.isClient) {
             // update insanity of item to insanity of player holding it
             if (entity instanceof PlayerEntity) {
                 stack.set(ModDataComponentTypes.INSANITY, Insanity.get((PlayerEntity) entity));
             }
-
-
-
-
-
         }
-        super.inventoryTick(stack,world,entity,slot,selected);
+        super.inventoryTick(stack,world,entity,slot);
     }
     public enum Stage {
         HINGED,   // for insanity equal to 0
@@ -64,6 +56,7 @@ public class BrokenEcho extends Item {
         INSANE,   // for insanity between 75 and 99
         ELDRITCH  // for insanity equal to 100
     }
+
     public static Stage getStage(ItemStack stack){
         //get a stage to approximate the insanity of the item
         try {

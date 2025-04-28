@@ -36,7 +36,9 @@
   },
   "requirements": [
     [
-      "Sneak",
+      "Sneak"
+    ],
+    [
       "WearMossBoots"
     ]
   ]

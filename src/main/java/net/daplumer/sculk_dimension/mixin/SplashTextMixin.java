@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @SuppressWarnings("ALL")
 @Mixin(SplashTextResourceSupplier.class)
 public abstract class SplashTextMixin {
-    @Inject(method = "get", at = @At("HEAD"),cancellable = false)
+    @Inject(method = "get", at = @At("HEAD"),cancellable = true)
     private void injected(CallbackInfoReturnable<SplashTextRenderer> cir){
         cir.setReturnValue(new SplashTextRenderer("Trans Rights!"));
     }

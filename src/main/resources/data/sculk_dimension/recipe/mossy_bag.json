@@ -7,19 +7,8 @@
     " M "
   ],
   "key": {
-    "M": [
-      {
-        "item": "minecraft:moss_block"
-      },
-      {
-        "item": "minecraft:moss_carpet"
-      }
-    ],
-    "S": [
-      {
-        "item": "minecraft:string"
-      }
-    ]
+    "M": "#sculk_dimension:moss",
+    "S": "minecraft:string"
   },
   "result": {
     "count": 1,

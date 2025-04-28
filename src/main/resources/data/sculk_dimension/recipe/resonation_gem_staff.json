@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "R": {
-      "item": "minecraft:end_rod"
-    },
-    "M": {
-      "item": "minecraft:moss_block"
-    },
-    "E": {
-      "item": "minecraft:end_stone"
-    }
+    "R":"minecraft:end_rod",
+    "M":"minecraft:moss_block",
+    "E":"minecraft:end_stone"
   },
   "pattern": [
     " R ",

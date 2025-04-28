@@ -1,7 +1,7 @@
 {
   "type": "minecraft:campfire_cooking",
   "category": "misc",
-  "ingredient": {"item":"sculk_dimension:resonant_pollen"},
+  "ingredient": "sculk_dimension:resonant_pollen",
   "result": {
     "id": "sculk_dimension:wax_brick"
   },

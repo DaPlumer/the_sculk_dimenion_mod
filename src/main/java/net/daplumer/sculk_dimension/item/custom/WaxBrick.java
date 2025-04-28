@@ -26,7 +26,7 @@ public class WaxBrick extends Item {
                 context.getWorld().setBlockState(context.getBlockPos(),context.getWorld().getBlockState(context.getBlockPos()).with(ModProperties.WAXED, true));
                 context.getStack().decrement(1);
                 context.getWorld().syncWorldEvent(context.getPlayer(), WorldEvents.BLOCK_WAXED, context.getBlockPos(), 0);
-                return ActionResult.success(true);
+                return ActionResult.SUCCESS;
             }
         }
         return ActionResult.FAIL;

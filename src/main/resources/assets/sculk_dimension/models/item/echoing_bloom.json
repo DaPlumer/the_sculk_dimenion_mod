@@ -1,3 +1,6 @@
 {
-  "parent": "sculk_dimension:block/echoing_bloom_top"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "sculk_dimension:item/echoing_bloom"
+  }
 }

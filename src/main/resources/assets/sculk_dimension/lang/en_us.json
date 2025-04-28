@@ -4,7 +4,9 @@
   "block.sculk_dimension.pink_garnet_ore": "Pink Garnet Ore",
   "block.sculk_dimension.raw_pink_garnet_block": "Raw Pink Garnet Block",
   "block.sculk_dimension.sculk_capture": "Captured Body",
+  "item.sculk_dimension.sculk_capture": "Captured Body",
   "block.sculk_dimension.echoing_bloom": "Echoing Bloom",
+  "item.sculk_dimension.echoing_bloom": "Echoing Bloom",
   "item.sculk_dimension.broken_echo": "Broken Echo",
   "item.sculk_dimension.crystalized_soul": "Soul Fragment",
   "item.sculk_dimension.mossy_boots": "Mossy Boots",
@@ -40,7 +42,8 @@
   "tooltips.sculk_dimension.broken_echo.mad_0":      "\"Find Us\"",
   "tooltips.sculk_dimension.broken_echo.insane_0":   "\"Come Back to our Home\"",
   "tooltips.sculk_dimension.broken_echo.eldritch_0": " YoMoma ",
-  "tooltips.sculk_dimension.broken_echo.eldritch_1": "Sees You"
+  "tooltips.sculk_dimension.broken_echo.eldritch_1": "Sees You",
+  "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for pranking friends and enemies alike!"
 
 
 }

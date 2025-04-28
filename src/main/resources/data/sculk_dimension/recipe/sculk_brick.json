@@ -1,12 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
-  "base": {
-    "item": "sculk_dimension:sculk_brick_casing"
-  },
-  "addition": {
-    "item": "minecraft:echo_shard"
-  },
-  "template": [],
+  "base":"sculk_dimension:sculk_brick_casing",
+  "addition":"minecraft:echo_shard",
   "result": {
     "count": 1,
     "id": "sculk_dimension:sculk_brick"
