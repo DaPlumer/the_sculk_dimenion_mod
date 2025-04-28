@@ -9,7 +9,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
