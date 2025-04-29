@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 
-@SuppressWarnings("UnresolvedMixinReference")
 @Mixin(Entity.class)
 public class MossyMuffleMovementMixin {
     @Redirect(method = "bypassesSteppingEffects()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isSneaking()Z"))

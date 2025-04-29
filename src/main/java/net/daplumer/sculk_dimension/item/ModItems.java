@@ -6,6 +6,7 @@ import net.daplumer.sculk_dimension.item.custom.MossyBag;
 import net.daplumer.sculk_dimension.item.custom.WaxBrick;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
 import net.daplumer.sculk_dimension.item.custom.ResonationGem;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
@@ -13,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
 
 import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.*;
@@ -28,7 +30,8 @@ public class ModItems {
     public static final Item BROKEN_ECHO = ITEMS.register("broken_echo", new Item.Settings().maxCount(1).rarity(Rarity.RARE), BrokenEcho::new);
     public static final Item MOSSY_BAG = ITEMS.register("mossy_bag", new  Item.Settings().maxCount(16), MossyBag::new);
     public static final Item RESONANT_POLLEN = ITEMS.register("resonant_pollen", new Item.Settings().maxCount(16));
-    public static final Item WAX_BRICK = ITEMS.register("wax_brick", new Item.Settings(), WaxBrick::new);
+    public static final Item WAX_BRICK = ITEMS.register("wax_brick", new Item.Settings().maxCount(16).useRemainder(MOSSY_BAG), WaxBrick::new);
+    public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",new Item.Settings().maxCount(1));
 
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
@@ -48,7 +51,21 @@ public class ModItems {
             entries.addAfter(SCULK_BRICK,SCULK_BRICK_CASING);
             entries.addBefore(Items.ECHO_SHARD,CRYSTALIZED_SOUL);
             entries.addAfter(Items.DISC_FRAGMENT_5, RESOANATION_GEM_STAFF);
+
         });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+            entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS);
+            entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);}
+        );
+        ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) ->{
+            if(stack.isOf(ModItems.RESOANATION_GEM)){
+                lines.add(Text.translatable("tooltips.sculk_dimension.resonation_gem"));
+                lines.add(Text.translatable("tooltips.sculk_dimension.resonation_gem_2"));
+            }
+            if(stack.isOf(ModItems.ECHO_MEDALLION)){
+                lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion"));
+                lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
+            }
+        }));
     }
 }

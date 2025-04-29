@@ -5,7 +5,9 @@
   "block.sculk_dimension.raw_pink_garnet_block": "Raw Pink Garnet Block",
   "block.sculk_dimension.sculk_capture": "Captured Body",
   "item.sculk_dimension.sculk_capture": "Captured Body",
+  "item.sculk_dimension.echo_totem": "Echo Medallion",
   "block.sculk_dimension.echoing_bloom": "Echoing Bloom",
+  "block.sculk_dimension.echoing_bloom_tip": "Echoing Bloom",
   "item.sculk_dimension.echoing_bloom": "Echoing Bloom",
   "item.sculk_dimension.broken_echo": "Broken Echo",
   "item.sculk_dimension.crystalized_soul": "Soul Fragment",
@@ -16,17 +18,11 @@
   "item.sculk_dimension.sculk_brick_casing": "Sculk Brick Casing",
   "item.sculk_dimension.mossy_bag": "Mossy Bag",
   "item.sculk_dimension.resonant_pollen": "Resonant Pollen",
-  "item.sculk_dimension.wax_brick": "Reverberation Wax",
+  "item.sculk_dimension.wax_brick": "Resinant Wax",
   "itemgroup.sculk_dimension.pink_garnet_blocks": "Pink Garnet Blocks",
   "itemgroup.sculk_dimension.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.sculk_dimension.sculk_dimension_items": "The Sculk Dimension",
   "scoreboard.sculk_dimension.insanity": "Insanity",
-
-
-
-
-
-
 
   "tooltips.sculk_dimension.broken_echo.hinged_0":   "",
   "tooltips.sculk_dimension.broken_echo.sane_0":     "    You Feel a Soft Vibration    ",
@@ -41,9 +37,12 @@
   "tooltips.sculk_dimension.broken_echo.crazy_1":    " The Whispers Start to Clear Up ",
   "tooltips.sculk_dimension.broken_echo.mad_0":      "\"Find Us\"",
   "tooltips.sculk_dimension.broken_echo.insane_0":   "\"Come Back to our Home\"",
-  "tooltips.sculk_dimension.broken_echo.eldritch_0": " YoMoma ",
+  "tooltips.sculk_dimension.broken_echo.eldritch_0": " ****** ",
   "tooltips.sculk_dimension.broken_echo.eldritch_1": "Sees You",
-  "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for pranking friends and enemies alike!"
+  "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for",
+  "tooltips.sculk_dimension.resonation_gem_2": "pranking friends and enemies alike!",
+  "tooltips.sculk_dimension.echo_medallion": "An echo of lives past reverberates",
+  "tooltips.sculk_dimension.echo_medallion_2": "through this medallion"
 
 
 }

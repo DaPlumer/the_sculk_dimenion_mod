@@ -20,6 +20,7 @@ public class ModItemGroups  {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.SCULK_CAPTURE_ITEM);
                         entries.add(ModItems.CRYSTALIZED_SOUL);
+                        entries.add(ModItems.ECHO_MEDALLION);
                         entries.add(ModItems.SCULK_BRICK);
                         entries.add(ModItems.SCULK_BRICK_CASING);
                         entries.add(ModItems.RESOANATION_GEM_STAFF);

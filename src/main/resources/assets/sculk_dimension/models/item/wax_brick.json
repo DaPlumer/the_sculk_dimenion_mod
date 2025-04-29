@@ -2,7 +2,6 @@
   "credit": "Made with Blockbench",
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sculk_dimension:item/sculk_brick_layer_1",
-    "layer1":"sculk_dimension:item/wax_brick_coating"
+    "layer0": "sculk_dimension:item/resinant_wax"
   }
 }

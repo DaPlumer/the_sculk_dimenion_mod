@@ -4,12 +4,14 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AxeScrapeMixin",
+    "KeepInventoryMedalMixin",
     "MossyMuffleMisstepMixin",
     "MossyMuffleMovementMixin",
     "SculkSensorBlockEntityMixin",
     "SculkSensorBlockMixin",
     "SculkShriekerBlockEntityMixin",
-    "SculkShriekerBlockMixin"
+    "SculkShriekerBlockMixin",
+    "ServerPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
