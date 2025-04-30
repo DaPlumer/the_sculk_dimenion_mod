@@ -1,0 +1,7 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "sculk_dimension:block/memory_gem_ore"
+	}
+}

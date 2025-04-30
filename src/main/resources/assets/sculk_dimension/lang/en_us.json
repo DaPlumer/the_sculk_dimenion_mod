@@ -23,6 +23,11 @@
   "itemgroup.sculk_dimension.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.sculk_dimension.sculk_dimension_items": "The Sculk Dimension",
   "scoreboard.sculk_dimension.insanity": "Insanity",
+  "item.sculk_dimension.memory_gem": "Memory Gem",
+  "item.sculk_dimension.memory_gem_ore": "Memory Gem Ore",
+  "item.sculk_dimension.memory_gem_deepslate_ore": "Deepslate Memory Gem Ore",
+  "block.sculk_dimension.memory_gem_ore": "Memory Gem Ore",
+  "block.sculk_dimension.memory_gem_deepslate_ore": "Deepslate Memory Gem Ore",
 
   "tooltips.sculk_dimension.broken_echo.hinged_0":   "",
   "tooltips.sculk_dimension.broken_echo.sane_0":     "    You Feel a Soft Vibration    ",

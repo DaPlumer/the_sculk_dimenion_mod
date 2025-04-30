@@ -3,6 +3,7 @@ package net.daplumer.sculk_dimension;
 import net.daplumer.modregisterer.ModRegistries.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -11,6 +12,7 @@ import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.IntProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
@@ -120,6 +122,10 @@ public record TheSculkDimensionRegistries() {
      */
      public static @NotNull Function<Item.Settings, Item> BLOCK_ITEM(Block block){
         return (settings -> new BlockItem(block, settings));
+    }
+
+    public static Function<AbstractBlock.Settings, Block> EXP_DROPPER(IntProvider provider){
+         return (settings -> new ExperienceDroppingBlock(provider,settings));
     }
 
     /**

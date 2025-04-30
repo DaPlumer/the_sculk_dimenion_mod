@@ -26,11 +26,14 @@ public class ModItemGroups  {
                         entries.add(ModItems.RESOANATION_GEM_STAFF);
                         entries.add(ModItems.RESOANATION_GEM);
                         entries.add(ModItems.BROKEN_ECHO);
+                        entries.add(ModItems.MEMORY_GEM);
                         entries.add(ModItems.MOSSY_BOOTS);
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);
                         entries.add(ModItems.WAX_BRICK);
                         entries.add(ModBlocks.ECHOING_BLOOM_ITEM);
+                        entries.add(ModBlocks.MEMORY_GEM_ORE_ITEM);
+                        entries.add(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE_ITEM);
                     })
 
                     .build());

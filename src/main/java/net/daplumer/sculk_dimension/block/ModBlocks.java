@@ -8,11 +8,13 @@ import net.daplumer.sculk_dimension.block.custom.SculkCaptureNeighbor;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.*;
 
@@ -65,12 +67,36 @@ public class ModBlocks {
                     .mapColor(MapColor.TERRACOTTA_PURPLE),
             EchoingBloomTip::new
     );
+    public static final Block MEMORY_GEM_ORE = BLOCKS.register("memory_gem_ore",
+            AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+                    .mapColor(MapColor.STONE_GRAY)
+                    .strength(3.0F,3.0F)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.STONE)
+    );
+    public static final Block MEMORY_GEM_DEEPSLATE_ORE = BLOCKS.register("memory_gem_deepslate_ore",
+            AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
+                    .mapColor(MapColor.DEEPSLATE_GRAY)
+                    .strength(4.5F, 3.0F)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.DEEPSLATE)
+            , EXP_DROPPER(UniformIntProvider.create(3,7))
+    );
+
     public static final BlockItem ECHOING_BLOOM_ITEM = (BlockItem) ITEMS.register("echoing_bloom",new Item.Settings(),BLOCK_ITEM(ECHOING_BLOOM_TIP));
     public static final BlockItem SCULK_CAPTURE_ITEM = (BlockItem) ITEMS.register("sculk_capture",new Item.Settings(),BLOCK_ITEM(SCULK_CAPTURE));
+    public static final BlockItem MEMORY_GEM_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_ORE));
+    public static final BlockItem MEMORY_GEM_DEEPSLATE_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_deepslate_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_DEEPSLATE_ORE));
 
     public static void registerModBlocks(){
         TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + TheSculkDimension.MOD_ID);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ECHOING_BLOOM_ITEM, 0.5F);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.addAfter(Blocks.SCULK,SCULK_CAPTURE_ITEM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Blocks.SCULK,SCULK_CAPTURE);
+            entries.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE,MEMORY_GEM_ORE);
+            entries.addAfter(MEMORY_GEM_ORE,MEMORY_GEM_DEEPSLATE_ORE);
+        });
     }
 }
