@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.item.custom;
 
 import net.minecraft.item.equipment.ArmorMaterial;
+
 import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.ARMOR_MATERIALS;
 
 public class ModArmorMaterials {

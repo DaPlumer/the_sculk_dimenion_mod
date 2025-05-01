@@ -3,7 +3,8 @@ package net.daplumer.sculk_dimension.item.custom;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 
 public class MossyBag extends Item {

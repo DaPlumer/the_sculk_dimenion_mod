@@ -1,7 +1,7 @@
 package net.daplumer.sculk_dimension.util;
 
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 public class VecToBlockPos {
     public static BlockPos createBlockPos(Vec3d vec) {

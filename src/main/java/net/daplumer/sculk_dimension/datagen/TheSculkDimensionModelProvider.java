@@ -9,6 +9,7 @@ import net.minecraft.client.data.*;
 import net.minecraft.client.render.item.model.SelectItemModel;
 import net.minecraft.client.render.item.property.select.ComponentSelectProperty;
 import net.minecraft.util.Identifier;
+
 import java.util.ArrayList;
 
 public class TheSculkDimensionModelProvider extends FabricModelProvider {

@@ -1,6 +1,9 @@
 package net.daplumer.sculk_dimension;
 
-import net.daplumer.modregisterer.ModRegistries.*;
+import net.daplumer.modregisterer.ModRegistries.ModArmorMaterialRegisterer;
+import net.daplumer.modregisterer.ModRegistries.ModDataRegisterer;
+import net.daplumer.modregisterer.ModRegistries.ModEntityTypeRegisterer;
+import net.daplumer.modregisterer.ModRegistries.ModRegistries;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ExperienceDroppingBlock;

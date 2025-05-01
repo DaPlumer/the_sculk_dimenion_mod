@@ -1,7 +1,8 @@
 package net.daplumer.sculk_dimension.util.statistics;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.scoreboard.*;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 

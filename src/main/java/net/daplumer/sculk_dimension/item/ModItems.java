@@ -1,11 +1,8 @@
 package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
-import net.daplumer.sculk_dimension.item.custom.ModArmorMaterials;
-import net.daplumer.sculk_dimension.item.custom.MossyBag;
-import net.daplumer.sculk_dimension.item.custom.WaxBrick;
+import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
-import net.daplumer.sculk_dimension.item.custom.ResonationGem;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -17,7 +14,7 @@ import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
 
-import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.*;
+import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.ITEMS;
 
 public class ModItems {
     public static final Item SCULK_BRICK =ITEMS.register("sculk_brick", new Item.Settings().rarity(Rarity.UNCOMMON));
@@ -32,7 +29,7 @@ public class ModItems {
     public static final Item RESONANT_POLLEN = ITEMS.register("resonant_pollen", new Item.Settings().maxCount(16));
     public static final Item WAX_BRICK = ITEMS.register("wax_brick", new Item.Settings().maxCount(16).useRemainder(MOSSY_BAG), WaxBrick::new);
     public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",new Item.Settings().maxCount(1));
-    public static final Item MEMORY_GEM = ITEMS.register("memory_gem",new Item.Settings());
+    public static final Item MEMORY_GEM = ITEMS.register("memory_gem",new Item.Settings().maxCount(1).maxDamage(256), MemoryGemKT::new);
 
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
@@ -67,6 +64,9 @@ public class ModItems {
             if(stack.isOf(ModItems.ECHO_MEDALLION)){
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion"));
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
+            }
+            if(stack.isOf(ModItems.MEMORY_GEM)){
+                lines.add(Text.translatable("tooltips.sculk_dimension.memory_gem"));
             }
         }));
     }

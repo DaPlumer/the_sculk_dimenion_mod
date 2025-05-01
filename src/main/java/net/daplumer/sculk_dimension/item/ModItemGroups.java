@@ -26,7 +26,9 @@ public class ModItemGroups  {
                         entries.add(ModItems.RESOANATION_GEM_STAFF);
                         entries.add(ModItems.RESOANATION_GEM);
                         entries.add(ModItems.BROKEN_ECHO);
-                        entries.add(ModItems.MEMORY_GEM);
+                        ItemStack stack = ModItems.MEMORY_GEM.getDefaultStack().copy();
+                        stack.setDamage(0);
+                        entries.add(stack);
                         entries.add(ModItems.MOSSY_BOOTS);
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);

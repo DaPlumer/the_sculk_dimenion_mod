@@ -2,13 +2,14 @@ package net.daplumer.modregisterer.ModRegistries;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.*;
-import net.minecraft.registry.*;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;

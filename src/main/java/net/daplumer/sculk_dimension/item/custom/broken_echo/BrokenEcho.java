@@ -14,6 +14,7 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 
 import static net.daplumer.sculk_dimension.item.custom.broken_echo.EchoStageData.sanityToTooltip;
