@@ -5,6 +5,7 @@
   "mixins": [
     "AxeScrapeMixin",
     "KeepInventoryMedalMixin",
+    "MendingMixin",
     "MossyMuffleMisstepMixin",
     "MossyMuffleMovementMixin",
     "SculkSensorBlockEntityMixin",

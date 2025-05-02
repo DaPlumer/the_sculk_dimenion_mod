@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.text.Text;
@@ -28,8 +29,8 @@ public class ModItems {
     public static final Item MOSSY_BAG = ITEMS.register("mossy_bag", new  Item.Settings().maxCount(16), MossyBag::new);
     public static final Item RESONANT_POLLEN = ITEMS.register("resonant_pollen", new Item.Settings().maxCount(16));
     public static final Item WAX_BRICK = ITEMS.register("wax_brick", new Item.Settings().maxCount(16).useRemainder(MOSSY_BAG), WaxBrick::new);
-    public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",new Item.Settings().maxCount(1));
-    public static final Item MEMORY_GEM = ITEMS.register("memory_gem",new Item.Settings().maxCount(1).maxDamage(256), MemoryGemKT::new);
+    public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON));
+    public static final Item MEMORY_GEM = ITEMS.register("memory_gem",new Item.Settings().maxCount(1).maxDamage(256).rarity(Rarity.UNCOMMON), MemoryGemKT::new);
 
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
@@ -49,7 +50,9 @@ public class ModItems {
             entries.addAfter(SCULK_BRICK,SCULK_BRICK_CASING);
             entries.addBefore(Items.ECHO_SHARD,CRYSTALIZED_SOUL);
             entries.addAfter(Items.DISC_FRAGMENT_5, RESOANATION_GEM_STAFF);
-            entries.addAfter(Items.DIAMOND,MEMORY_GEM);
+            ItemStack stack = MEMORY_GEM.getDefaultStack().copy();
+            stack.setDamage(0);
+            entries.addAfter(Items.DIAMOND,stack);
 
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
