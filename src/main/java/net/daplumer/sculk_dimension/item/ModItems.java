@@ -65,9 +65,6 @@ public class ModItems {
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion"));
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
             }
-            if(stack.isOf(ModItems.MEMORY_GEM)){
-                lines.add(Text.translatable("tooltips.sculk_dimension.memory_gem"));
-            }
         }));
     }
 }
