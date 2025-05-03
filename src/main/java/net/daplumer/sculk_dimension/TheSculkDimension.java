@@ -27,4 +27,12 @@ public class TheSculkDimension implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 	}
+	/*
+	TODO:
+		make enchantment duplicator
+			use:
+				take resinant wax with enchants and a book
+				put in those and souls equal to the total number of level 1 enchantment books to make enchant
+				put resinant wax enchants on book
+	 */
 }

@@ -61,7 +61,8 @@ public class ModItems {
     public static final Item WAX_BRICK = ITEMS.register("wax_brick",
             new Item.Settings()
                     .maxCount(16)
-                    .useRemainder(MOSSY_BAG),
+                    .useRemainder(MOSSY_BAG)
+                    .component(DataComponentTypes.STORED_ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT),
             WaxBrick::new
     );
     public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",

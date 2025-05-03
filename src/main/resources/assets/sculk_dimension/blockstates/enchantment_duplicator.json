@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sculk_dimension:block/enchantment_duplicator",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sculk_dimension:block/enchantment_duplicator"
+    },
+    "facing=south": {
+      "model": "sculk_dimension:block/enchantment_duplicator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sculk_dimension:block/enchantment_duplicator",
+      "y": 270
+    }
+  }
+}

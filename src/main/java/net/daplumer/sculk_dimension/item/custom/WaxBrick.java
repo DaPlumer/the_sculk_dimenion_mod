@@ -5,8 +5,13 @@ import net.daplumer.sculk_dimension.component.ModProperties;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.WorldEvents;
@@ -37,4 +42,17 @@ public class WaxBrick extends Item {
         }
         return ActionResult.PASS;
     }
+
+    @Override
+    public void postProcessComponents(ItemStack stack) {
+        super.postProcessComponents(stack);
+        ItemEnchantmentsComponent.Builder builder = new ItemEnchantmentsComponent.Builder(stack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT));
+        ItemEnchantmentsComponent enchantments = stack.getEnchantments();
+        for (RegistryEntry<Enchantment> entry: enchantments.getEnchantments()){
+            builder.add(entry, enchantments.getLevel(entry));
+        }
+        stack.set(DataComponentTypes.ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
+        stack.set(DataComponentTypes.STORED_ENCHANTMENTS,builder.build());
+    }
+
 }
