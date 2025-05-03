@@ -4,9 +4,11 @@ import net.daplumer.modregisterer.ModRegistries.ModArmorMaterialRegisterer;
 import net.daplumer.modregisterer.ModRegistries.ModDataRegisterer;
 import net.daplumer.modregisterer.ModRegistries.ModEntityTypeRegisterer;
 import net.daplumer.modregisterer.ModRegistries.ModRegistries;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -68,6 +70,21 @@ public record TheSculkDimensionRegistries() {
      * @see ModRegistries#ITEM_GROUP_REGISTERER_CONSTRUCTOR
      */
     public static ModDataRegisterer<ItemGroup, ItemGroup.Builder> ITEM_GROUPS = (ITEM_GROUP_REGISTERER_CONSTRUCTOR.apply(getNamespace()));
+
+
+    /**
+     * The general registerer for block entity type creation. Member of the {@link net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer GeneralModDataRegisterer} class.
+     * @implNote Documentation on general data registration can be found in the
+     * {@link net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer#register(String, Object, Function) register} method of the
+     * {@link net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer GeneralModDataRegisterer} class.
+     * @see net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer GeneralModDataRegisterer
+     * @see net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer#register(String, Object, Function) register(name, instanceSettings, instanceFactory)
+     * @see net.daplumer.modregisterer.ModRegistries.GeneralModDataRegisterer#register(String, Object) register(name, instanceSettings)
+     * @see ModDataRegisterer
+     * @see ModRegistries
+     * @see ModRegistries#BLOCK_ENTITY_TYPE_REGISTERER_CONSTRUCTOR
+     */
+    public static ModDataRegisterer<BlockEntityType, FabricBlockEntityTypeBuilder> BLOCK_ENTITY_TYPES = (BLOCK_ENTITY_TYPE_REGISTERER_CONSTRUCTOR.apply(getNamespace()));
 
 
     /**
