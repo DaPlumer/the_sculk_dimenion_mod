@@ -8,7 +8,10 @@ import net.minecraft.client.render.RenderLayer;
 public class TheSculkDimensionClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ECHOING_BLOOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ECHOING_BLOOM_TIP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                ModBlocks.ECHOING_BLOOM,
+                ModBlocks.ECHOING_BLOOM_TIP,
+                ModBlocks.ENCHANTMENT_DUPLICATOR
+        );
     }
 }
