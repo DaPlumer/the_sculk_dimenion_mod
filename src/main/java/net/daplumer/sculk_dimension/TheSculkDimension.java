@@ -1,7 +1,9 @@
 package net.daplumer.sculk_dimension;
 
 import net.daplumer.sculk_dimension.block.ModBlocks;
+import net.daplumer.sculk_dimension.block.custom.ModScreenHandlerTypes;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
+import net.daplumer.sculk_dimension.enchants.ModEnchantmentEffects;
 import net.daplumer.sculk_dimension.eventhandlers.ModEventHandlers;
 import net.daplumer.sculk_dimension.item.ModItemGroups;
 import net.daplumer.sculk_dimension.item.ModItems;
@@ -25,14 +27,13 @@ public class TheSculkDimension implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModScreenHandlerTypes.initialize();
+		ModEnchantmentEffects.registerModEnchantmentEffects();
 
 	}
 	/*
 	TODO:
-		make enchantment duplicator
-			use:
-				take resinant wax with enchants and a book
-				put in those and souls equal to the total number of level 1 enchantment books to make enchant
-				put resinant wax enchants on book
+		debug
+		set durability from loot table instead of from the rng provider for mem gem
 	 */
 }

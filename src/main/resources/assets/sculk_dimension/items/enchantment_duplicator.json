@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sculk_dimension:item/enchantment_duplicator"
+  }
+}

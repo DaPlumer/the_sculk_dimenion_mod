@@ -46,13 +46,16 @@ public class WaxBrick extends Item {
     @Override
     public void postProcessComponents(ItemStack stack) {
         super.postProcessComponents(stack);
-        ItemEnchantmentsComponent.Builder builder = new ItemEnchantmentsComponent.Builder(stack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT));
-        ItemEnchantmentsComponent enchantments = stack.getEnchantments();
-        for (RegistryEntry<Enchantment> entry: enchantments.getEnchantments()){
-            builder.add(entry, enchantments.getLevel(entry));
-        }
-        stack.set(DataComponentTypes.ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
-        stack.set(DataComponentTypes.STORED_ENCHANTMENTS,builder.build());
-    }
+        if (stack.hasEnchantments()) {
+            stack.set(DataComponentTypes.MAX_STACK_SIZE,1);
+            ItemEnchantmentsComponent.Builder builder = new ItemEnchantmentsComponent.Builder(stack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT));
+            ItemEnchantmentsComponent enchantments = stack.getEnchantments();
+            for (RegistryEntry<Enchantment> entry : enchantments.getEnchantments()) {
+                builder.add(entry, enchantments.getLevel(entry));
+            }
+            stack.set(DataComponentTypes.ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
+            stack.set(DataComponentTypes.STORED_ENCHANTMENTS, builder.build());
 
+        }
+    }
 }

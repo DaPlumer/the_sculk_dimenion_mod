@@ -36,6 +36,7 @@ public class ModItemGroups  {
                         entries.add(ModBlocks.ECHOING_BLOOM_ITEM);
                         entries.add(ModBlocks.MEMORY_GEM_ORE_ITEM);
                         entries.add(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE_ITEM);
+                        entries.add(ModBlocks.ENCHANTMENT_DUPLICATOR_ITEM);
                     })
 
                     .build());

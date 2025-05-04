@@ -1,10 +1,7 @@
 package net.daplumer.sculk_dimension.block;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
-import net.daplumer.sculk_dimension.block.custom.EchoingBloom;
-import net.daplumer.sculk_dimension.block.custom.EchoingBloomTip;
-import net.daplumer.sculk_dimension.block.custom.SculkCaptureBlock;
-import net.daplumer.sculk_dimension.block.custom.SculkCaptureNeighbor;
+import net.daplumer.sculk_dimension.block.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.block.AbstractBlock;
@@ -87,11 +84,16 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.DEEPSLATE)
             , EXP_DROPPER(UniformIntProvider.create(3,7))
     );
+    public static final Block ENCHANTMENT_DUPLICATOR = BLOCKS.register("enchantment_duplicator",
+            AbstractBlock.Settings.create(),
+            EnchantmentDuplicator::new
+    );
 
     public static final BlockItem ECHOING_BLOOM_ITEM = (BlockItem) ITEMS.register("echoing_bloom",new Item.Settings(),BLOCK_ITEM(ECHOING_BLOOM_TIP));
     public static final BlockItem SCULK_CAPTURE_ITEM = (BlockItem) ITEMS.register("sculk_capture",new Item.Settings(),BLOCK_ITEM(SCULK_CAPTURE));
     public static final BlockItem MEMORY_GEM_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_ORE));
     public static final BlockItem MEMORY_GEM_DEEPSLATE_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_deepslate_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_DEEPSLATE_ORE));
+    public static final BlockItem ENCHANTMENT_DUPLICATOR_ITEM = (BlockItem) ITEMS.register("enchantment_duplicator",new Item.Settings(),BLOCK_ITEM(ENCHANTMENT_DUPLICATOR));
 
     public static void registerModBlocks(){
         TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + TheSculkDimension.MOD_ID);
