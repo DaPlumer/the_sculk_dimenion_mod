@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "sculk_dimension:item/echoes/echo_50"
-  }
-}
