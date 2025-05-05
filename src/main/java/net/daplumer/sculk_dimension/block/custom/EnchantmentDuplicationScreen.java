@@ -16,6 +16,7 @@ import java.util.List;
 public class EnchantmentDuplicationScreen extends ForgingScreen<EnchantmentDuplicationScreenHandler> {
     private final Identifier BOOK_SLOT_TEXTURE  = Identifier.of(TheSculkDimension.MOD_ID, "container/slot/empty_slot_book");
     private final Identifier SOUL_SLOT_TEXTURE  = Identifier.of(TheSculkDimension.MOD_ID, "container/slot/empty_slot_crystalized_soul");
+    private final Identifier SOUL_BAG_SLOT_TEXTURE  = Identifier.of(TheSculkDimension.MOD_ID, "container/slot/empty_slot_soul_bag");
     private final Identifier RESIN_SLOT_TEXTURE = Identifier.of(TheSculkDimension.MOD_ID, "container/slot/empty_slot_resinant_wax");
     private final CyclingSlotIcon booksSlotIcon = new CyclingSlotIcon(0);
     private final CyclingSlotIcon soulsSlotIcon = new CyclingSlotIcon(1);
@@ -45,7 +46,7 @@ public class EnchantmentDuplicationScreen extends ForgingScreen<EnchantmentDupli
     protected void handledScreenTick() {
         super.handledScreenTick();
         this.booksSlotIcon.updateTexture(List.of(BOOK_SLOT_TEXTURE ));
-        this.soulsSlotIcon.updateTexture(List.of(SOUL_SLOT_TEXTURE ));
+        this.soulsSlotIcon.updateTexture(List.of(SOUL_SLOT_TEXTURE, SOUL_BAG_SLOT_TEXTURE));
         this.resinSlotIcon.updateTexture(List.of(RESIN_SLOT_TEXTURE));
     }
 }

@@ -33,6 +33,7 @@ public class ModItemGroups  {
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);
                         entries.add(ModItems.WAX_BRICK);
+                        entries.add(ModItems.SOUL_BAG);
                         entries.add(ModBlocks.ECHOING_BLOOM_ITEM);
                         entries.add(ModBlocks.MEMORY_GEM_ORE_ITEM);
                         entries.add(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE_ITEM);

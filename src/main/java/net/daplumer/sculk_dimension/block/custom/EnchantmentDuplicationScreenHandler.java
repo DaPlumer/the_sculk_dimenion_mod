@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
+import net.daplumer.sculk_dimension.item.custom.SoulBag;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -26,7 +27,7 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
     private static ForgingSlotsManager createForgingSlotsManager(){
         return ForgingSlotsManager.builder()
                 .input(0,33,28, ItemPredicate.Builder.create().items(Registries.ITEM,Items.BOOK).build())
-                .input(1,53,28, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.CRYSTALIZED_SOUL).build())
+                .input(1,53,28, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.CRYSTALIZED_SOUL, ModItems.SOUL_BAG).build())
                 .input(2,43,48, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.WAX_BRICK).build())
                 .output(3,113,38)
                 .build();
@@ -36,7 +37,14 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
     protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
         stack.onCraftByPlayer(player,stack.getCount());
         decrementStack(0);
-        this.input.getStack(1).decrement(requiredSouls(this.input.getStack(2)));
+        int requiredSouls = requiredSouls(this.input.getStack(2));
+        ItemStack stack2 = input.getStack(1);
+        if(stack2.isOf(ModItems.SOUL_BAG)){
+            SoulBag.subtractSouls(stack2,requiredSouls);
+        } else {
+            stack2.decrement(requiredSouls);
+        }
+        updateResult();
     }
 
     @Override
@@ -49,8 +57,9 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
         ItemStack books = this.input.getStack(0);
         ItemStack souls = this.input.getStack(1);
         ItemStack resin = this.input.getStack(2);
+        this.output.setStack(0,ItemStack.EMPTY);
         if(!books.isEmpty() && !souls.isEmpty() && !resin.isEmpty()){
-            if(souls.getCount() >= requiredSouls(resin) &! resin.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT).isEmpty()){
+            if(getSoulsCount(souls) >= requiredSouls(resin) &! resin.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT).isEmpty()){
                 this.output.setStack(0,Items.ENCHANTED_BOOK.getDefaultStack());
                 this.output.getStack(0).set(DataComponentTypes.STORED_ENCHANTMENTS,resin.get(DataComponentTypes.STORED_ENCHANTMENTS));
             }
@@ -69,5 +78,10 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
             itemStack.decrement(1);
             this.input.setStack(slot, itemStack);
         }
+    }
+    public int getSoulsCount(ItemStack stack){
+        if(stack.isOf(ModItems.CRYSTALIZED_SOUL)) return stack.getCount();
+        if(stack.isOf(ModItems.SOUL_BAG)) return SoulBag.getSouls(stack);
+        return 0;
     }
 }

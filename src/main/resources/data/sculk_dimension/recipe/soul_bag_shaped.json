@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "soul_bags",
+  "category": "misc",
+  "pattern": [
+    "  S",
+    "MCM",
+    " M "
+  ],
+  "key": {
+    "M": "#sculk_dimension:moss",
+    "S": "minecraft:string",
+    "C": "sculk_dimension:crystalized_soul"
+  },
+  "result": {
+    "components": {
+      "sculk_dimension:souls_stored": 1
+    },
+    "count": 1,
+    "id": "sculk_dimension:soul_bag"
+  }
+}

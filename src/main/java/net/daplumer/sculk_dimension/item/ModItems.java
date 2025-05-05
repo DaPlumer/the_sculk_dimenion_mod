@@ -75,11 +75,21 @@ public class ModItems {
                     .maxCount(1)
                     .maxDamage(256)
                     .rarity(Rarity.UNCOMMON),
-            MemoryGemKT::new);
+            MemoryGemKT::new
+    );
+    public static final Item SOUL_BAG = ITEMS.register("soul_bag",
+            new Item.Settings()
+                    .maxCount(1),
+            SoulBag::new
+    );
 
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
         BrokenEcho.registerCustomData();
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->
+            entries.addBefore(Items.BUNDLE,SOUL_BAG)
+        );
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addBefore(Items.IRON_INGOT, WAX_BRICK);
@@ -112,6 +122,12 @@ public class ModItems {
             if(stack.isOf(ModItems.ECHO_MEDALLION)){
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion"));
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
+            }
+            if(stack.isOf(ModItems.SOUL_BAG)){
+                if(SoulBag.getSouls(stack) == 0) return;
+                lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag")
+                        .append(Text.literal(String.valueOf(SoulBag.getSouls(stack))))
+                );
             }
         }));
     }

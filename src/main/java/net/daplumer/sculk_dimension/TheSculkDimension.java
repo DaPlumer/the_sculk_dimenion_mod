@@ -33,6 +33,11 @@ public class TheSculkDimension implements ModInitializer {
 	}
 	/*
 	TODO:
+		make craftable cythe that always has the reaping enchantment and larger attack range
+		add reaping enchant into librarian trades and enchantment loot tab les
+		make reaping enchant incompatible with looting and silk touch
+		make reaping enchant only work on melee weapons
+		debug enchantment combinations for reaping enchant
 		debug
 		set durability from loot table instead of from the rng provider for mem gem
 	 */

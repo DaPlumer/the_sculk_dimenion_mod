@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " N ",
+    "SES"
+  ],
+  "key": {
+    "E": "minecraft:end_stone_brick_slab",
+    "S": "minecraft:echo_shard",
+    "N": "minecraft:ender_eye"
+  },
+  "result": {
+    "count": 1,
+    "id": "sculk_dimension:enchantment_duplicator"
+  }
+}

@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AxeScrapeMixin",
+    "ExpInvoker",
     "KeepInventoryMedalMixin",
     "MendingMixin",
     "MossyMuffleMisstepMixin",

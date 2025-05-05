@@ -51,6 +51,8 @@
   "containers.sculk_dimension.enchantment_duplicator": "Duplicate Enchants",
   "block.sculk_dimension.enchantment_duplicator": "Enchantment Duplicator",
   "item.sculk_dimension.enchantment_duplicator": "Enchantment Duplicator",
-  "enchantment.sculk_dimension.reaping": "Reaping"
+  "enchantment.sculk_dimension.reaping": "Reaping",
+  "tooltips.sculk_dimension.soul_bag": "Contained Souls: ",
+  "item.sculk_dimension.soul_bag": "Soul Bag"
 
 }

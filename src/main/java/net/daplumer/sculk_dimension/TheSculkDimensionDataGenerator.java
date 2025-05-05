@@ -1,6 +1,6 @@
 package net.daplumer.sculk_dimension;
 import net.daplumer.sculk_dimension.datagen.TheSculkDimensionModelProvider;
-import net.daplumer.sculk_dimension.enchants.EnchantmentGenerator;
+import net.daplumer.sculk_dimension.datagen.EnchantmentGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
