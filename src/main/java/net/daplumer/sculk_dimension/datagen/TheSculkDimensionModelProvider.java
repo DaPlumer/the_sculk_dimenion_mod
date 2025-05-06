@@ -31,5 +31,6 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
             models.add(ItemModels.switchCase(i,ItemModels.basic(identifiers.get(i))));
         }
         itemModelGenerator.output.accept(ModItems.BROKEN_ECHO,ItemModels.select(new ComponentSelectProperty<>(ModDataComponentTypes.INSANITY),ItemModels.basic(identifiers.getFirst()),models));
+        itemModelGenerator.register(ModItems.SCULK_CLOTH,Models.GENERATED);
     }
 }

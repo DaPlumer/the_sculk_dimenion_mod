@@ -7,6 +7,7 @@ import net.daplumer.sculk_dimension.enchants.ModEnchantmentEffects;
 import net.daplumer.sculk_dimension.eventhandlers.ModEventHandlers;
 import net.daplumer.sculk_dimension.item.ModItemGroups;
 import net.daplumer.sculk_dimension.item.ModItems;
+import net.daplumer.sculk_dimension.item.custom.ModToolMaterials;
 import net.daplumer.sculk_dimension.util.statistics.ModStatistics;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -29,14 +30,13 @@ public class TheSculkDimension implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModScreenHandlerTypes.initialize();
 		ModEnchantmentEffects.registerModEnchantmentEffects();
+		ModToolMaterials.registerModToolMaterials();
 
 	}
 	/*
 	TODO:
-		make craftable cythe that always has the reaping enchantment and larger attack range
 		add reaping enchant into librarian trades and enchantment loot tab les
 		make reaping enchant incompatible with looting and silk touch
-		make reaping enchant only work on melee weapons
 		debug enchantment combinations for reaping enchant
 		debug
 		set durability from loot table instead of from the rng provider for mem gem

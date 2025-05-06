@@ -23,6 +23,7 @@ public class ModItemGroups  {
                         entries.add(ModItems.ECHO_MEDALLION);
                         entries.add(ModItems.SCULK_BRICK);
                         entries.add(ModItems.SCULK_BRICK_CASING);
+                        entries.add(ModItems.SCYTHE);
                         entries.add(ModItems.RESOANATION_GEM_STAFF);
                         entries.add(ModItems.RESOANATION_GEM);
                         entries.add(ModItems.BROKEN_ECHO);

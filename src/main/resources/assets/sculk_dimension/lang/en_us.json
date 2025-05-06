@@ -53,6 +53,8 @@
   "item.sculk_dimension.enchantment_duplicator": "Enchantment Duplicator",
   "enchantment.sculk_dimension.reaping": "Reaping",
   "tooltips.sculk_dimension.soul_bag": "Contained Souls: ",
-  "item.sculk_dimension.soul_bag": "Soul Bag"
+  "item.sculk_dimension.soul_bag": "Soul Bag",
+  "item.sculk_dimension.scythe": "Reaping Scythe",
+  "item.sculk_dimension.sculk_cloth": "Sculk Cloth"
 
 }

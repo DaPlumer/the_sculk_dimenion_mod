@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SWS",
+    "WSW",
+    "SWS"
+  ],
+  "key": {
+    "S": "minecraft:sculk",
+    "W": "#minecraft:wool_carpets"
+  },
+  "result": {
+    "count": 4,
+    "id": "sculk_dimension:sculk_cloth"
+  }
+}

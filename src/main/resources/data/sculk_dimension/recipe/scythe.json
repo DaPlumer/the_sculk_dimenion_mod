@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " SC",
+    "S B",
+    "  B"
+  ],
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "C": "minecraft:sculk_catalyst",
+    "S": "sculk_dimension:sculk_brick"
+  },
+  "result": {
+    "count": 1,
+    "id": "sculk_dimension:scythe"
+  }
+}

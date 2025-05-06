@@ -3,6 +3,7 @@ package net.daplumer.sculk_dimension.item;
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
+import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -25,7 +26,8 @@ public class ModItems {
 
     public static final Item CRYSTALIZED_SOUL =ITEMS.register("crystalized_soul",
             new Item.Settings()
-                    .rarity(Rarity.UNCOMMON)
+                    .rarity(Rarity.UNCOMMON),
+            CrystalizedSoul::new
     );
     public static final Item MOSSY_BOOTS = ITEMS.register("mossy_boots",
             new Item.Settings()
@@ -82,6 +84,15 @@ public class ModItems {
                     .maxCount(1),
             SoulBag::new
     );
+    public static final Item SCYTHE = ITEMS.register("scythe",
+            new Item.Settings()
+                    .hoe(ModToolMaterials.SCULK, 0.0F,0.0F)
+                    .sword(ModToolMaterials.SCULK, 9.0F,-3.3F)
+                    .rarity(Rarity.UNCOMMON)
+                    .maxCount(1)
+            ,Scythe::new
+    );
+    public static final Item SCULK_CLOTH = ITEMS.register("sculk_cloth");
 
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
@@ -108,11 +119,13 @@ public class ModItems {
             ItemStack stack = MEMORY_GEM.getDefaultStack().copy();
             stack.setDamage(0);
             entries.addAfter(Items.DIAMOND,stack);
+            entries.addBefore(CRYSTALIZED_SOUL,SCULK_CLOTH);
 
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS);
-            entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);}
+            entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);
+            entries.addAfter(Items.MACE,SCYTHE);}
         );
         ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) ->{
             if(stack.isOf(ModItems.RESOANATION_GEM)){
@@ -124,9 +137,9 @@ public class ModItems {
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
             }
             if(stack.isOf(ModItems.SOUL_BAG)){
-                if(SoulBag.getSouls(stack) == 0) return;
+                if(SoulHolder.getSouls(stack) == 0) return;
                 lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag")
-                        .append(Text.literal(String.valueOf(SoulBag.getSouls(stack))))
+                        .append(Text.literal(String.valueOf(SoulHolder.getSouls(stack))))
                 );
             }
         }));

@@ -2,7 +2,7 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
-import net.daplumer.sculk_dimension.item.custom.SoulBag;
+import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -38,12 +38,7 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
         stack.onCraftByPlayer(player,stack.getCount());
         decrementStack(0);
         int requiredSouls = requiredSouls(this.input.getStack(2));
-        ItemStack stack2 = input.getStack(1);
-        if(stack2.isOf(ModItems.SOUL_BAG)){
-            SoulBag.subtractSouls(stack2,requiredSouls);
-        } else {
-            stack2.decrement(requiredSouls);
-        }
+        SoulHolder.takeSouls(this.input.getStack(1),requiredSouls);
         updateResult();
     }
 
@@ -59,7 +54,7 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
         ItemStack resin = this.input.getStack(2);
         this.output.setStack(0,ItemStack.EMPTY);
         if(!books.isEmpty() && !souls.isEmpty() && !resin.isEmpty()){
-            if(getSoulsCount(souls) >= requiredSouls(resin) &! resin.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT).isEmpty()){
+            if(SoulHolder.getSouls(souls) >= requiredSouls(resin) &! resin.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT).isEmpty()){
                 this.output.setStack(0,Items.ENCHANTED_BOOK.getDefaultStack());
                 this.output.getStack(0).set(DataComponentTypes.STORED_ENCHANTMENTS,resin.get(DataComponentTypes.STORED_ENCHANTMENTS));
             }
@@ -78,10 +73,5 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
             itemStack.decrement(1);
             this.input.setStack(slot, itemStack);
         }
-    }
-    public int getSoulsCount(ItemStack stack){
-        if(stack.isOf(ModItems.CRYSTALIZED_SOUL)) return stack.getCount();
-        if(stack.isOf(ModItems.SOUL_BAG)) return SoulBag.getSouls(stack);
-        return 0;
     }
 }
