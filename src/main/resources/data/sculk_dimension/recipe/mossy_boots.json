@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "M": "#sculk_dimension:moss",
-    "L": "minecraft:leather"
+    "L": "#c:leathers"
   },
   "pattern": [
     "L L",

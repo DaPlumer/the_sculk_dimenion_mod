@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "tools",
   "pattern": [
     " SC",
     "S B",
     "  B"
   ],
   "key": {
-    "B": "minecraft:blaze_rod",
+    "B": "#c:rods/blaze",
     "C": "minecraft:sculk_catalyst",
     "S": "sculk_dimension:sculk_brick"
   },

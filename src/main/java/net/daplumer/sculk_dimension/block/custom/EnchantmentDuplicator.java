@@ -20,12 +20,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class EnchantmentDuplicator extends CraftingTableBlock {
+public class EnchantmentDuplicator extends Block {
     public static final VoxelShape outline = Block.createColumnShape(16,0,8);
     public static final MapCodec<EnchantmentDuplicator> CODEC = createCodec(EnchantmentDuplicator::new);
 
     @Override
-    public MapCodec<? extends CraftingTableBlock> getCodec() {
+    public MapCodec<? extends Block> getCodec() {
         return CODEC;
     }
 

@@ -3,8 +3,8 @@
   "category": "equipment",
   "key": {
     "R":"minecraft:end_rod",
-    "M":"minecraft:moss_block",
-    "E":"minecraft:end_stone"
+    "M":"#sculk_dimension:moss",
+    "E":"#c:end_stones"
   },
   "pattern": [
     " R ",

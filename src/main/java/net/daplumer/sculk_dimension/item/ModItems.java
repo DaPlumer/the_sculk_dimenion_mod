@@ -86,11 +86,10 @@ public class ModItems {
     );
     public static final Item SCYTHE = ITEMS.register("scythe",
             new Item.Settings()
-                    .hoe(ModToolMaterials.SCULK, 0.0F,0.0F)
                     .sword(ModToolMaterials.SCULK, 9.0F,-3.3F)
                     .rarity(Rarity.UNCOMMON)
                     .maxCount(1)
-            ,Scythe::new
+            , Scythe::new
     );
     public static final Item SCULK_CLOTH = ITEMS.register("sculk_cloth");
 

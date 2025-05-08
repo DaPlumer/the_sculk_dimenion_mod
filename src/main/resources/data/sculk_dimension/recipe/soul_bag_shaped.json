@@ -9,7 +9,7 @@
   ],
   "key": {
     "M": "#sculk_dimension:moss",
-    "S": "minecraft:string",
+    "S": "#c:strings",
     "C": "sculk_dimension:crystalized_soul"
   },
   "result": {

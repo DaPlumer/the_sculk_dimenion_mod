@@ -1,8 +1,10 @@
 package net.daplumer.sculk_dimension.block.custom;
 
+import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
+import net.minecraft.advancement.Advancement;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -15,6 +17,8 @@ import net.minecraft.registry.*;
 import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.ForgingSlotsManager;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 
 public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
 
@@ -39,6 +43,11 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
         decrementStack(0);
         int requiredSouls = requiredSouls(this.input.getStack(2));
         SoulHolder.takeSouls(this.input.getStack(1),requiredSouls);
+        if(player instanceof ServerPlayerEntity serverPlayer){
+            serverPlayer.getAdvancementTracker().grantCriterion(
+                    Advancement.Builder.create().build(Identifier.of(TheSculkDimension.MOD_ID,"duplicate_enchant")),
+                    "use_duplicator");
+        }
         updateResult();
     }
 

@@ -31,14 +31,10 @@ public class TheSculkDimension implements ModInitializer {
 		ModScreenHandlerTypes.initialize();
 		ModEnchantmentEffects.registerModEnchantmentEffects();
 		ModToolMaterials.registerModToolMaterials();
-
 	}
 	/*
 	TODO:
-		add reaping enchant into librarian trades and enchantment loot tab les
-		make reaping enchant incompatible with looting and silk touch
+		add reaping enchant into librarian trades and enchantment loot tables
 		debug enchantment combinations for reaping enchant
-		debug
-		set durability from loot table instead of from the rng provider for mem gem
 	 */
 }

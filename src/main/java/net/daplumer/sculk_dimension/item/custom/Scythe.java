@@ -1,11 +1,11 @@
 package net.daplumer.sculk_dimension.item.custom;
 
-import net.daplumer.sculk_dimension.enchants.ModEnchantmentEffects;
-import net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect;
+    import net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.mixin.ExpInvoker;
 import net.daplumer.sculk_dimension.util.statistics.Insanity;
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
-import java.util.Optional;
 import static net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect.getRandomNumber;
 
 public class Scythe extends Item {
@@ -45,6 +44,6 @@ public class Scythe extends Item {
 
     @Override
     public boolean canBeEnchantedWith(ItemStack stack, RegistryEntry<Enchantment> enchantment, EnchantingContext context) {
-        return super.canBeEnchantedWith(stack, enchantment, context) &! enchantment.getKey().equals(Optional.of(ModEnchantmentEffects.REAPING));
+        return super.canBeEnchantedWith(stack, enchantment, context) &! enchantment.isIn(ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS);
     }
 }

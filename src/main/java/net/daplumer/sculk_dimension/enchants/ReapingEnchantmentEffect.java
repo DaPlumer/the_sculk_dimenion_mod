@@ -33,7 +33,7 @@ public record ReapingEnchantmentEffect(EnchantmentLevelBasedValue amount) implem
 
     }
     public static int getRandomNumber(int lvl, int exp,ServerWorld world){
-        return 1+lvl*exp/4+world.random.nextBetweenExclusive(-1,2);
+        return 2+lvl*exp/4+world.random.nextBetweenExclusive(-1,2);
     }
 
     public static void giveSouls(PlayerEntity player, LivingEntity victim, int level, ServerWorld world){

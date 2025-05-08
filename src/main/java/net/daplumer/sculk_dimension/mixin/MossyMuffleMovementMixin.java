@@ -1,5 +1,5 @@
 package net.daplumer.sculk_dimension.mixin;
-import net.daplumer.sculk_dimension.item.ModItemTags;
+import net.daplumer.sculk_dimension.datagen.ModItemTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
