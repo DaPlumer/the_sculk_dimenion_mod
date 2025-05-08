@@ -67,4 +67,5 @@ public class EnchantmentDuplicator extends Block {
             (syncId, inventory, player) -> new EnchantmentDuplicationScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)),Text.translatable("containers.sculk_dimension.enchantment_duplicator")
         );
     }
+    //TODO: make better model for enchantment duplication
 }

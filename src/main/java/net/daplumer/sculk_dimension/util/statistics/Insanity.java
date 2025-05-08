@@ -41,4 +41,6 @@ public class Insanity {
         createScoreIfNull(scoreboard);
         return scoreboard.getOrCreateScore(entity, scoreboard.getNullableObjective("insanity")).getScore();
     }
+    //TODO: Fix insanity method to use data packets
+    //TODO: make insanity incremented by more item usages
 }
