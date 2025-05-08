@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.*;
 import net.minecraft.advancement.criterion.*;
+import net.minecraft.block.Blocks;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.entity.*;
 import net.minecraft.predicate.item.ItemPredicate;
@@ -14,6 +15,7 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.registry.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -65,7 +67,34 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         LocationPredicate.Builder.createY(NumberRange.DoubleRange.between(-999D,-998D))).conditions())
                 )
                 .build(consumer,of("duplicate_enchant"));
+        createRecipeAdvancement(
+                consumer,
+                "get_moss",
+                InventoryChangedCriterion.Conditions.items(
+                        Blocks.MOSS_BLOCK,Blocks.MOSS_CARPET,
+                        Blocks.PALE_MOSS_BLOCK,Blocks.PALE_MOSS_CARPET),
+                "mossy_bag","mossy_boots");
+        Advancement.Builder.create()
+                .rewards(advancementRewards("mossy_boots","resonation_gem_staff","resonation_gem"))
+                .build(Identifier.ofVanilla("adventure/avoid_vibration"));
     }
+
+    public static AdvancementRewards advancementRewards(String... recipies){
+        AdvancementRewards.Builder builder = new AdvancementRewards.Builder();
+        Arrays.stream(recipies).forEach(s -> builder.addRecipe(recipie(s)));
+        return builder.build();
+    }
+    public static void createRecipeAdvancement(
+            Consumer<AdvancementEntry> consumer,
+            String name,
+            AdvancementCriterion<?> criterion,
+            String... recipies){
+        Advancement.Builder.create()
+                .criterion(name + "_criteria", criterion)
+                .rewards(advancementRewards(recipies))
+                .build(consumer, of(name));
+    }
+
     public static RegistryKey<Recipe<?>> recipie(String id){
         return RegistryKey.of(RegistryKeys.RECIPE,Identifier.of(TheSculkDimension.MOD_ID,id));
     }
