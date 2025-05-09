@@ -10,7 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused"})
 public class ModItemGroups  {
     public static final ItemGroup SCULK_DIMENSION_ITEMS = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(TheSculkDimension.MOD_ID, "sculk_dimension_items"),

@@ -1,4 +1,4 @@
-package net.daplumer.modregisterer.ModRegistries;
+package net.daplumer.mod_registerer.mod_registries;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

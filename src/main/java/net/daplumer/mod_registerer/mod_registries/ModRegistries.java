@@ -1,4 +1,4 @@
-package net.daplumer.modregisterer.ModRegistries;
+package net.daplumer.mod_registerer.mod_registries;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -32,8 +32,8 @@ public record ModRegistries() {
     public static final Function<String, ModDataRegisterer<Item, Item.Settings>>                                ITEM_REGISTERER_CONSTRUCTOR              = generalRegisterer(Registries.ITEM,       Item.Settings::registryKey, Item::new, Item.Settings::new);
     public static final Function<String, ModDataRegisterer<Block, Block.Settings>>                              BLOCK_REGISTERER_CONSTRUCTOR             = generalRegisterer(Registries.BLOCK,      AbstractBlock.Settings::registryKey, Block::new, AbstractBlock.Settings::create);
     public static final Function<String, ModDataRegisterer<ItemGroup, ItemGroup.Builder>>                       ITEM_GROUP_REGISTERER_CONSTRUCTOR        = generalRegisterer(Registries.ITEM_GROUP, (builder, itemGroupRegistryKey) -> builder, ItemGroup.Builder::build, FabricItemGroup::builder);
-    public static final Function<String, ModDataRegisterer<BlockEntityType, FabricBlockEntityTypeBuilder>>      BLOCK_ENTITY_TYPE_REGISTERER_CONSTRUCTOR = generalRegisterer(Registries.BLOCK_ENTITY_TYPE,(builder, key) -> builder,FabricBlockEntityTypeBuilder::build,()->null);
-    public static final Function<String, ModDataRegisterer<EntityType, EntityType.Builder>>                     ENTITY_TYPE_REGISTERER_CONSTRUCTOR       = ModEntityTypeRegisterer::new;
+    public static final Function<String, ModDataRegisterer<BlockEntityType<?>, FabricBlockEntityTypeBuilder<?>>>      BLOCK_ENTITY_TYPE_REGISTERER_CONSTRUCTOR = generalRegisterer(Registries.BLOCK_ENTITY_TYPE,(builder, key) -> builder,FabricBlockEntityTypeBuilder::build,()->null);
+    public static final Function<String, ModDataRegisterer<EntityType<?>, EntityType.Builder<?>>>                     ENTITY_TYPE_REGISTERER_CONSTRUCTOR       = ModEntityTypeRegisterer::new;
     public static final Function<String, ModDataRegisterer<Stat<Identifier>, StatFormatter>>                    STAT_REGISTERER_CONSTRUCTOR              = ModStatTypeRegisterer::new;
     public static final Function<String, ModDataRegisterer<ArmorMaterial, ModArmorMaterialRegisterer.Settings>> ARMOR_MATERIAL_REGISTERER_CONSTRUCTOR    = ModArmorMaterialRegisterer::new;
 

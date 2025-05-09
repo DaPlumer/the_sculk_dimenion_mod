@@ -1,5 +1,6 @@
 package net.daplumer.sculk_dimension.item;
 
+import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
@@ -18,10 +19,11 @@ import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
 
-import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.ITEMS;
+import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
 
 public class ModItems {
-    public static final Item SCULK_BRICK =ITEMS.register("sculk_brick", new Item.Settings().rarity(Rarity.UNCOMMON));
+    public static ModDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
+    public static final Item SCULK_BRICK = ITEMS.register("sculk_brick", new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item SCULK_BRICK_CASING =ITEMS.register("sculk_brick_casing", new Item.Settings());
 
     public static final Item CRYSTALIZED_SOUL =ITEMS.register("crystalized_soul",

@@ -1,10 +1,10 @@
 package net.daplumer.sculk_dimension.util.statistics;
 
 import net.daplumer.sculk_dimension.item.ModItems;
-import net.daplumer.sculk_dimension.util.Minimum;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 
+@SuppressWarnings("unused")
 public interface SoulHolder {
     int GetSouls(ItemStack stack);
     void SetSouls(ItemStack stack, int value);

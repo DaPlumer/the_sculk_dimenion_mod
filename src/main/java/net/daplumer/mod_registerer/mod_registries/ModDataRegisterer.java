@@ -1,4 +1,4 @@
-package net.daplumer.modregisterer.ModRegistries;
+package net.daplumer.mod_registerer.mod_registries;
 
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
@@ -32,5 +32,8 @@ public interface ModDataRegisterer<T,S> {
     }
     default T register(String name) {
         return this.register(name, null, null);
+    }
+    default T register(String nane, Function<S,T> instanceFactory){
+        return this.register(nane,null,instanceFactory);
     }
 }

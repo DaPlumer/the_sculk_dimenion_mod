@@ -1,4 +1,4 @@
-package net.daplumer.modregisterer.ModRegistries;
+package net.daplumer.mod_registerer.mod_registries;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.*;
@@ -40,6 +40,7 @@ public final class ModArmorMaterialRegisterer implements ModDataRegisterer<Armor
         return namespace;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public ArmorMaterial register(@NotNull String name, @Nullable Settings instanceSettings, @Nullable Function<Settings, ArmorMaterial> instanceFactory) {
         Function<Settings, ArmorMaterial> factory = Objects.requireNonNullElse(instanceFactory, Settings::build);
@@ -58,12 +59,6 @@ public final class ModArmorMaterialRegisterer implements ModDataRegisterer<Armor
     @Override
     public RegistryKey<EquipmentAsset> getRegistryKey(Identifier identifier) {
         return RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, identifier);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public RegistryKey<EquipmentAsset> getRegistryKey(String name) {
-        return ModDataRegisterer.super.getRegistryKey(name);
     }
 
     @SuppressWarnings("unused")

@@ -1,5 +1,6 @@
 package net.daplumer.sculk_dimension.block;
 
+import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -15,11 +16,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-
-import static net.daplumer.sculk_dimension.TheSculkDimensionRegistries.*;
-
+import static net.daplumer.mod_registerer.mod_registries.Registerer.*;
+import static net.daplumer.sculk_dimension.TheSculkDimension.MOD_ID;
 
 public class ModBlocks {
+    public static final ModDataRegisterer<Block, AbstractBlock.Settings> BLOCKS = TheSculkDimension.REGISTERER.BLOCKS;
+    public static final ModDataRegisterer<Item, Item.Settings> ITEMS = TheSculkDimension.REGISTERER.ITEMS;
     public static final Block SCULK_CAPTURE = BLOCKS.register(
             "sculk_capture",
                     AbstractBlock.Settings
@@ -96,7 +98,7 @@ public class ModBlocks {
     public static final BlockItem ENCHANTMENT_DUPLICATOR_ITEM = (BlockItem) ITEMS.register("enchantment_duplicator",new Item.Settings(),BLOCK_ITEM(ENCHANTMENT_DUPLICATOR));
 
     public static void registerModBlocks(){
-        TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + TheSculkDimension.MOD_ID);
+        TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + MOD_ID);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ECHOING_BLOOM_ITEM, 0.5F);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Blocks.SCULK,SCULK_CAPTURE);

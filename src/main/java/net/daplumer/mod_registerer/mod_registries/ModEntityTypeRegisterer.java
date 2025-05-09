@@ -1,4 +1,4 @@
-package net.daplumer.modregisterer.ModRegistries;
+package net.daplumer.mod_registerer.mod_registries;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.registry.Registries;
@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class ModEntityTypeRegisterer implements ModDataRegisterer<EntityType, EntityType.Builder>{
+public class ModEntityTypeRegisterer implements ModDataRegisterer<EntityType<?>, EntityType.Builder<?>>{
     private final String namespace;
 
     ModEntityTypeRegisterer(String namespace){
@@ -26,7 +26,7 @@ public class ModEntityTypeRegisterer implements ModDataRegisterer<EntityType, En
     }
 
     @Override
-    public EntityType register(@NotNull String name, EntityType.@Nullable Builder instanceSettings, @Nullable Function<EntityType.Builder, EntityType> instanceFactory) {
+    public EntityType<?> register(@NotNull String name, EntityType.@Nullable Builder<?> instanceSettings, @Nullable Function<EntityType.Builder<?>, EntityType<?>> instanceFactory) {
         if(instanceSettings == null){
             Logger logger = Logger.getLogger("ModRegistrationLib");
             logger.log(Level.SEVERE, "Null instanceSettings passed into the Entity registration function under namespace; " + this.getNameSpace());
@@ -37,7 +37,7 @@ public class ModEntityTypeRegisterer implements ModDataRegisterer<EntityType, En
     }
 
     @Override
-    public EntityType getInstance(Identifier identifier) {
+    public EntityType<?> getInstance(Identifier identifier) {
         return Registries.ENTITY_TYPE.get(identifier);
     }
 
