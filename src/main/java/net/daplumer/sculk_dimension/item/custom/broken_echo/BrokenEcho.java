@@ -41,7 +41,7 @@ public class BrokenEcho extends Item {
         if (!world.isClient) {
             // update insanity of item to insanity of player holding it
             if (entity instanceof PlayerEntity) {
-                stack.set(ModDataComponentTypes.INSANITY, Insanity.get((PlayerEntity) entity));
+                stack.set(ModDataComponentTypes.INSANITY, ((Insanity) entity).getInsanity());
             }
         }
         super.inventoryTick(stack,world,entity,slot);
@@ -86,7 +86,7 @@ public class BrokenEcho extends Item {
         if (getStage(context.getStack()).equals(Stage.ELDRITCH)){
             return ActionResult.FAIL;
         }
-        Insanity.add(1, Objects.requireNonNull(context.getPlayer()));
+        ((Insanity) Objects.requireNonNull(context.getPlayer())).incrementInsanity();
         return ActionResult.SUCCESS;
     }
 

@@ -2,7 +2,6 @@ package net.daplumer.sculk_dimension.item.custom;
 
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
-import net.daplumer.sculk_dimension.util.Minimum;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

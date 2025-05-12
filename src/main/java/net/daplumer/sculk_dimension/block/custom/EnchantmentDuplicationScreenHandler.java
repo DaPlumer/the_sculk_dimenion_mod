@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.block.custom;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.ModBlocks;
+import net.daplumer.sculk_dimension.block.ModScreenHandlerTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.minecraft.advancement.Advancement;

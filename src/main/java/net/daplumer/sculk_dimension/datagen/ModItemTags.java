@@ -19,6 +19,7 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
     public ModItemTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
     }
+    public static final TagKey<Item> HEALS_WITH_SOULS = of("heals_with_souls");
     public static final TagKey<Item> MUFFLERS = of("mufflers");
     public static final TagKey<Item> MEMORY_GEM_ORES = of("memory_gem_ores");
     public static final TagKey<Item> MOSS = of("moss");
@@ -36,5 +37,6 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ConventionalItemTags.ORES).addTag(MEMORY_GEM_ORES);
         getOrCreateTagBuilder(ConventionalItemTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM_ITEM);
         getOrCreateTagBuilder(MUFFLERS).add(ModItems.MOSSY_BOOTS);
+        getOrCreateTagBuilder(HEALS_WITH_SOULS).add(ModItems.SCYTHE,ModItems.RESOANATION_GEM);
     }
 }

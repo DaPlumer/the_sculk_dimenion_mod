@@ -1,4 +1,4 @@
-package net.daplumer.sculk_dimension.item.custom;
+package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.minecraft.item.Item;

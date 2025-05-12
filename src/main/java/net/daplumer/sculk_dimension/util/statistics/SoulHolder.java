@@ -1,8 +1,10 @@
 package net.daplumer.sculk_dimension.util.statistics;
 
+import net.daplumer.sculk_dimension.datagen.ModItemTags;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 
 @SuppressWarnings("unused")
 public interface SoulHolder {
@@ -40,6 +42,7 @@ public interface SoulHolder {
     }
     static boolean setSouls(ItemStack stack, int value){
         if(stack.getItem() instanceof SoulHolder holder){
+            if (holder.GetSouls(stack) == value) return false;
             holder.SetSouls(stack,value);
             return true;
         }
@@ -89,5 +92,26 @@ public interface SoulHolder {
         if(maxOf1) soulsMoved = Math.min(soulsMoved,1);
         takeSouls(giver, soulsMoved);
         addSouls(receiver, soulsMoved);
+    }
+
+    static ActionResult tryHealItems(Inventory inventory, ItemStack stack){
+        int remainingSouls = getSouls(stack);
+        if (remainingSouls == 0) return ActionResult.PASS;
+        for (ItemStack slot : inventory){
+            remainingSouls -= repairWithSouls(remainingSouls,slot);
+        }
+        if(setSouls(stack,remainingSouls)) return ActionResult.SUCCESS;
+        return ActionResult.PASS;
+
+    }
+
+    static int repairWithSouls(int souls, ItemStack stack){
+        if(!stack.isIn(ModItemTags.HEALS_WITH_SOULS)) return 0;
+        int durabilityPerSoul = 64;
+        if(stack.isOf(ModItems.SCYTHE)) durabilityPerSoul = stack.getMaxDamage() / 64;
+        if(stack.isOf(ModItems.RESOANATION_GEM)) durabilityPerSoul = 1;
+        int soulsUsed = Math.min(souls, (stack.getDamage() + durabilityPerSoul - 1)/durabilityPerSoul);
+        stack.setDamage(Math.min(0, stack.getDamage() - durabilityPerSoul*soulsUsed));
+        return soulsUsed;
     }
 }

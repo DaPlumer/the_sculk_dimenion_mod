@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.daplumer.mod_registerer.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BlockSetTypeMixin",
+    "WoodTypeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}

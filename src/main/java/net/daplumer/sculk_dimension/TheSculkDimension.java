@@ -1,15 +1,16 @@
 package net.daplumer.sculk_dimension;
 
 import net.daplumer.mod_registerer.mod_registries.Registerer;
+import net.daplumer.sculk_dimension.block.BlockSets;
 import net.daplumer.sculk_dimension.block.ModBlocks;
-import net.daplumer.sculk_dimension.block.custom.ModScreenHandlerTypes;
+import net.daplumer.sculk_dimension.block.ModScreenHandlerTypes;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.enchants.ModEnchantmentEffects;
 import net.daplumer.sculk_dimension.eventhandlers.ModEventHandlers;
 import net.daplumer.sculk_dimension.item.ModItemGroups;
 import net.daplumer.sculk_dimension.item.ModItems;
-import net.daplumer.sculk_dimension.item.custom.ModArmorMaterials;
-import net.daplumer.sculk_dimension.item.custom.ModToolMaterials;
+import net.daplumer.sculk_dimension.item.ModArmorMaterials;
+import net.daplumer.sculk_dimension.item.ModToolMaterials;
 import net.daplumer.sculk_dimension.util.statistics.ModStatistics;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ public class TheSculkDimension implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 
 		ModItems.registerModItems();
+		BlockSets.registerBlockSets();
 		ModBlocks.registerModBlocks();
 		ModScreenHandlerTypes.initialize();
 		ModEnchantmentEffects.registerModEnchantmentEffects();

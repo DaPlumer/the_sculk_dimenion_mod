@@ -1,15 +1,17 @@
 package net.daplumer.mod_registerer.mod_registries;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.util.Identifier;
@@ -31,7 +33,12 @@ public final class Registerer {
         STATS              = STAT_REGISTERER_CONSTRUCTOR             .apply(getNamespace());
         ENTITY_TYPES       = ENTITY_TYPE_REGISTERER_CONSTRUCTOR      .apply(getNamespace());
         ARMOR_MATERIALS    = ARMOR_MATERIAL_REGISTERER_CONSTRUCTOR   .apply(getNamespace());
+        BLOCK_SET_TYPES    = new BlockSetTypeRegisterer(namespace);
+        WOOD_TYPES         = new WoodTypeReigsterer(namespace);
     }
+    public final ModDataRegisterer<WoodType,WoodTypeReigsterer.Settings> WOOD_TYPES;
+    public final ModDataRegisterer<BlockSetType,BlockSetTypeRegisterer.Settings> BLOCK_SET_TYPES;
+
     /**
      * The general registerer for item creation. Member of the {@link net.daplumer.mod_registerer.mod_registries.GeneralModDataRegisterer GeneralModDataRegisterer} class.
      * @implNote Documentation on general data registration can be found in the
@@ -144,5 +151,39 @@ public final class Registerer {
     }
     public static Function<AbstractBlock.Settings, Block> EXP_DROPPER(IntProvider provider){
         return (settings -> new ExperienceDroppingBlock(provider,settings));
+    }
+    public static Function<AbstractBlock.Settings,Block> STAIRS(Block base){
+        return settings -> new StairsBlock(base.getDefaultState(), settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> TRAPDOOR_BLOCK(BlockSetType type){
+        return settings -> new TrapdoorBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> DOOR_BLOCK(BlockSetType type){
+        return settings -> new DoorBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> SIGN_BLOCK(WoodType type){
+        return settings -> new SignBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> WALL_SIGN_BLOCK(WoodType type){
+        return settings -> new WallSignBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> HANGING_SIGN_BLOCK(WoodType type){
+        return settings -> new HangingSignBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> WALL_HANGING_SIGN_BLOCK(WoodType type){
+        return settings -> new WallHangingSignBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> PRESSURE_PLATE_BLOCK(BlockSetType type){
+        return settings -> new PressurePlateBlock(type,settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> FENCE_GATE_BLOCK(WoodType type){
+        return settings -> new FenceGateBlock(type, settings);
+    }
+    public static Function<AbstractBlock.Settings,Block> BUTTON_BLOCK(BlockSetType type, int pressTicks){
+        return settings -> new ButtonBlock(type,pressTicks,settings);
+    }
+    public static BlockItem registerBlockItem(Block block){
+        return Registry.register(Registries.ITEM,Registries.BLOCK.getId(block),
+                new BlockItem(block,new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Registries.BLOCK.getId(block)))));
     }
 }

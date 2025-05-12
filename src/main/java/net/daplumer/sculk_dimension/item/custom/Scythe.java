@@ -1,6 +1,6 @@
 package net.daplumer.sculk_dimension.item.custom;
 
-    import net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect;
+import net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.mixin.ExpInvoker;
 import net.daplumer.sculk_dimension.util.statistics.Insanity;
@@ -22,7 +22,7 @@ public class Scythe extends Item {
 
     @Override
     public void onCraftByPlayer(ItemStack stack, PlayerEntity player) {
-        Insanity.add(7,player);
+        ((Insanity) player).addInsanity(7);
     }
 
     @Override
@@ -36,6 +36,7 @@ public class Scythe extends Item {
         if (!(target.getWorld() instanceof ServerWorld serverWorld)) return;
         if (attacker instanceof PlayerEntity player) {
             ReapingEnchantmentEffect.giveSouls(player, target, 1, serverWorld);
+            ((Insanity) player).incrementInsanity();
         } else {
             target.dropStack((ServerWorld) target.getWorld(), new ItemStack(ModItems.CRYSTALIZED_SOUL,
                     getRandomNumber(1, ((ExpInvoker) target).invoker(serverWorld), serverWorld)));

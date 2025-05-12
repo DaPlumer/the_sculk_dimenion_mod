@@ -38,7 +38,7 @@ public class ResonationGem extends Item{
 
     @Override
     public void onCraftByPlayer(ItemStack stack, PlayerEntity player) {
-        Insanity.add(2, player);
+        ((Insanity) player).addInsanity(2);
         super.onCraftByPlayer(stack, player);
     }
 
@@ -57,7 +57,7 @@ public class ResonationGem extends Item{
             entity = entityHit.getEntity();
             user.getStackInHand(hand).damage(1, user, LivingEntity.getSlotForHand(hand));
             entity.playSound(SoundEvents.BLOCK_SCULK_SHRIEKER_FALL,1,1);
-            Insanity.increment(user);
+            ((Insanity) user).incrementInsanity();
             world.emitGameEvent(((EntityHitResult) this.lastRay).getEntity(), GameEvent.RESONATE_6, ((EntityHitResult) this.lastRay).getEntity().getPos());
             user.getItemCooldownManager().set(user.getStackInHand(hand),32);
             return ActionResult.SUCCESS;

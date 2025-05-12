@@ -27,7 +27,8 @@
 		]
 	},
 	"mixins": [
-		"sculk_dimension.mixins.json"
+		"sculk_dimension.mixins.json",
+		"mod_registerer.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",

@@ -40,7 +40,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         for (int i = 0; i < stacks.size(); i++) {
             if (stacks.get(i).isOf(ModItems.ECHO_MEDALLION)) {
                 inventory.removeStack(i);
-                Insanity.add(7,this);
+                ((Insanity) player).addInsanity(7);
                 return true;
             }
         }

@@ -1,4 +1,4 @@
-package net.daplumer.sculk_dimension.item.custom;
+package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.mod_registerer.mod_registries.ModArmorMaterialRegisterer;
 import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;

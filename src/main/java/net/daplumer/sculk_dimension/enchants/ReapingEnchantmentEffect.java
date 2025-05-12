@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.daplumer.sculk_dimension.mixin.ExpInvoker;
+import net.daplumer.sculk_dimension.util.statistics.Insanity;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.EnchantmentLevelBasedValue;
@@ -37,6 +38,7 @@ public record ReapingEnchantmentEffect(EnchantmentLevelBasedValue amount) implem
     }
 
     public static void giveSouls(PlayerEntity player, LivingEntity victim, int level, ServerWorld world){
+        ((Insanity) player).incrementInsanity();
         int excess = SoulHolder.giveSouls(player.getInventory(),getRandomNumber(level,((ExpInvoker) victim).invoker(world),world));
         ItemStack stack = ModItems.CRYSTALIZED_SOUL.getDefaultStack();
         stack.setCount(excess);

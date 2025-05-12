@@ -5,10 +5,7 @@ import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -96,7 +93,6 @@ public class ModBlocks {
     public static final BlockItem MEMORY_GEM_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_ORE));
     public static final BlockItem MEMORY_GEM_DEEPSLATE_ORE_ITEM = (BlockItem) ITEMS.register("memory_gem_deepslate_ore",new Item.Settings(),BLOCK_ITEM(MEMORY_GEM_DEEPSLATE_ORE));
     public static final BlockItem ENCHANTMENT_DUPLICATOR_ITEM = (BlockItem) ITEMS.register("enchantment_duplicator",new Item.Settings(),BLOCK_ITEM(ENCHANTMENT_DUPLICATOR));
-
     public static void registerModBlocks(){
         TheSculkDimension.LOGGER.info("Registering Mod Blocks for " + MOD_ID);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.ECHOING_BLOOM_ITEM, 0.5F);

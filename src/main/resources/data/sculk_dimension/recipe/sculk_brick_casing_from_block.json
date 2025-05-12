@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "group": "misc",
   "ingredient": [
-    "#c:end_stones",
+    "minecraft:end_stone",
     "minecraft:end_stone_bricks"
   ],
   "result": {

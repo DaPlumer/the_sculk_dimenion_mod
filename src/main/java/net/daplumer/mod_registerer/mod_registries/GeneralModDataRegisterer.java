@@ -33,7 +33,7 @@ public class GeneralModDataRegisterer<T, S> implements ModDataRegisterer<T,S> {
      * @see ModRegistries
      * @see #register(String, Object, Function)
      */
-    GeneralModDataRegisterer(Registry<T> registry, String namespace, BiFunction<S, RegistryKey<T>, S> registryKeySettingsFactory, Function<S,T> defaultInstanceFactory, Supplier<S> defaultSettingsFactory){
+    public GeneralModDataRegisterer(Registry<T> registry, String namespace, BiFunction<S, RegistryKey<T>, S> registryKeySettingsFactory, Function<S, T> defaultInstanceFactory, Supplier<S> defaultSettingsFactory){
         this.namespace = namespace;
         this.registry = registry;
         this.registryKeySettingsFactory = registryKeySettingsFactory;//This lambda function applies registry keys to settings
