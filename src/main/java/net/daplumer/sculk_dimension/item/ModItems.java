@@ -1,6 +1,6 @@
 package net.daplumer.sculk_dimension.item;
 
-import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;
+import net.daplumer.data_modification_utils.mod_registries.GeneralDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
@@ -22,7 +22,7 @@ import net.minecraft.util.Rarity;
 import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
 
 public class ModItems {
-    public static ModDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
+    public static GeneralDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
     public static final Item SCULK_BRICK = ITEMS.register("sculk_brick", new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item SCULK_BRICK_CASING =ITEMS.register("sculk_brick_casing", new Item.Settings());
 
@@ -96,7 +96,7 @@ public class ModItems {
     public static final Item SCULK_CLOTH = ITEMS.register("sculk_cloth");
 
     public static void registerModItems(){
-        TheSculkDimension.LOGGER.info("Registering Mod Items for " + TheSculkDimension.MOD_ID );
+        TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
         BrokenEcho.registerCustomData();
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->

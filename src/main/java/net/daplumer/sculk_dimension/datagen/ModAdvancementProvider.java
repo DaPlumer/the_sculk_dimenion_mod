@@ -23,7 +23,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;

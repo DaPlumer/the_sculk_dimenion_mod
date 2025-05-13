@@ -1,6 +1,6 @@
 package net.daplumer.sculk_dimension.block;
 
-import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;
+import net.daplumer.data_modification_utils.mod_registries.GeneralDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -16,12 +16,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import static net.daplumer.mod_registerer.mod_registries.Registerer.*;
+import static net.daplumer.data_modification_utils.mod_registries.Registerer.*;
 import static net.daplumer.sculk_dimension.TheSculkDimension.*;
 
 public class ModBlocks {
-    public static final ModDataRegisterer<Block, AbstractBlock.Settings> BLOCKS = REGISTERER.BLOCKS;
-    public static final ModDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
+    public static final GeneralDataRegisterer<Block, AbstractBlock.Settings> BLOCKS = REGISTERER.BLOCKS;
+    public static final GeneralDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
     public static final Block SCULK_CAPTURE = BLOCKS.register(
             "sculk_capture",
                     AbstractBlock.Settings

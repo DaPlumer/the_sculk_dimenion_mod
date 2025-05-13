@@ -1,7 +1,6 @@
 package net.daplumer.sculk_dimension;
 
-import net.daplumer.mod_registerer.mod_registries.ModDataRegisterer;
-import net.daplumer.mod_registerer.mod_registries.Registerer;
+import net.daplumer.data_modification_utils.mod_registries.Registerer;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.block.ModScreenHandlerTypes;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;

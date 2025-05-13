@@ -1,4 +1,4 @@
-package net.daplumer.mod_registerer.mixin;
+package net.daplumer.data_modification_utils.mixin;
 
 import net.minecraft.block.BlockSetType;
 import org.spongepowered.asm.mixin.Mixin;
