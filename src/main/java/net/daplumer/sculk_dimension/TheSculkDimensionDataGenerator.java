@@ -1,4 +1,5 @@
 package net.daplumer.sculk_dimension;
+
 import net.daplumer.sculk_dimension.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

@@ -18,13 +18,12 @@ public abstract class SculkSensorBlockMixin extends AbstractBlock implements Wat
     public SculkSensorBlockMixin(Settings settings) {
         super(settings);
     }
-    @Inject(method = "getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;",at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getPlacementState",at = @At("RETURN"), cancellable = true)
     private void injected0(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir){
         cir.setReturnValue(cir.getReturnValue().with(ModProperties.WAXED,false));
     }
 
-
-    @Inject(method = "appendProperties(Lnet/minecraft/state/StateManager$Builder;)V", at =@At(value = "TAIL"))
+    @Inject(method = "appendProperties", at =@At(value = "TAIL"))
     private void injected1(CallbackInfo ci, @Local(argsOnly = true) LocalRef<StateManager.Builder<Block, BlockState>> builder){
         builder.set(builder.get().add(ModProperties.WAXED));
     }

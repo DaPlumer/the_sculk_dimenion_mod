@@ -13,6 +13,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTags extends FabricTagProvider.ItemTagProvider {

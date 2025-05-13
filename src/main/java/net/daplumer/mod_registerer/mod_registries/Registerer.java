@@ -16,7 +16,9 @@ import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.IntProvider;
+
 import java.util.function.Function;
+
 import static net.daplumer.mod_registerer.mod_registries.ModRegistries.*;
 
 public final class Registerer {

@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
+
 import static net.daplumer.sculk_dimension.enchants.ReapingEnchantmentEffect.getRandomNumber;
 
 public class Scythe extends Item {

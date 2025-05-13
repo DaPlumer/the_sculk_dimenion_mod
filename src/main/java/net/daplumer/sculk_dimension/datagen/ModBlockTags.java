@@ -10,12 +10,14 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
     public ModBlockTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
+    public static final TagKey<Block> VIBRATOR = of("vibrators");
     public static final TagKey<Block> MEMORY_GEM_ORES = of("memory_gem_ores");
     public static TagKey<Block> of(String id){
         return TagKey.of(RegistryKeys.BLOCK,Identifier.of(TheSculkDimension.MOD_ID,id));

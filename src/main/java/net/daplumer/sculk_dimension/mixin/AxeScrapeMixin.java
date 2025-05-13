@@ -1,6 +1,6 @@
 package net.daplumer.sculk_dimension.mixin;
 
-import net.daplumer.sculk_dimension.block.ModBlockTags;
+import net.daplumer.sculk_dimension.datagen.ModBlockTags;
 import net.daplumer.sculk_dimension.component.ModProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
 import java.util.Optional;
 
 @Mixin(AxeItem.class)

@@ -1,7 +1,7 @@
 package net.daplumer.sculk_dimension.item.custom;
 
-import net.daplumer.sculk_dimension.block.ModBlockTags;
 import net.daplumer.sculk_dimension.component.ModProperties;
+import net.daplumer.sculk_dimension.datagen.ModBlockTags;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;

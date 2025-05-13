@@ -14,7 +14,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.item.ItemPredicate;
-import net.minecraft.registry.*;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.ForgingSlotsManager;

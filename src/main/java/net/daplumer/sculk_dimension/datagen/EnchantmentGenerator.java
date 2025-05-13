@@ -21,8 +21,9 @@ import net.minecraft.predicate.entity.EntityTypePredicate;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
- import net.minecraft.registry.entry.RegistryEntryList;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.ItemTags;
+
 import java.util.concurrent.CompletableFuture;
 
 public class EnchantmentGenerator extends FabricDynamicRegistryProvider {

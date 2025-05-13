@@ -5,7 +5,10 @@ import net.daplumer.sculk_dimension.TheSculkDimension;
 import net.daplumer.sculk_dimension.block.custom.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -14,11 +17,11 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import static net.daplumer.mod_registerer.mod_registries.Registerer.*;
-import static net.daplumer.sculk_dimension.TheSculkDimension.MOD_ID;
+import static net.daplumer.sculk_dimension.TheSculkDimension.*;
 
 public class ModBlocks {
-    public static final ModDataRegisterer<Block, AbstractBlock.Settings> BLOCKS = TheSculkDimension.REGISTERER.BLOCKS;
-    public static final ModDataRegisterer<Item, Item.Settings> ITEMS = TheSculkDimension.REGISTERER.ITEMS;
+    public static final ModDataRegisterer<Block, AbstractBlock.Settings> BLOCKS = REGISTERER.BLOCKS;
+    public static final ModDataRegisterer<Item, Item.Settings> ITEMS = REGISTERER.ITEMS;
     public static final Block SCULK_CAPTURE = BLOCKS.register(
             "sculk_capture",
                     AbstractBlock.Settings

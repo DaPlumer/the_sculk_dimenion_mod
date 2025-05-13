@@ -1,4 +1,5 @@
 package net.daplumer.sculk_dimension.mixin;
+
 import com.llamalad7.mixinextras.sugar.Local;
 import net.daplumer.sculk_dimension.component.ModProperties;
 import net.minecraft.server.world.ServerWorld;
@@ -28,7 +29,7 @@ public abstract class SculkSensorBlockEntityMixin implements Vibrations.Callback
     @Shadow
     protected BlockPos pos;
 
-    @Inject(method = "accepts(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/world/event/GameEvent$Emitter;)Z", at=@At("RETURN"), cancellable = true)
+    @Inject(method = "accepts", at=@At("RETURN"), cancellable = true)
     public void injected(CallbackInfoReturnable<Boolean> cir, @Local(argsOnly = true) ServerWorld world){
         cir.setReturnValue(cir.getReturnValue() &! world.getBlockState(this.pos).get(ModProperties.WAXED));
     }

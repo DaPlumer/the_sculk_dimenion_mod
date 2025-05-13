@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.function.Function;
 

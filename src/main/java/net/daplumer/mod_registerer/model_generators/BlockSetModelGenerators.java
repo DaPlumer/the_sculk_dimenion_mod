@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.Models;
 import net.minecraft.client.data.TextureMap;
-import net.minecraft.client.data.TexturedModel;
 import net.minecraft.util.Identifier;
 
 public class BlockSetModelGenerators {

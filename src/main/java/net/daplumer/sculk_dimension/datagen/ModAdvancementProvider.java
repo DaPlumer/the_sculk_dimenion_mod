@@ -6,15 +6,24 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.*;
-import net.minecraft.advancement.criterion.*;
+import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.OnKilledCriterion;
+import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.block.Blocks;
 import net.minecraft.predicate.NumberRange;
-import net.minecraft.predicate.entity.*;
+import net.minecraft.predicate.entity.DamageSourcePredicate;
+import net.minecraft.predicate.entity.EntityEquipmentPredicate;
+import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.registry.*;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -55,6 +64,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         .recipe(recipie("soul_bag_shaped")).build())
                 .rewards(AdvancementRewards.Builder.recipe(recipie("soul_bag_shapeless")))
                 .rewards(AdvancementRewards.Builder.recipe(recipie("enchantment_duplicator")))
+                .rewards(AdvancementRewards.Builder.recipe(recipie("mossy_bag")))
+                .rewards(AdvancementRewards.Builder.recipe(recipie("resinant_brick")))
                 .build(consumer,of("get_scythe"));
         AdvancementEntry duplicate_enchant = Advancement.Builder.create()
                 .display(ModBlocks.ENCHANTMENT_DUPLICATOR,
@@ -67,16 +78,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         LocationPredicate.Builder.createY(NumberRange.DoubleRange.between(-999D,-998D))).conditions())
                 )
                 .build(consumer,of("duplicate_enchant"));
-        createRecipeAdvancement(
-                consumer,
+        Advancement.Builder.create().criterion(
                 "get_moss",
-                InventoryChangedCriterion.Conditions.items(
-                        Blocks.MOSS_BLOCK,Blocks.MOSS_CARPET,
-                        Blocks.PALE_MOSS_BLOCK,Blocks.PALE_MOSS_CARPET),
-                "mossy_bag","mossy_boots");
-        Advancement.Builder.create()
-                .rewards(advancementRewards("mossy_boots","resonation_gem_staff","resonation_gem"))
-                .build(Identifier.ofVanilla("adventure/avoid_vibration"));
+                InventoryChangedCriterion.Conditions.items(Blocks.MOSS_BLOCK)).rewards(
+                                AdvancementRewards.Builder.recipe(recipie("mossy_bag")).addRecipe(recipie("mossy_boots")))
+                .build(consumer,of("get_moss"));
+        Advancement.Builder.create().criterion(
+                        "get_catalyst",
+                        InventoryChangedCriterion.Conditions.items(Blocks.SCULK_CATALYST)).rewards(
+                        AdvancementRewards.Builder.recipe(recipie("scythe")))
+                .build(consumer,of("catalyst"));
+        Advancement.Builder.create().criterion(
+                        "get_stone",
+                        InventoryChangedCriterion.Conditions.items(Blocks.END_STONE)).rewards(
+                        AdvancementRewards.Builder.recipe(recipie("enchantment_duplicator")))
+                .build(consumer,of("catylst"));
+
     }
 
     public static AdvancementRewards advancementRewards(String... recipies){
