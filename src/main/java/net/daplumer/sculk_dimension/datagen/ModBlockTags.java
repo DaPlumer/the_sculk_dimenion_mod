@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
@@ -30,5 +31,7 @@ public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ConventionalBlockTags.ORES).addTag(MEMORY_GEM_ORES);
         getOrCreateTagBuilder(ConventionalBlockTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM,ModBlocks.ECHOING_BLOOM_TIP);
         getOrCreateTagBuilder(ConventionalBlockTags.ORE_RATES_SINGULAR).addTag(MEMORY_GEM_ORES);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.ENCHANTMENT_DUPLICATOR);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.ENCHANTMENT_DUPLICATOR);
     }
 }

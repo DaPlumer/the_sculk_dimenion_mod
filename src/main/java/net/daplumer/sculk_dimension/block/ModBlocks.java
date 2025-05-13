@@ -87,7 +87,12 @@ public class ModBlocks {
             , EXP_DROPPER(UniformIntProvider.create(3,7))
     );
     public static final Block ENCHANTMENT_DUPLICATOR = BLOCKS.register("enchantment_duplicator",
-            AbstractBlock.Settings.create(),
+            AbstractBlock.Settings.create()
+                    .strength(5.0F, 1200.0F)
+                    .mapColor(MapColor.CYAN)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .luminance((state) -> 7)
+                    .requiresTool(),
             EnchantmentDuplicator::new
     );
 
