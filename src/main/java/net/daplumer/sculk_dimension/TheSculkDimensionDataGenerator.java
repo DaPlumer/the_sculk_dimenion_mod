@@ -15,5 +15,6 @@ public class TheSculkDimensionDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockTags::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
 	}
 }

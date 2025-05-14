@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -18,7 +19,7 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MEMORY_GEM_BLOCK);
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {

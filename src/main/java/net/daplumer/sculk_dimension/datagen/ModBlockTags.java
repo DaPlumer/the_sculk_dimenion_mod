@@ -1,7 +1,6 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
-import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
@@ -12,6 +11,7 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
+import static net.daplumer.sculk_dimension.block.ModBlocks.*;
 
 public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
     public ModBlockTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -25,13 +25,13 @@ public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(MEMORY_GEM_ORES).add(ModBlocks.MEMORY_GEM_ORE,ModBlocks.MEMORY_GEM_DEEPSLATE_ORE);
-        getOrCreateTagBuilder(ConventionalBlockTags.ORES_IN_GROUND_DEEPSLATE).add(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE);
-        getOrCreateTagBuilder(ConventionalBlockTags.ORES_IN_GROUND_STONE).add(ModBlocks.MEMORY_GEM_ORE);
+        getOrCreateTagBuilder(MEMORY_GEM_ORES).add(MEMORY_GEM_ORE,MEMORY_GEM_DEEPSLATE_ORE);
+        getOrCreateTagBuilder(ConventionalBlockTags.ORES_IN_GROUND_DEEPSLATE).add(MEMORY_GEM_DEEPSLATE_ORE);
+        getOrCreateTagBuilder(ConventionalBlockTags.ORES_IN_GROUND_STONE).add(MEMORY_GEM_ORE);
         getOrCreateTagBuilder(ConventionalBlockTags.ORES).addTag(MEMORY_GEM_ORES);
-        getOrCreateTagBuilder(ConventionalBlockTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM,ModBlocks.ECHOING_BLOOM_TIP);
+        getOrCreateTagBuilder(ConventionalBlockTags.FLOWERS).add(ECHOING_BLOOM,ECHOING_BLOOM_TIP);
         getOrCreateTagBuilder(ConventionalBlockTags.ORE_RATES_SINGULAR).addTag(MEMORY_GEM_ORES);
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.ENCHANTMENT_DUPLICATOR);
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.ENCHANTMENT_DUPLICATOR);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ENCHANTMENT_DUPLICATOR,MEMORY_GEM_BLOCK).addTag(MEMORY_GEM_ORES);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ENCHANTMENT_DUPLICATOR,MEMORY_GEM_BLOCK).addTag(MEMORY_GEM_ORES);
     }
 }

@@ -19,6 +19,7 @@ import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.ForgingSlotsManager;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
@@ -40,6 +41,7 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
 
     @Override
     protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
+        player.playSound(SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE);
         stack.onCraftByPlayer(player,stack.getCount());
         decrementStack(0);
         int requiredSouls = requiredSouls(this.input.getStack(2));
