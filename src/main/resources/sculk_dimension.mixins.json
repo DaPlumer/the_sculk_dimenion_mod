@@ -9,7 +9,6 @@
     "ExpInvoker",
     "KeepInventoryMedalMixin",
     "MendingMixin",
-    "MossyMuffleMisstepMixin",
     "MossyMuffleMovementMixin",
     "PlayerEntityInsanityMixin",
     "SculkSensorBlockEntityMixin",

@@ -4,11 +4,15 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BlockSetTypeMixin",
+    "FabricTagProviderAccessor",
+    "RecipeGeneratorExporterAccessor",
+    "SignEntityTypeMixin",
     "WoodTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
+    "SignRegistrationMixin"
   ]
 }

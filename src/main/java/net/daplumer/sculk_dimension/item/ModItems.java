@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.data_modification_utils.mod_registries.GeneralDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.entity.ModEntityTypes;
 import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
@@ -11,13 +12,12 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
+
+import static net.daplumer.data_modification_utils.mod_registries.registering_functions.ItemsKt.*;
 
 import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
 
@@ -95,12 +95,18 @@ public class ModItems {
     );
     public static final Item SCULK_CLOTH = ITEMS.register("sculk_cloth");
 
+    public static final Item INFECTED_BOAT = ITEMS.register("infected_boat", BOAT(ModEntityTypes.INFECTED_BOAT));
+    public static final Item INFECTED_CHEST_BOAT = ITEMS.register("infected_chest_boat", BOAT(ModEntityTypes.INFECTED_CHEST_BOAT));
+
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
         BrokenEcho.registerCustomData();
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->
-            entries.addBefore(Items.BUNDLE,SOUL_BAG)
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+                    entries.addBefore(Items.BUNDLE, SOUL_BAG);
+                    entries.addAfter(Items.BAMBOO_CHEST_RAFT,INFECTED_BOAT);
+                    entries.addAfter(INFECTED_BOAT,INFECTED_CHEST_BOAT);
+                }
         );
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {

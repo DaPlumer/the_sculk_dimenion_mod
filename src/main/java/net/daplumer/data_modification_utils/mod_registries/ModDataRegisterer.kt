@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier
  */
 @Suppress("unused")
 abstract class ModDataRegisterer<T, S, V>(private val namespace:String) {
+    fun getNamespace():String = namespace
     /**
      * @return A Registry key defined by an Identifier
      * @throws UnsupportedOperationException for specific cases when registry keys aren't used for registration
@@ -68,5 +69,5 @@ abstract class ModDataRegisterer<T, S, V>(private val namespace:String) {
     fun register(name: String, instanceSettings: S?): T = this.register(name, instanceSettings, null)
     fun register(name: String): T = this.register(name, null as S?, null)
     fun register(name: String, instanceFactory: ((S) -> T)?): T = register(name, null, instanceFactory)
-    fun register(name: String, instanceFactory: ((S) -> T)?, instanceSettings: S): T = this.register(name, instanceFactory, instanceSettings)
+    fun register(name: String, instanceFactory: ((S) -> T)?, instanceSettings: S): T = this.register(name, instanceSettings, instanceFactory)
 }

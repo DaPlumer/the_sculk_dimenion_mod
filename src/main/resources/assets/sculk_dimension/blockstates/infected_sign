@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "sculk_dimension:block/infected_sign"
+    }
+  }
+}

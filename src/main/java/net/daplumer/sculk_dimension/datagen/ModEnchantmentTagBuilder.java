@@ -19,6 +19,7 @@ public class ModEnchantmentTagBuilder extends EnchantmentTagProvider {
         super(output, registriesFuture);
     }
     public static final TagKey<Enchantment> SOUL_DROP_ENCHANTS = of("exclusive_set/soul_drops");
+    public static final TagKey<Enchantment> MUFFLING_ENCHANTS = of("exclusive_set/muffling");
     private static TagKey<Enchantment> of(String id) {
         return TagKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(TheSculkDimension.MOD_ID,id));
     }
@@ -28,5 +29,6 @@ public class ModEnchantmentTagBuilder extends EnchantmentTagProvider {
         this.getOrCreateTagBuilder(EnchantmentTags.DAMAGE_EXCLUSIVE_SET).addOptional(ModEnchantmentEffects.REAPING.getValue());
         this.getOrCreateTagBuilder(SOUL_DROP_ENCHANTS).addOptional(ModEnchantmentEffects.REAPING.getValue());
         this.getOrCreateTagBuilder(ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS).addOptional(ModEnchantmentEffects.REAPING.getValue());
+        this.getOrCreateTagBuilder(MUFFLING_ENCHANTS).addOptional(ModEnchantmentEffects.MUFFLING.getValue());
     }
 }

@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.InfectedBlocks;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -39,5 +40,6 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ConventionalItemTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM_ITEM);
         getOrCreateTagBuilder(MUFFLERS).add(ModItems.MOSSY_BOOTS);
         getOrCreateTagBuilder(HEALS_WITH_SOULS).add(ModItems.SCYTHE,ModItems.RESOANATION_GEM);
+        InfectedBlocks.infected.registerItemTags(this);
     }
 }

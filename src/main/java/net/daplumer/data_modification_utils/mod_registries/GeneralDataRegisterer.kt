@@ -5,11 +5,11 @@ import net.minecraft.registry.RegistryKey
 import net.minecraft.util.Identifier
 import java.util.*
 
-data class GeneralDataRegisterer<T,S>(
+open class GeneralDataRegisterer<T,S>(
     val registry: Registry<T>,
-    private val namespace: String,
-    val registryKeyApplier: ((S,RegistryKey<T>) -> S)?,
-    val defaultInstanceFactory: (S)->T,
+    namespace: String,
+    private val registryKeyApplier: ((S, RegistryKey<T>) -> S)?,
+    private val defaultInstanceFactory: (S)->T,
     val defaultSettingsFactory: ()->S
 ): ModDataRegisterer<T, S, T>(namespace){
 

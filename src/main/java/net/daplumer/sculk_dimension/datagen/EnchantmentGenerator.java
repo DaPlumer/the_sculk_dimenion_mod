@@ -60,6 +60,17 @@ public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
 						.exclusiveSet(enchantments.getOrThrow(ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS))
 
 		);
+		register(entries, ModEnchantmentEffects.MUFFLING,
+				Enchantment.builder(Enchantment.definition(
+						registries.getOrThrow(RegistryKeys.ITEM).getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
+						1,
+						1,
+						Enchantment.leveledCost(15, 9),
+						Enchantment.leveledCost(65, 9),
+						6,
+						AttributeModifierSlot.FEET
+
+				)));
 		RegistryEntryList.Named<Enchantment> increaseDrops = enchantments.getOrThrow(ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS);
 		EnchantmentEvents.MODIFY.register(((key, builder, source) ->  {
 			if (increaseDrops.contains(registries.getEntryOrThrow(key))){

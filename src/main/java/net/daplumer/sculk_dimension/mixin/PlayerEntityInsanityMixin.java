@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
+@SuppressWarnings("AddedMixinMembersNamePattern")
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityInsanityMixin extends LivingEntity implements Insanity {
     private PlayerEntityInsanityMixin(EntityType<? extends LivingEntity> entityType, World world) {

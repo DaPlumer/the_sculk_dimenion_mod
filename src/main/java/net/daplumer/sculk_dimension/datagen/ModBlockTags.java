@@ -10,7 +10,9 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+
 import java.util.concurrent.CompletableFuture;
+
 import static net.daplumer.sculk_dimension.block.ModBlocks.*;
 
 public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
@@ -33,5 +35,6 @@ public class ModBlockTags extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ConventionalBlockTags.ORE_RATES_SINGULAR).addTag(MEMORY_GEM_ORES);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ENCHANTMENT_DUPLICATOR,MEMORY_GEM_BLOCK).addTag(MEMORY_GEM_ORES);
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ENCHANTMENT_DUPLICATOR,MEMORY_GEM_BLOCK).addTag(MEMORY_GEM_ORES);
+        infected.registerBlockTags(this);
     }
 }

@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.InfectedBlocks;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
@@ -10,7 +11,11 @@ import net.minecraft.client.data.*;
 import net.minecraft.client.render.item.model.SelectItemModel;
 import net.minecraft.client.render.item.property.select.ComponentSelectProperty;
 import net.minecraft.util.Identifier;
+
 import java.util.ArrayList;
+
+import static net.daplumer.sculk_dimension.block.InfectedBlocks.infected;
+import static net.daplumer.sculk_dimension.block.ModBlocks.MEMORY_GEM_BLOCK;
 
 public class TheSculkDimensionModelProvider extends FabricModelProvider {
     public TheSculkDimensionModelProvider(FabricDataOutput output) {
@@ -19,7 +24,8 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MEMORY_GEM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(MEMORY_GEM_BLOCK);
+        infected.generateModels(blockStateModelGenerator);
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -32,5 +38,10 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
         }
         itemModelGenerator.output.accept(ModItems.BROKEN_ECHO,ItemModels.select(new ComponentSelectProperty<>(ModDataComponentTypes.INSANITY),ItemModels.basic(identifiers.getFirst()),models));
         itemModelGenerator.register(ModItems.SCULK_CLOTH,Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.ECHOING_BLOOM_ITEM,Models.GENERATED);
+        itemModelGenerator.register(ModItems.INFECTED_BOAT,Models.GENERATED);
+        itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT,Models.GENERATED);
+        itemModelGenerator.register(InfectedBlocks.INFECTED_SIGN_ITEM);
+        itemModelGenerator.register(InfectedBlocks.INFECTED_HANGING_SIGN_ITEM);
     }
 }

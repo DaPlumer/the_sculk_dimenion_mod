@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 @SuppressWarnings({"SameParameterValue", "unused"})
 public class ModEnchantmentEffects {
 	public static final RegistryKey<Enchantment> REAPING = of("reaping");
+	public static final RegistryKey<Enchantment> MUFFLING = of("muffling");
 	public static MapCodec<ReapingEnchantmentEffect> REAPING_EFFECT = register("reaping_effect", ReapingEnchantmentEffect.CODEC);
 
 	private static RegistryKey<Enchantment> of(String path) {

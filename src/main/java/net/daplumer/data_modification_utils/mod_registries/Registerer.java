@@ -25,7 +25,7 @@ public final class Registerer {
         ITEMS              = new GeneralDataRegisterer<>(Registries.ITEM,namespace,Item.Settings::registryKey,Item::new,Item.Settings::new);
         BLOCKS             = new GeneralDataRegisterer<>(Registries.BLOCK,namespace,AbstractBlock.Settings::registryKey,Block::new,AbstractBlock.Settings::create);
         ITEM_GROUPS        = new GeneralDataRegisterer<>(Registries.ITEM_GROUP,namespace,null, ItemGroup.Builder::build, FabricItemGroup::builder);
-        BLOCK_ENTITY_TYPES = new GeneralDataRegisterer<>(Registries.BLOCK_ENTITY_TYPE,namespace, null, FabricBlockEntityTypeBuilder::build,() -> {throw new UnsupportedOperationException("Block entity types cannot support null instance settings");});
+        BLOCK_ENTITY_TYPES = new GeneralDataRegisterer<>(Registries.BLOCK_ENTITY_TYPE,namespace, null, FabricBlockEntityTypeBuilder::build,() -> null);
         STATS              = new ModStatTypeRegisterer(namespace);
         ENTITY_TYPES       = new ModEntityTypeRegisterer(namespace);
         ARMOR_MATERIALS    = new ModArmorMaterialRegisterer(namespace);
@@ -47,6 +47,6 @@ public final class Registerer {
     }
     public static BlockItem registerBlockItem(Block block){
         return Registry.register(Registries.ITEM,Registries.BLOCK.getId(block),
-                new BlockItem(block,new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Registries.BLOCK.getId(block)))));
+                new BlockItem(block,new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Registries.BLOCK.getId(block))).translationKey(block.getTranslationKey())));
     }
 }
