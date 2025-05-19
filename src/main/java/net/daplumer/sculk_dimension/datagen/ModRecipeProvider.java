@@ -1,5 +1,6 @@
 package net.daplumer.sculk_dimension.datagen;
 
+import net.daplumer.sculk_dimension.block.InfectedBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -37,6 +38,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('G', DefaultCustomIngredients.components(Ingredient.ofItem(ModItems.MEMORY_GEM),ComponentChanges.builder().add(DataComponentTypes.DAMAGE,0).build()))
                         .criterion("get_mem_gem", InventoryChangedCriterion.Conditions.items(ModItems.MEMORY_GEM))
                         .offerTo(exporter,"sculk_dimension:mem_gem_block");
+                InfectedBlocks.infected.registerCustomRecipes(this);
+                offerBoatRecipe(ModItems.INFECTED_BOAT, InfectedBlocks.infected.getPlanks().planks());
+                offerChestBoatRecipe(ModItems.INFECTED_CHEST_BOAT, InfectedBlocks.infected.getPlanks().planks());
             }
         };
     }

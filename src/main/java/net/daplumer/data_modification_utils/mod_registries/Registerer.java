@@ -2,9 +2,9 @@ package net.daplumer.data_modification_utils.mod_registries;
 
 import kotlin.jvm.functions.Function1;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -25,7 +25,7 @@ public final class Registerer {
         ITEMS              = new GeneralDataRegisterer<>(Registries.ITEM,namespace,Item.Settings::registryKey,Item::new,Item.Settings::new);
         BLOCKS             = new GeneralDataRegisterer<>(Registries.BLOCK,namespace,AbstractBlock.Settings::registryKey,Block::new,AbstractBlock.Settings::create);
         ITEM_GROUPS        = new GeneralDataRegisterer<>(Registries.ITEM_GROUP,namespace,null, ItemGroup.Builder::build, FabricItemGroup::builder);
-        BLOCK_ENTITY_TYPES = new GeneralDataRegisterer<>(Registries.BLOCK_ENTITY_TYPE,namespace, null, FabricBlockEntityTypeBuilder::build,() -> null);
+        BLOCK_ENTITY_TYPES = new ModBlockEntityTypeRegisterer(namespace);
         STATS              = new ModStatTypeRegisterer(namespace);
         ENTITY_TYPES       = new ModEntityTypeRegisterer(namespace);
         ARMOR_MATERIALS    = new ModArmorMaterialRegisterer(namespace);
@@ -33,7 +33,7 @@ public final class Registerer {
     public final GeneralDataRegisterer<Item, Item.Settings> ITEMS;
     public final GeneralDataRegisterer<Block, AbstractBlock.Settings> BLOCKS;
     public final GeneralDataRegisterer<ItemGroup, ItemGroup.Builder> ITEM_GROUPS;
-    public final GeneralDataRegisterer<BlockEntityType<?>, FabricBlockEntityTypeBuilder<?>> BLOCK_ENTITY_TYPES;
+    public final ModBlockEntityTypeRegisterer BLOCK_ENTITY_TYPES;
     public final ModStatTypeRegisterer STATS;
     public final ModEntityTypeRegisterer ENTITY_TYPES;
     public final ModArmorMaterialRegisterer ARMOR_MATERIALS;

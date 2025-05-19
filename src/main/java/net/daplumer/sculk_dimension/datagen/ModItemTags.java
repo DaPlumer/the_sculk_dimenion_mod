@@ -40,6 +40,8 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ConventionalItemTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM_ITEM);
         getOrCreateTagBuilder(MUFFLERS).add(ModItems.MOSSY_BOOTS);
         getOrCreateTagBuilder(HEALS_WITH_SOULS).add(ModItems.SCYTHE,ModItems.RESOANATION_GEM);
+        getOrCreateTagBuilder(ItemTags.BOATS).add(ModItems.INFECTED_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(ModItems.INFECTED_CHEST_BOAT);
         InfectedBlocks.infected.registerItemTags(this);
     }
 }

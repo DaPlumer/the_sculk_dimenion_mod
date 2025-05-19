@@ -1,10 +1,12 @@
 package net.daplumer.data_modification_utils.block_set_generation.wood;
 
 import net.daplumer.data_modification_utils.block_set_generation.Shift;
+import net.daplumer.data_modification_utils.mixin.RecipeGeneratorExporterAccessor;
 import net.daplumer.data_modification_utils.mod_registries.ModDataRegisterer;
 import net.daplumer.sculk_dimension.util.SculkIdentifier;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
@@ -13,12 +15,15 @@ import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ModelSupplier;
 import net.minecraft.client.data.Models;
 import net.minecraft.client.data.TextureMap;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("unused")
@@ -57,7 +62,7 @@ public class WoodBlockGroup {
     public void addToItemGroups(FabricItemGroupEntries entries, Shift shift, ItemConvertible item) {
         logs.addToItemGroups(entries, shift, item);
         planks.addToItemGroups(entries, Shift.AFTER, logs.getStrippedWood());
-        planks.addToItemGroups(entries, Shift.BEFORE, planks.pressurePlate());
+        doors.addToItemGroups(entries, Shift.BEFORE, planks.pressurePlate());
     }
     public static WoodBlockGroup of(ModDataRegisterer<Block, AbstractBlock.Settings,?> BLOCKS, WoodType type, MapColor lightColor, MapColor mediumColor, MapColor darkColor, Boolean burnable, BlockSoundGroup soundGroup){
         return WoodBlockGroup.of(
@@ -79,13 +84,13 @@ public class WoodBlockGroup {
         modelGenerator.registerDoor(doors.door());
         modelGenerator.registerOrientableTrapdoor(doors.trapdoor());
         // now log models
-        makeLogModel(TextureMap.sideEnd(SFID("_log"), SFID("_log_top")),modelGenerator,logs.getLog());//log
-        makeLogModel(TextureMap.sideEnd(prefix(SFID("_log"), "stripped_"),prefix(SFID("_log_top"), "stripped_")),modelGenerator,logs.getStrippedLog());
-        makeLogModel(TextureMap.all(SFID("_log")),modelGenerator,logs.getWood());
-        makeLogModel(TextureMap.all(prefix(SFID("_log"),"stripped_")),modelGenerator,logs.getStrippedWood());
+        makeLogModel(TextureMap.sideEnd(suffixedIdentifier("_log"), suffixedIdentifier("_log_top")),modelGenerator,logs.getLog());//log
+        makeLogModel(TextureMap.sideEnd(strippedSuffixedIdentifier("_log"), strippedSuffixedIdentifier("_log_top")),modelGenerator,logs.getStrippedLog());
+        makeLogModel(TextureMap.all(suffixedIdentifier("_log")),modelGenerator,logs.getWood());
+        makeLogModel(TextureMap.all(strippedSuffixedIdentifier("_log")),modelGenerator,logs.getStrippedWood());
         // plank based models
 
-        final TextureMap planksTexture = TextureMap.all(SFID("_planks"));
+        final TextureMap planksTexture = TextureMap.all(suffixedIdentifier("_planks"));
         modelGenerator.registerSimpleCubeAll(planks.planks());
         final Identifier stairsModelId = Models.STAIRS.upload(planks.stairs(), planksTexture, modelGenerator.modelCollector);
         final Identifier innerStairsModelId = Models.INNER_STAIRS.upload(planks.stairs(), planksTexture, modelGenerator.modelCollector);
@@ -147,12 +152,11 @@ public class WoodBlockGroup {
         modelGenerator.registerParentedItemModel(planks.button(),buttonInventory);
 
     }
-    //suffixed identifier
-    private Identifier SFID(String suffix){
+    private Identifier suffixedIdentifier(String suffix){
         return Identifier.of(this.namespace,"block/"+this.name+suffix);
     }
-    private static Identifier prefix(Identifier id,String prefix){
-        return Identifier.of(id.getNamespace(),prefix+id.getPath());
+    public Identifier strippedSuffixedIdentifier(String suffix){
+        return Identifier.of(this.namespace,"block/stripped_" + this.name + suffix);
     }
 
     private static void makeLogModel(TextureMap map, BlockStateModelGenerator modelGenerator, Block log){
@@ -162,6 +166,32 @@ public class WoodBlockGroup {
                         BlockStateModelGenerator.createWeightedVariant(logModel))
         );
         modelGenerator.registerParentedItemModel(log, logModel);
+    }
+
+
+
+    public void registerCustomRecipes(RecipeGenerator generator){
+        RecipeExporter exporter = ((RecipeGeneratorExporterAccessor)(generator)).exporter();
+        Ingredient plank = Ingredient.ofItem(planks.planks());
+        generator.offerBarkBlockRecipe(logs.getStrippedLog(), logs.getLog());
+        generator.offerBarkBlockRecipe(logs.getStrippedWood(), logs.getWood());
+        generator.createPressurePlateRecipe(RecipeCategory.REDSTONE, planks.pressurePlate(), plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createButtonRecipe(planks.button(),plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createDoorRecipe(doors.door(),plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createTrapdoorRecipe(doors.trapdoor(), plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createStairsRecipe(planks.stairs(),plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createSlabRecipe(RecipeCategory.MISC, planks.slab(), plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createFenceRecipe(planks.fence(), plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.createFenceGateRecipe(planks.fenceGate(), plank).criterion("get_planks",
+                InventoryChangedCriterion.Conditions.items(planks.planks())).offerTo(exporter);
+        generator.offerPlanksRecipe(planks.planks(), logs.getItemTag(), 4);
     }
 
 

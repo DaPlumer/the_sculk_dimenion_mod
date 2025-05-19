@@ -41,7 +41,5 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModBlocks.ECHOING_BLOOM_ITEM,Models.GENERATED);
         itemModelGenerator.register(ModItems.INFECTED_BOAT,Models.GENERATED);
         itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT,Models.GENERATED);
-        itemModelGenerator.register(InfectedBlocks.INFECTED_SIGN_ITEM);
-        itemModelGenerator.register(InfectedBlocks.INFECTED_HANGING_SIGN_ITEM);
     }
 }

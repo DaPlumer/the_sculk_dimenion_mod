@@ -6,13 +6,9 @@
     "BlockSetTypeMixin",
     "FabricTagProviderAccessor",
     "RecipeGeneratorExporterAccessor",
-    "SignEntityTypeMixin",
     "WoodTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "client": [
-    "SignRegistrationMixin"
-  ]
+  }
 }

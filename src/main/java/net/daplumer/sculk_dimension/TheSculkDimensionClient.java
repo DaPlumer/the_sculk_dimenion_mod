@@ -21,8 +21,8 @@ public class TheSculkDimensionClient implements ClientModInitializer {
                 ModBlocks.ENCHANTMENT_DUPLICATOR,
                 ModBlocks.infected.getDoors().trapdoor()
         );
-        final EntityModelLayer INFECTED_BOAT = new EntityModelLayer(SculkIdentifier.of("boat/infected_planks"),"main");
-        final EntityModelLayer INFECTED_CHEST_BOAT = new EntityModelLayer(SculkIdentifier.of("chest_boat/infected_planks"),"main");
+        final EntityModelLayer INFECTED_BOAT = new EntityModelLayer(SculkIdentifier.of("boat/infected"),"main");
+        final EntityModelLayer INFECTED_CHEST_BOAT = new EntityModelLayer(SculkIdentifier.of("chest_boat/infected"),"main");
         EntityModelLayerRegistry.registerModelLayer(INFECTED_BOAT, BoatEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(INFECTED_CHEST_BOAT, BoatEntityModel::getChestTexturedModelData);
         EntityRendererRegistry.register(ModEntityTypes.INFECTED_BOAT,context -> new BoatEntityRenderer(context, INFECTED_BOAT));

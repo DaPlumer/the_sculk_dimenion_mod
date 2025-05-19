@@ -1,8 +1,12 @@
 package net.daplumer.sculk_dimension.entity;
 
+import net.daplumer.data_modification_utils.mod_registries.ModBlockEntityTypeRegisterer;
 import net.daplumer.data_modification_utils.mod_registries.ModEntityTypeRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.block.InfectedBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
