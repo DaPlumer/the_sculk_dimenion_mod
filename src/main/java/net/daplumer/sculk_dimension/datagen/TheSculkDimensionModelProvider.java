@@ -1,7 +1,6 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.TheSculkDimension;
-import net.daplumer.sculk_dimension.block.InfectedBlocks;
 import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
@@ -41,5 +40,6 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModBlocks.ECHOING_BLOOM_ITEM,Models.GENERATED);
         itemModelGenerator.register(ModItems.INFECTED_BOAT,Models.GENERATED);
         itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT,Models.GENERATED);
+        itemModelGenerator.register(ModItems.RESONATION_HELMET,Models.GENERATED);
     }
 }

@@ -45,4 +45,5 @@ public class TheSculkDimension implements ModInitializer {
 		add reaping enchant into librarian trades and enchantment loot tables
 		debug enchantment combinations for reaping enchant
 	 */
+	//TODO: Make less jarring transition between depth view and normal view
 }

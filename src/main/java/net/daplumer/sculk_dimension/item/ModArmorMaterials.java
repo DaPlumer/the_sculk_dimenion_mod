@@ -12,6 +12,8 @@ public class ModArmorMaterials {
     public static final ModArmorMaterialRegisterer ARMOR_MATERIALS = REGISTERER.ARMOR_MATERIALS;
     public static final ArmorMaterial MOSSY_ARMOR = ARMOR_MATERIALS.register("mossy_armor",
             ArmorMaterialSettings.copy(ArmorMaterials.LEATHER).enchantmentValue(17));
+    public static final ArmorMaterial RESONATION_ARMOR = ARMOR_MATERIALS.register("resonation_helmet",
+            ArmorMaterialSettings.copy(ArmorMaterials.GOLD));
     public static void registerModArmorMaterials(){
         TheSculkDimension.LOGGER.info("Registering Mod Armor Materials for " + TheSculkDimension.MOD_ID);
     }

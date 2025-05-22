@@ -17,8 +17,7 @@ import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Rarity;
 
-import static net.daplumer.data_modification_utils.mod_registries.registering_functions.ItemsKt.*;
-
+import static net.daplumer.data_modification_utils.mod_registries.registering_functions.ItemsKt.BOAT;
 import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
 
 public class ModItems {
@@ -97,7 +96,11 @@ public class ModItems {
 
     public static final Item INFECTED_BOAT = ITEMS.register("infected_boat", BOAT(ModEntityTypes.INFECTED_BOAT));
     public static final Item INFECTED_CHEST_BOAT = ITEMS.register("infected_chest_boat", BOAT(ModEntityTypes.INFECTED_CHEST_BOAT));
-
+    public static final Item RESONATION_HELMET = ITEMS.register("resonation_helmet",
+            new Item.Settings()
+            .armor(ModArmorMaterials.RESONATION_ARMOR,EquipmentType.HELMET),
+            ResonationHelmet::new
+    );
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
         BrokenEcho.registerCustomData();
@@ -130,6 +133,7 @@ public class ModItems {
 
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+            entries.addBefore(Items.GOLDEN_HELMET,RESONATION_HELMET);
             entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS);
             entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);
             entries.addAfter(Items.MACE,SCYTHE);}

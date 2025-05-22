@@ -32,6 +32,7 @@ public class ModItemGroups  {
                         stack.setDamage(0);
                         entries.add(stack);
                         entries.add(ModBlocks.MEMORY_GEM_BLOCK_ITEM);
+                        entries.add(ModItems.RESONATION_HELMET);
                         entries.add(ModItems.MOSSY_BOOTS);
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);

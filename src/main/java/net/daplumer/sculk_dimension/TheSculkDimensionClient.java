@@ -5,14 +5,21 @@ import net.daplumer.sculk_dimension.entity.ModEntityTypes;
 import net.daplumer.sculk_dimension.util.SculkIdentifier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.util.InputUtil;
+import org.lwjgl.glfw.GLFW;
 
 public class TheSculkDimensionClient implements ClientModInitializer {
+    private static KeyBinding depthViewMode;
+    public static boolean useDepthShader = false;
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
@@ -27,5 +34,16 @@ public class TheSculkDimensionClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(INFECTED_CHEST_BOAT, BoatEntityModel::getChestTexturedModelData);
         EntityRendererRegistry.register(ModEntityTypes.INFECTED_BOAT,context -> new BoatEntityRenderer(context, INFECTED_BOAT));
         EntityRendererRegistry.register(ModEntityTypes.INFECTED_CHEST_BOAT,context -> new BoatEntityRenderer(context, INFECTED_CHEST_BOAT));
+        depthViewMode = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.sculk_dimension.depth_veiw",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_V,
+                "category.sculk_dimension.keybinds"
+        ));
+        ClientTickEvents.END_CLIENT_TICK.register((client -> {
+            while (depthViewMode.wasPressed()){
+                useDepthShader = !useDepthShader;
+            }
+        }));
     }
 }

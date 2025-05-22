@@ -1,0 +1,12 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:gold"
+      },
+      {
+        "texture": "sculk_dimension:resonation_helmet"
+      }
+    ]
+  }
+}

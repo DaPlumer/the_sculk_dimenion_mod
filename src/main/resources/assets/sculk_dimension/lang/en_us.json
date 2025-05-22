@@ -75,5 +75,8 @@
   "tooltips.sculk_dimension.echo_medallion_2": "through this medallion",
   "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for",
   "tooltips.sculk_dimension.resonation_gem_2": "pranking friends and enemies alike!",
-  "tooltips.sculk_dimension.soul_bag": "Contained Souls: "
+  "tooltips.sculk_dimension.soul_bag": "Contained Souls: ",
+  "item.sculk_dimension.resonation_helmet": "Resonant Helmet",
+  "category.sculk_dimension.keybinds": "Sculk Dimension",
+  "key.sculk_dimension.depth_veiw": "Toggle depth View"
 }

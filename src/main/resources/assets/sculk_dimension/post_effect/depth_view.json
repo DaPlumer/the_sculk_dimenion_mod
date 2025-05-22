@@ -1,0 +1,38 @@
+{
+    "targets": {
+        "swap": {}
+    },
+    "passes": [
+        {
+            "vertex_shader": "minecraft:post/blit",
+            "fragment_shader": "sculk_dimension:post/depth",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+            ]
+        },
+        {
+            "vertex_shader": "minecraft:post/blit",
+            "fragment_shader": "sculk_dimension:post/mix",
+            "inputs": [
+                {
+                    "sampler_name": "First",
+                    "target": "swap"
+                },
+                {
+                    "sampler_name": "Second",
+                    "target": "minecraft:main"
+                }
+            ],
+            "uniforms": [
+            ],
+            "output": "minecraft:main"
+        }
+    ]
+}
