@@ -31,6 +31,10 @@
                 }
             ],
             "uniforms": [
+                {
+                    "name": "mixValue",
+                    "type": "float"
+                }
             ],
             "output": "minecraft:main"
         }

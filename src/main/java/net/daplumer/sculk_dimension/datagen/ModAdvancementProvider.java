@@ -6,10 +6,7 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.*;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.advancement.criterion.OnKilledCriterion;
-import net.minecraft.advancement.criterion.TickCriterion;
+import net.minecraft.advancement.criterion.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.entity.DamageSourcePredicate;
@@ -48,6 +45,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         EntityPredicate.contextPredicateFromEntityPredicate(EntityPredicate.Builder.create()
                                 .equipment(EntityEquipmentPredicate.Builder.create().feet(ItemPredicate.Builder.create()
                                         .items(null, ModItems.MOSSY_BOOTS))))))))
+                .rewards(AdvancementRewards.Builder.recipe(recipie("sculken_boots_smithing")).addRecipe(recipie("sculk_cloth")))
                 .build(consumer,of("natures_ninja"));
         AdvancementEntry get_scythe = Advancement.Builder.create()
                 .display(ModItems.SCYTHE,
@@ -92,6 +90,16 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         InventoryChangedCriterion.Conditions.items(Blocks.END_STONE)).rewards(
                         AdvancementRewards.Builder.recipe(recipie("enchantment_duplicator")))
                 .build(consumer,of("catylst"));
+        Advancement.Builder.create()
+                .criterion("make_sculken_boots", Criteria.RECIPE_CRAFTED.create(RecipeCraftedCriterion.Conditions.create(recipie("sculken_boots_smithing")).conditions()))
+                .display(ModItems.SCULKEN_BOOTS,
+                        Text.translatable("advancement.sculk_dimension.sculken_boots_title"),
+                        Text.translatable("advancement.sculk_dimension.sculken_boots_description"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,true,false)
+                .parent(natures_ninja)
+                .build(consumer, of("sculken_boots"));
 
     }
 

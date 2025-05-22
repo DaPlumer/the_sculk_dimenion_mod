@@ -27,6 +27,7 @@ public class ModItems {
 
     public static final Item CRYSTALIZED_SOUL =ITEMS.register("crystalized_soul",
             new Item.Settings()
+                    .maxCount(16)
                     .rarity(Rarity.UNCOMMON),
             CrystalizedSoul::new
     );
@@ -101,6 +102,11 @@ public class ModItems {
             .armor(ModArmorMaterials.RESONATION_ARMOR,EquipmentType.HELMET),
             ResonationHelmet::new
     );
+    public static final Item SCULKEN_BOOTS = ITEMS.register("sculken_boots",
+            new Item.Settings()
+                    .armor(ModArmorMaterials.SCULKEN_BOOTS, EquipmentType.BOOTS)
+    );
+    public static final ItemStack MEMORY_GEM_STACK = MEMORY_GEM.getDefaultStack().copy();
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
         BrokenEcho.registerCustomData();
@@ -126,17 +132,18 @@ public class ModItems {
             entries.addAfter(SCULK_BRICK,SCULK_BRICK_CASING);
             entries.addBefore(Items.ECHO_SHARD,CRYSTALIZED_SOUL);
             entries.addAfter(Items.DISC_FRAGMENT_5, RESOANATION_GEM_STAFF);
-            ItemStack stack = MEMORY_GEM.getDefaultStack().copy();
-            stack.setDamage(0);
-            entries.addAfter(Items.DIAMOND,stack);
+            MEMORY_GEM_STACK.setDamage(0);
+            entries.addAfter(Items.DIAMOND,MEMORY_GEM_STACK);
             entries.addBefore(CRYSTALIZED_SOUL,SCULK_CLOTH);
 
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
-            entries.addBefore(Items.GOLDEN_HELMET,RESONATION_HELMET);
-            entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS);
-            entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);
-            entries.addAfter(Items.MACE,SCYTHE);}
+                entries.addBefore(Items.GOLDEN_HELMET,RESONATION_HELMET);
+                entries.addAfter(Items.LEATHER_BOOTS,MOSSY_BOOTS);
+                entries.addAfter(Items.TOTEM_OF_UNDYING,ECHO_MEDALLION);
+                entries.addAfter(Items.MACE,SCYTHE);
+                entries.addAfter(Items.DIAMOND_BOOTS,SCULKEN_BOOTS);
+            }
         );
         ItemTooltipCallback.EVENT.register(((stack, tooltipContext, tooltipType, lines) ->{
             if(stack.isOf(ModItems.RESOANATION_GEM)){

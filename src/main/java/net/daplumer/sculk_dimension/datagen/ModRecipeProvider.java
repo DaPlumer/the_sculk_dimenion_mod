@@ -5,12 +5,17 @@ import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.DefaultCustomIngredients;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.component.ComponentChanges;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.data.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
@@ -30,17 +35,41 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeGenerator(registryLookup,exporter){
             @Override
             public void generate() {
+                Ingredient MEMORY_GEM_INGREDIENT = DefaultCustomIngredients.components(Ingredient.ofItem(ModItems.MEMORY_GEM),ComponentChanges.builder().add(DataComponentTypes.DAMAGE,0).build());
                 RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
                 createShaped(RecipeCategory.BUILDING_BLOCKS, itemLookup.getOrThrow(REGISTERER.ITEMS.getRegistryKey("memory_gem_block")).value())
                         .pattern("GGG")
                         .pattern("GGG")
                         .pattern("GGG")
-                        .input('G', DefaultCustomIngredients.components(Ingredient.ofItem(ModItems.MEMORY_GEM),ComponentChanges.builder().add(DataComponentTypes.DAMAGE,0).build()))
+                        .input('G', MEMORY_GEM_INGREDIENT)
                         .criterion("get_mem_gem", InventoryChangedCriterion.Conditions.items(ModItems.MEMORY_GEM))
                         .offerTo(exporter,"sculk_dimension:mem_gem_block");
                 InfectedBlocks.infected.registerCustomRecipes(this);
                 offerBoatRecipe(ModItems.INFECTED_BOAT, InfectedBlocks.infected.getPlanks().planks());
                 offerChestBoatRecipe(ModItems.INFECTED_CHEST_BOAT, InfectedBlocks.infected.getPlanks().planks());
+                //The resonation helmet recipe is bound to change after a new model is created
+                createShaped(RecipeCategory.COMBAT, ModItems.RESONATION_HELMET)
+                        .pattern("CSC")
+                        .pattern("LGP")
+                        .input('C', Items.ECHO_SHARD)
+                        .input('S', ModItems.CRYSTALIZED_SOUL)
+                        .input('G', Items.GOLDEN_HELMET)
+                        .input('L', ConventionalItemTags.LEATHERS)
+                        .input('P', ConventionalItemTags.GLASS_PANES_COLORLESS)
+                        .criterion("avoid_vibration", Criteria.AVOID_VIBRATION.create(TickCriterion.Conditions.createTick().conditions()))
+                        .offerTo(exporter);
+
+                SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItem(ModItems.SCULK_CLOTH),
+                        Ingredient.ofItem(Items.DIAMOND_BOOTS),
+                        MEMORY_GEM_INGREDIENT,
+                        RecipeCategory.COMBAT,
+                        ModItems.SCULKEN_BOOTS
+                    )
+                    .criterion("get_mossy_boots", InventoryChangedCriterion.Conditions.items(ModItems.MOSSY_BOOTS))
+                    .criterion("avoid_vibration", Criteria.AVOID_VIBRATION.create(TickCriterion.Conditions.createTick().conditions()))
+                    .criterion("get_diamond_boots", InventoryChangedCriterion.Conditions.items(Items.DIAMOND_BOOTS))
+                    .offerTo(this.exporter, "sculken_boots_smithing");
             }
         };
     }

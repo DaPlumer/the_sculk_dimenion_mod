@@ -28,12 +28,13 @@ public class GameRendererMixin {
 
     @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V"))
     void aVoid(RenderTickCounter renderTickCounter, CallbackInfo ci, @Local Profiler profiler){
-        if (client.player == null |! TheSculkDimensionClient.useDepthShader) return;
+        if (client.player == null) return;
         if(!client.player.getEquippedStack(EquipmentSlot.HEAD).isIn(ModItemTags.DEPTH_MAP_ENABLERS)) return;
         RenderSystem.resetTextureMatrix();
         PostEffectProcessor postEffectProcessor = this.client.getShaderLoader().loadPostEffect(Identifier.of(TheSculkDimension.MOD_ID,"depth_view"), DefaultFramebufferSet.MAIN_ONLY);
         if (postEffectProcessor != null) {
-            postEffectProcessor.render(this.client.getFramebuffer(), pool, null);
+            //noinspection deprecation
+            postEffectProcessor.render(this.client.getFramebuffer(), pool, (renderPass -> renderPass.setUniform("mixValue", TheSculkDimensionClient.depthTransition)));
         }
 
     }

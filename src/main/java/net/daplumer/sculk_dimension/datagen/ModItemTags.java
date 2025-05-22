@@ -39,7 +39,7 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ConventionalItemTags.ORES_IN_GROUND_STONE).add(ModBlocks.MEMORY_GEM_ORE_ITEM);
         getOrCreateTagBuilder(ConventionalItemTags.ORES).addTag(MEMORY_GEM_ORES);
         getOrCreateTagBuilder(ConventionalItemTags.FLOWERS).add(ModBlocks.ECHOING_BLOOM_ITEM);
-        getOrCreateTagBuilder(MUFFLERS).add(ModItems.MOSSY_BOOTS);
+        getOrCreateTagBuilder(MUFFLERS).add(ModItems.MOSSY_BOOTS, ModItems.SCULKEN_BOOTS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(ModItems.MOSSY_BOOTS);
         getOrCreateTagBuilder(HEALS_WITH_SOULS).add(ModItems.SCYTHE,ModItems.RESOANATION_GEM);
         getOrCreateTagBuilder(ItemTags.BOATS).add(ModItems.INFECTED_BOAT);

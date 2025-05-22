@@ -29,10 +29,10 @@ public class ModItemGroups  {
                         entries.add(ModItems.RESOANATION_GEM);
                         entries.add(ModItems.BROKEN_ECHO);
                         ItemStack stack = ModItems.MEMORY_GEM.getDefaultStack().copy();
-                        stack.setDamage(0);
-                        entries.add(stack);
+                        entries.add(ModItems.MEMORY_GEM_STACK);
                         entries.add(ModBlocks.MEMORY_GEM_BLOCK_ITEM);
                         entries.add(ModItems.RESONATION_HELMET);
+                        entries.add(ModItems.SCULKEN_BOOTS);
                         entries.add(ModItems.MOSSY_BOOTS);
                         entries.add(ModItems.MOSSY_BAG);
                         entries.add(ModItems.RESONANT_POLLEN);

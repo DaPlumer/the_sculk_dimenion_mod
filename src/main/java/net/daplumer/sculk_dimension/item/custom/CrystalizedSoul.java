@@ -25,7 +25,7 @@ public class CrystalizedSoul extends Item implements SoulHolder {
 
     @Override
     public int maxSouls() {
-        return 64;
+        return 16;
     }
 
     @Override

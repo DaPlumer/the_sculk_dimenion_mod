@@ -3,8 +3,11 @@
   "advancement.sculk_dimension.duplicate_enchant_title": "Double Trouble",
   "advancement.sculk_dimension.get_scythe_description": "'Cause Baby Tonight, The Reapers Tryna' Steal Our Souls Again ",
   "advancement.sculk_dimension.get_scythe_title": "Reaper? Aww Man",
-  "advancement.sculk_dimension.natures_ninja_description": "Use Mossy Boots to avoid detection",
   "advancement.sculk_dimension.natures_ninja_title": "Nature's Ninja",
+  "advancement.sculk_dimension.natures_ninja_description": "Use Mossy Boots to avoid detection",
+  "advancement.sculk_dimension.sculken_boots_title": "Silent Knight",
+  "advancement.sculk_dimension.sculken_boots_description":"Make Sculken Boots in a Smithing Table using some Sculk Cloth, a Memory Gem, and Diamond Boots",
+
   "block.sculk_dimension.deepslate_pink_garnet_ore": "Deepslate Pink Garnet Ore",
   "block.sculk_dimension.echoing_bloom": "Echoing Bloom",
   "block.sculk_dimension.echoing_bloom_tip": "Echoing Bloom",
@@ -29,9 +32,13 @@
   "block.sculk_dimension.sculk_capture": "Captured Body",
   "block.sculk_dimension.stripped_infected_log": "Stripped Infected Log",
   "block.sculk_dimension.stripped_infected_wood": "Stripped Infected Wood",
+
+  "category.sculk_dimension.keybinds": "Sculk Dimension",
   "containers.sculk_dimension.enchantment_duplicator": "Duplicate Enchants",
+
   "enchantment.sculk_dimension.muffling": "Muffling",
   "enchantment.sculk_dimension.reaping": "Reaping",
+
   "item.sculk_dimension.broken_echo": "Broken Echo",
   "item.sculk_dimension.crystalized_soul": "Soul Fragment",
   "item.sculk_dimension.echo_totem": "Echo Medallion",
@@ -45,17 +52,24 @@
   "item.sculk_dimension.resonant_pollen": "Resonant Pollen",
   "item.sculk_dimension.resonation_gem": "Resonation Gem",
   "item.sculk_dimension.resonation_gem_staff": "Resonation Staff",
+  "item.sculk_dimension.resonation_helmet": "Resonant Helmet",
   "item.sculk_dimension.sculk_brick": "Sculk Brick",
   "item.sculk_dimension.sculk_brick_casing": "Sculk Brick Casing",
   "item.sculk_dimension.sculk_capture": "Captured Body",
   "item.sculk_dimension.sculk_cloth": "Sculk Cloth",
+  "item.sculk_dimension.sculken_boots": "Sculken Boots",
   "item.sculk_dimension.scythe": "Reaping Scythe",
   "item.sculk_dimension.soul_bag": "Soul Bag",
   "item.sculk_dimension.wax_brick": "Resinant Wax",
+
   "itemgroup.sculk_dimension.pink_garnet_blocks": "Pink Garnet Blocks",
   "itemgroup.sculk_dimension.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.sculk_dimension.sculk_dimension_items": "The Sculk Dimension",
+
+  "key.sculk_dimension.depth_veiw": "Toggle depth View",
+
   "scoreboard.sculk_dimension.insanity": "Insanity",
+
   "tooltips.sculk_dimension.broken_echo.crazy_0": "The Haze Inside Your head lifts,",
   "tooltips.sculk_dimension.broken_echo.crazy_1": " The Whispers Start to Clear Up ",
   "tooltips.sculk_dimension.broken_echo.eldritch_0": " ****** ",
@@ -75,8 +89,5 @@
   "tooltips.sculk_dimension.echo_medallion_2": "through this medallion",
   "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for",
   "tooltips.sculk_dimension.resonation_gem_2": "pranking friends and enemies alike!",
-  "tooltips.sculk_dimension.soul_bag": "Contained Souls: ",
-  "item.sculk_dimension.resonation_helmet": "Resonant Helmet",
-  "category.sculk_dimension.keybinds": "Sculk Dimension",
-  "key.sculk_dimension.depth_veiw": "Toggle depth View"
+  "tooltips.sculk_dimension.soul_bag": "Contained Souls: "
 }

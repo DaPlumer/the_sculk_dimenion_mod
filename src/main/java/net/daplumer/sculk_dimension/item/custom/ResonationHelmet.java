@@ -17,4 +17,5 @@ public class ResonationHelmet extends Item {
         TheSculkDimensionClient.useDepthShader = true;
         return super.use(world, user, hand);
     }
+    //TODO: get someone to make a better helmet model
 }

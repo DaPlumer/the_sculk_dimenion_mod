@@ -1,6 +1,7 @@
 package net.daplumer.sculk_dimension;
 
 import net.daplumer.sculk_dimension.block.ModBlocks;
+import net.daplumer.sculk_dimension.datagen.ModItemTags;
 import net.daplumer.sculk_dimension.entity.ModEntityTypes;
 import net.daplumer.sculk_dimension.util.SculkIdentifier;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,11 +16,14 @@ import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.EquipmentSlot;
 import org.lwjgl.glfw.GLFW;
 
 public class TheSculkDimensionClient implements ClientModInitializer {
     private static KeyBinding depthViewMode;
+    public static float depthTransition = 0;
     public static boolean useDepthShader = false;
+
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
@@ -43,6 +47,17 @@ public class TheSculkDimensionClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register((client -> {
             while (depthViewMode.wasPressed()){
                 useDepthShader = !useDepthShader;
+            }
+            if(useDepthShader){
+                depthTransition = (float) Math.min(1.0, depthTransition + 10.0 /client.getCurrentFps());
+            } else {
+                depthTransition = (float) Math.max(0.0, depthTransition - 10.0 /client.getCurrentFps());
+            }
+            if(client.player != null) {
+                if (!client.player.getEquippedStack(EquipmentSlot.HEAD).isIn(ModItemTags.DEPTH_MAP_ENABLERS)) {
+                    useDepthShader = false;
+                    depthTransition = 1;
+                }
             }
         }));
     }
