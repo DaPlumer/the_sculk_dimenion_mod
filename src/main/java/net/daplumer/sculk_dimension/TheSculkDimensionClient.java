@@ -20,9 +20,9 @@ import net.minecraft.entity.EquipmentSlot;
 import org.lwjgl.glfw.GLFW;
 
 public class TheSculkDimensionClient implements ClientModInitializer {
-    private static KeyBinding depthViewMode;
+    public static KeyBinding depthViewMode;
     public static float depthTransition = 0;
-    public static boolean useDepthShader = false;
+    public static boolean useDepthShader = true;
 
     @Override
     public void onInitializeClient() {

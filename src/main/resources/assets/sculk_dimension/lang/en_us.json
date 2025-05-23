@@ -92,5 +92,6 @@
   "tooltips.sculk_dimension.echo_medallion_2": "through this medallion",
   "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for",
   "tooltips.sculk_dimension.resonation_gem_2": "pranking friends and enemies alike!",
-  "tooltips.sculk_dimension.soul_bag": "Contained Souls: "
+  "tooltips.sculk_dimension.soul_bag": "Contains %1$s out of %2$s Souls ",
+  "tooltips.sculk_dimension.resonation_helm": "Press %1$s to toggle Depth View"
 }

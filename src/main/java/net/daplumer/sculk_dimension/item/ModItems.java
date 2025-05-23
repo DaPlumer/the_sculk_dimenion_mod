@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.item;
 
 import net.daplumer.data_modification_utils.mod_registries.GeneralDataRegisterer;
 import net.daplumer.sculk_dimension.TheSculkDimension;
+import net.daplumer.sculk_dimension.TheSculkDimensionClient;
 import net.daplumer.sculk_dimension.entity.ModEntityTypes;
 import net.daplumer.sculk_dimension.item.custom.*;
 import net.daplumer.sculk_dimension.item.custom.broken_echo.BrokenEcho;
@@ -162,10 +163,12 @@ public class ModItems {
             }
             if(stack.getItem() instanceof SoulHolder &! stack.isOf(ModItems.CRYSTALIZED_SOUL)){
                 if(SoulHolder.getSouls(stack) == 0) return;
-                lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag")
-                        .append(Text.literal(SoulHolder.getSouls(stack) + "/" + SoulHolder.maxSouls(stack)))
-                );
+                lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag",SoulHolder.getSouls(stack),SoulHolder.maxSouls(stack)));
             }
+            if(stack.isOf(RESONATION_HELMET)){
+                lines.add(Text.translatable("tooltips.sculk_dimension.resonation_helm", TheSculkDimensionClient.depthViewMode.getBoundKeyLocalizedText()));
+            }
+
         }));
     }
 }
