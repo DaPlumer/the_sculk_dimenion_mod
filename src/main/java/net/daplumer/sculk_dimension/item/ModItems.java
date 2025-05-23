@@ -154,7 +154,7 @@ public class ModItems {
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion"));
                 lines.add(Text.translatable("tooltips.sculk_dimension.echo_medallion_2"));
             }
-            if(stack.isOf(ModItems.SOUL_BAG)){
+            if(stack.getItem() instanceof SoulHolder &! stack.isOf(ModItems.CRYSTALIZED_SOUL)){
                 if(SoulHolder.getSouls(stack) == 0) return;
                 lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag")
                         .append(Text.literal(String.valueOf(SoulHolder.getSouls(stack))))
