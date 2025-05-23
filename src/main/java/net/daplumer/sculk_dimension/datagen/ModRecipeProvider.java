@@ -13,8 +13,10 @@ import net.minecraft.component.ComponentChanges;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.data.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -70,6 +72,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                     .criterion("avoid_vibration", Criteria.AVOID_VIBRATION.create(TickCriterion.Conditions.createTick().conditions()))
                     .criterion("get_diamond_boots", InventoryChangedCriterion.Conditions.items(Items.DIAMOND_BOOTS))
                     .offerTo(this.exporter, "sculken_boots_smithing");
+
+                createBagRecipe(ModItems.SCULKEN_SOUL_BAG, ModItems.SCULK_CLOTH)
+                        .group("soul_bags")
+                        .criterion("get_soul_bag", InventoryChangedCriterion.Conditions.items(ModItems.SOUL_BAG))
+                        .offerTo(exporter, "sculken_soul_bag");
+
+            }
+            @SuppressWarnings("SameParameterValue")
+            private ShapedRecipeJsonBuilder createBagRecipe(ItemConvertible bag, ItemConvertible material){
+                return createBagRecipe(bag, Ingredient.ofItem(material));
+            }
+            private ShapedRecipeJsonBuilder createBagRecipe(ItemConvertible bag, Ingredient material){
+                return createShaped(RecipeCategory.TOOLS, bag)
+                        .pattern("  S")
+                        .pattern("M M")
+                        .pattern(" M ")
+                        .input('S', ingredientFromTag(ConventionalItemTags.STRINGS))
+                        .input('M', material);
             }
         };
     }

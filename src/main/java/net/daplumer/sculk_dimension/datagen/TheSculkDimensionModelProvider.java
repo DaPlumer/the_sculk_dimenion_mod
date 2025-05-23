@@ -42,5 +42,6 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.INFECTED_BOAT,Models.GENERATED);
         itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT,Models.GENERATED);
         itemModelGenerator.register(ModItems.RESONATION_HELMET,Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCULKEN_SOUL_BAG,Models.GENERATED);
     }
 }

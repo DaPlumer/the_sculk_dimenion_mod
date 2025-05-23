@@ -107,6 +107,11 @@ public class ModItems {
                     .armor(ModArmorMaterials.SCULKEN_BOOTS, EquipmentType.BOOTS),
             SculkenBoots::new
     );
+    public static final Item SCULKEN_SOUL_BAG = ITEMS.register("sculken_soul_bag",
+            new Item.Settings()
+                    .maxCount(1),
+            SculkenSoulBag::new
+    );
     public static final ItemStack MEMORY_GEM_STACK = MEMORY_GEM.getDefaultStack().copy();
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
@@ -158,7 +163,7 @@ public class ModItems {
             if(stack.getItem() instanceof SoulHolder &! stack.isOf(ModItems.CRYSTALIZED_SOUL)){
                 if(SoulHolder.getSouls(stack) == 0) return;
                 lines.add(Text.translatable("tooltips.sculk_dimension.soul_bag")
-                        .append(Text.literal(String.valueOf(SoulHolder.getSouls(stack))))
+                        .append(Text.literal(SoulHolder.getSouls(stack) + "/" + SoulHolder.maxSouls(stack)))
                 );
             }
         }));
