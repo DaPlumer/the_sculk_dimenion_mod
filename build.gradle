@@ -15,6 +15,7 @@ base {
 repositories {
     mavenCentral()
 
+	maven { url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" }
 	exclusiveContent {
 		forRepository {
 			//noinspection ForeignDelegate
@@ -45,6 +46,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
+	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${devauth_version}")
 
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
@@ -67,7 +69,6 @@ java {
 	// if it is present.
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
-
 }
 
 jar {
