@@ -26,13 +26,14 @@ public record ReapingEnchantmentEffect(EnchantmentLevelBasedValue amount) implem
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         if (!user.isAlive() && user instanceof LivingEntity victim) {
             if (context.owner() instanceof PlayerEntity player) {
+                if(player instanceof Insanity insanity) insanity.incrementInsanity();
                 giveSouls(player, victim, level, world);
             } else {
                 victim.dropStack(world, new ItemStack(ModItems.CRYSTALIZED_SOUL, getRandomNumber(level, ((ExpInvoker) victim).invoker(world), world)));
             }
         }
-
     }
+
     public static int getRandomNumber(int lvl, int exp,ServerWorld world){
         return 2+lvl*exp/4+world.random.nextBetweenExclusive(-1,2);
     }

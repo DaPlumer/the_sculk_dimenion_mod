@@ -53,6 +53,7 @@ public class ResonationGem extends Item{
         }
         this.rayHit = ray.getPos();
         if (ray.getType() == HitResult.Type.ENTITY){
+            if(user instanceof Insanity insanity) insanity.addInsanity(3);
             EntityHitResult entityHit = (EntityHitResult) ray;
             entity = entityHit.getEntity();
             user.getStackInHand(hand).damage(1, user, LivingEntity.getSlotForHand(hand));

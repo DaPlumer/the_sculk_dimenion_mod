@@ -104,7 +104,8 @@ public class ModItems {
     );
     public static final Item SCULKEN_BOOTS = ITEMS.register("sculken_boots",
             new Item.Settings()
-                    .armor(ModArmorMaterials.SCULKEN_BOOTS, EquipmentType.BOOTS)
+                    .armor(ModArmorMaterials.SCULKEN_BOOTS, EquipmentType.BOOTS),
+            SculkenBoots::new
     );
     public static final ItemStack MEMORY_GEM_STACK = MEMORY_GEM.getDefaultStack().copy();
     public static void registerModItems(){

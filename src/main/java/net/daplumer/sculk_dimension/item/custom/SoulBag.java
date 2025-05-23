@@ -2,6 +2,7 @@ package net.daplumer.sculk_dimension.item.custom;
 
 import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.item.ModItems;
+import net.daplumer.sculk_dimension.util.statistics.Insanity;
 import net.daplumer.sculk_dimension.util.statistics.SoulHolder;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +21,12 @@ public class SoulBag extends Item implements SoulHolder {
         super(settings);
     }
     public static final int maxSouls = 256;
+
+    @Override
+    public void onCraftByPlayer(ItemStack stack, PlayerEntity player) {
+        if(player instanceof Insanity insanity) insanity.addInsanity(7);
+        super.onCraftByPlayer(stack, player);
+    }
 
     @Override
     public boolean onStackClicked(ItemStack stack, Slot slot, ClickType clickType, PlayerEntity player) {

@@ -1,7 +1,7 @@
 package net.daplumer.sculk_dimension.util.statistics;
 
 public interface Insanity {
-    int maxInsanity = 100;
+    int maxInsanity = 1000;
     void setInsanity(int insanity);
     int getInsanity();
     default void addInsanity(int amount){
@@ -13,5 +13,5 @@ public interface Insanity {
     static int clampInsanity(int insanity){
         return Math.max(Math.min(insanity,maxInsanity),0);
     }
-    //TODO: make insanity incremented by more item usages
+    //TODO: make insanity used in things
 }

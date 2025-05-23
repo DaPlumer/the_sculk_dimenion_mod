@@ -47,31 +47,32 @@ public class BrokenEcho extends Item {
         super.inventoryTick(stack,world,entity,slot);
     }
     public enum Stage {
-        HINGED,   // for insanity equal to 0
-        SANE,     // for insanity between 00 and 06
-        NORMAL,   // for insanity between 07 and 14
-        WIERD,    // for insanity between 15 and 29
-        UNHINGED, // for insanity between 30 and 44
-        CRAZY,    // for insanity between 45 and 59
-        MAD,      // for insanity between 60 and 76
-        INSANE,   // for insanity between 75 and 99
-        ELDRITCH  // for insanity equal to 100
+        HINGED,   // for insanity equal to 00
+        SANE,     // for insanity between 000 and 060
+        NORMAL,   // for insanity between 070 and 140
+        WIERD,    // for insanity between 150 and 290
+        UNHINGED, // for insanity between 300 and 440
+        CRAZY,    // for insanity between 450 and 590
+        MAD,      // for insanity between 600 and 760
+        INSANE,   // for insanity between 750 and 990
+        ELDRITCH  // for insanity equal to 1000
     }
 
     public static Stage getStage(ItemStack stack){
         //get a stage to approximate the insanity of the item
         try {
             //get base Stage based on insanity data stored within stack
-            @SuppressWarnings("DataFlowIssue") int insanity = stack.get(ModDataComponentTypes.INSANITY);
-            if      (insanity ==  0) {return Stage.HINGED;  }
-            else if (insanity <   7) {return Stage.SANE;    }
-            else if (insanity <  15) {return Stage.NORMAL;  }
-            else if (insanity <  30) {return Stage.WIERD;   }
-            else if (insanity <  45) {return Stage.UNHINGED;}
-            else if (insanity <  60) {return Stage.CRAZY;   }
-            else if (insanity <  75) {return Stage.MAD;     }
-            else if (insanity < 100) {return Stage.INSANE;  }
-            else                     {return Stage.ELDRITCH;}
+            @SuppressWarnings("DataFlowIssue")
+            int insanity = stack.get(ModDataComponentTypes.INSANITY);
+            if      (insanity ==   0) return Stage.HINGED;
+            else if (insanity <   70) return Stage.SANE;
+            else if (insanity <  150) return Stage.NORMAL;
+            else if (insanity <  300) return Stage.WIERD;
+            else if (insanity <  450) return Stage.UNHINGED;
+            else if (insanity <  600) return Stage.CRAZY;
+            else if (insanity <  750) return Stage.MAD;
+            else if (insanity < 1000) return Stage.INSANE;
+            else                      return Stage.ELDRITCH;
 
         } catch (NullPointerException e) {
             //call if NullPointerException found and default to hinged
