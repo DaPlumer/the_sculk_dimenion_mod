@@ -61,6 +61,8 @@
   "item.sculk_dimension.scythe": "Reaping Scythe",
   "item.sculk_dimension.soul_bag": "Soul Bag",
   "item.sculk_dimension.wax_brick": "Resinant Wax",
+  "item.sculk_dimension.infected_boat": "Infected Boat",
+  "item.sculk_dimension.infected_chest_boat": "Infected Boat with Chest",
 
   "itemgroup.sculk_dimension.pink_garnet_blocks": "Pink Garnet Blocks",
   "itemgroup.sculk_dimension.pink_garnet_items": "Pink Garnet Items",
