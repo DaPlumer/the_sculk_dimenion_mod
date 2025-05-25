@@ -33,8 +33,8 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
     private static ForgingSlotsManager createForgingSlotsManager(){
         return ForgingSlotsManager.builder()
                 .input(0,33,28, ItemPredicate.Builder.create().items(Registries.ITEM,Items.BOOK).build())
-                .input(1,53,28, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.CRYSTALIZED_SOUL, ModItems.SOUL_BAG).build())
-                .input(2,43,48, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.WAX_BRICK).build())
+                .input(1,53,28, (stack -> stack.getItem() instanceof SoulHolder))
+                .input(2,43,48, ItemPredicate.Builder.create().items(Registries.ITEM, ModItems.RESINANT_WAX, ModItems.ENCHANTMENT_SPONGE).build())
                 .output(3,113,38)
                 .build();
     }

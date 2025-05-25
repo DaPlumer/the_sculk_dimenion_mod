@@ -16,8 +16,8 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.WorldEvents;
 
-public class WaxBrick extends Item {
-    public WaxBrick(Settings settings) {
+public class ResinantWax extends Item {
+    public ResinantWax(Settings settings) {
         super(settings);
     }
 

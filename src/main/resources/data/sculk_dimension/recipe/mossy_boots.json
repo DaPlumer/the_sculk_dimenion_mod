@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "combat",
   "key": {
     "M": "#sculk_dimension:moss",
     "L": "#c:leathers"

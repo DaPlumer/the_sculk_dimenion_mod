@@ -1,14 +1,14 @@
 package net.daplumer.sculk_dimension.datagen;
 
 import net.daplumer.sculk_dimension.block.InfectedBlocks;
+import net.daplumer.sculk_dimension.block.ModBlocks;
 import net.daplumer.sculk_dimension.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.recipe.v1.ingredient.DefaultCustomIngredients;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.advancement.criterion.TickCriterion;
+import net.minecraft.advancement.criterion.*;
+import net.minecraft.block.Blocks;
 import net.minecraft.component.ComponentChanges;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.data.recipe.RecipeExporter;
@@ -23,9 +23,11 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
+import static net.daplumer.sculk_dimension.datagen.ModAdvancementProvider.recipie;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -77,6 +79,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("soul_bags")
                         .criterion("get_soul_bag", InventoryChangedCriterion.Conditions.items(ModItems.SOUL_BAG))
                         .offerTo(exporter, "sculken_soul_bag");
+
                 createShaped(RecipeCategory.MISC, ModItems.ECHO_MEDALLION)
                         .pattern("SGS")
                         .pattern("GMG")
@@ -86,6 +89,48 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .input('M',MEMORY_GEM_INGREDIENT)
                         .criterion("get_gem", InventoryChangedCriterion.Conditions.items(ModItems.MEMORY_GEM))
                         .offerTo(exporter,"echo_medallion");
+
+                createShapeless(RecipeCategory.MISC, ModItems.ENCHANTMENT_SPONGE)
+                        .input(ModItems.ENCHANTMENT_SPONGE)
+                        .group("enchantment_holder")
+                        .criterion("make_enchant_duplicator", InventoryChangedCriterion.Conditions.items(ModItems.ENCHANTMENT_SPONGE))
+                        .offerTo(exporter,"get_enchantment_sponge");
+
+                createShaped(RecipeCategory.MISC, ModItems.ENCHANTMENT_SPONGE)
+                        .pattern(" S ")
+                        .pattern("CRC")
+                        .input('S', Items.SPONGE)
+                        .input('C', ModItems.CRYSTALIZED_SOUL)
+                        .input('R', ModItems.RESINANT_WAX)
+                        .group("enchantment_holder")
+                        .criterion("make_enchant_duplicator", RecipeCraftedCriterion.Conditions.create(recipie("enchantment_duplicator")))
+                        .offerTo(exporter,"enchantment_sponge");
+
+                createShapeless(RecipeCategory.MISC, ModItems.RESINANT_WAX)
+                        .input(ModItems.RESINANT_WAX)
+                        .group("enchantment_holder")
+                        .criterion("get_resinant_wax", InventoryChangedCriterion.Conditions.items(ModItems.RESINANT_WAX))
+                        .offerTo(exporter, "clear_resinant_wax");
+
+                createShaped(RecipeCategory.MISC, ModItems.RESINANT_WAX, 8)
+                        .pattern("PPP")
+                        .pattern("PRP")
+                        .pattern("PPP")
+                        .input('P', ModItems.RESONANT_POLLEN)
+                        .input('R', Items.RESIN_CLUMP)
+                        .group("enchantment_holder")
+                        .criterion("unlock_enchantment_sponge", Criteria.RECIPE_UNLOCKED.create(new RecipeUnlockedCriterion.Conditions(Optional.empty(), recipie("enchantment_sponge"))))
+                        .criterion("get_resonant_pollen", InventoryChangedCriterion.Conditions.items(ModItems.RESONANT_POLLEN))
+                        .offerTo(exporter, "resinant_wax");
+
+                createShaped(RecipeCategory.MISC, ModBlocks.ENCHANTMENT_DUPLICATOR)
+                        .pattern(" E ")
+                        .pattern("HSH")
+                        .input('E', Items.ENDER_EYE)
+                        .input('H', Items.ECHO_SHARD)
+                        .input('S', Blocks.END_STONE_BRICK_SLAB)
+                        .criterion("get_enchanted_book", InventoryChangedCriterion.Conditions.items(Items.ENCHANTED_BOOK))
+                        .offerTo(exporter,"enchantment_duplicator");
             }
             @SuppressWarnings("SameParameterValue")
             private ShapedRecipeJsonBuilder createBagRecipe(ItemConvertible bag, ItemConvertible material){

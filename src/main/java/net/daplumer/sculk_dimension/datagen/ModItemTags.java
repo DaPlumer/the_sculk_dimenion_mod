@@ -46,6 +46,7 @@ public class ModItemTags extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(ModItems.INFECTED_CHEST_BOAT);
         getOrCreateTagBuilder(DEPTH_MAP_ENABLERS).add(ModItems.RESONATION_HELMET);
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(ModItems.RESONATION_HELMET);
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(ModItems.MEMORY_GEM);
         InfectedBlocks.infected.registerItemTags(this);
     }
 }

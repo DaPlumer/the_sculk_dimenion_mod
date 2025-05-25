@@ -33,6 +33,7 @@ public class ModBlocks implements InfectedBlocks {
                     .mapColor(MapColor.MAGENTA)
                     .sounds(BlockSoundGroup.METAL)
                     .instrument(NoteBlockInstrument.BIT)
+                    .luminance((state) -> 7)
     );
     public static final Block SCULK_CAPTURE = BLOCKS.register(
             "sculk_capture",

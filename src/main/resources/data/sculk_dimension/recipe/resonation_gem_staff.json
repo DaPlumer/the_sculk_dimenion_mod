@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "tools",
   "key": {
     "R":"minecraft:end_rod",
     "M":"#sculk_dimension:moss",

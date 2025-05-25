@@ -76,12 +76,12 @@ public class SoulBag extends Item implements SoulHolder {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        return (int)(GetSouls(stack)*13.0f)/maxSouls;
+        return (int)(GetSouls(stack)*13.0f)/maxSouls();
     }
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        return GetSouls(stack) == maxSouls?FULL_ITEM_BAR_COLOR:ITEM_BAR_COLOR;
+        return GetSouls(stack) == maxSouls()?FULL_ITEM_BAR_COLOR:ITEM_BAR_COLOR;
     }
 
     @Override

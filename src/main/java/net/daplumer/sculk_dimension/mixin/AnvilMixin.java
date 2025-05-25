@@ -13,6 +13,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class AnvilMixin {
     @Redirect(method = "updateResult",at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z",ordinal = 1))
     boolean aVoid(ItemStack instance, Item item){
-        return instance.isOf(Items.ENCHANTED_BOOK) || instance.isOf(ModItems.WAX_BRICK);
+        return instance.isOf(Items.ENCHANTED_BOOK) || instance.isOf(ModItems.RESINANT_WAX);
     }
 }

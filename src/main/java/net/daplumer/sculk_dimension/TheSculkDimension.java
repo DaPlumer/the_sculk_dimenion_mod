@@ -8,10 +8,7 @@ import net.daplumer.sculk_dimension.component.ModDataComponentTypes;
 import net.daplumer.sculk_dimension.enchants.ModEnchantmentEffects;
 import net.daplumer.sculk_dimension.entity.ModEntityTypes;
 import net.daplumer.sculk_dimension.eventhandlers.ModEventHandlers;
-import net.daplumer.sculk_dimension.item.ModArmorMaterials;
-import net.daplumer.sculk_dimension.item.ModItemGroups;
-import net.daplumer.sculk_dimension.item.ModItems;
-import net.daplumer.sculk_dimension.item.ModToolMaterials;
+import net.daplumer.sculk_dimension.item.*;
 import net.daplumer.sculk_dimension.util.statistics.ModStatistics;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -39,6 +36,7 @@ public class TheSculkDimension implements ModInitializer {
 		ModScreenHandlerTypes.initialize();
 		ModEnchantmentEffects.registerModEnchantmentEffects();
 		ModToolMaterials.registerModToolMaterials();
+		ModTrimMaterials.init();
 	}
 	/*
 	TODO:

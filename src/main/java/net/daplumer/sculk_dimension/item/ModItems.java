@@ -63,12 +63,12 @@ public class ModItems {
             new Item.Settings()
                     .maxCount(16)
     );
-    public static final Item WAX_BRICK = ITEMS.register("wax_brick",
+    public static final Item RESINANT_WAX = ITEMS.register("resinant_wax",
             new Item.Settings()
                     .maxCount(16)
                     .useRemainder(MOSSY_BAG)
                     .component(DataComponentTypes.STORED_ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT),
-            WaxBrick::new
+            ResinantWax::new
     );
     public static final Item ECHO_MEDALLION = ITEMS.register("echo_totem",
             new Item.Settings()
@@ -79,6 +79,7 @@ public class ModItems {
             new Item.Settings()
                     .maxCount(1)
                     .maxDamage(256)
+                    .trimMaterial(ModTrimMaterials.MEMORY_GEM_TRIM_KEY)
                     .rarity(Rarity.UNCOMMON),
             MemoryGemKT::new
     );
@@ -113,6 +114,12 @@ public class ModItems {
                     .maxCount(1),
             SculkenSoulBag::new
     );
+    public static final Item ENCHANTMENT_SPONGE = ITEMS.register("enchantment_sponge",
+            new Item.Settings()
+                    .maxCount(1),
+            EnchantmentSponge::new
+    );
+
     public static final ItemStack MEMORY_GEM_STACK = MEMORY_GEM.getDefaultStack().copy();
     public static void registerModItems(){
         TheSculkDimension.LOGGER.info("Registering Mod items for " + TheSculkDimension.MOD_ID );
@@ -126,10 +133,10 @@ public class ModItems {
         );
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.addBefore(Items.IRON_INGOT, WAX_BRICK);
-            FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(WAX_BRICK,1200));
+            entries.addBefore(Items.IRON_INGOT, RESINANT_WAX);
+            FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(RESINANT_WAX,1200));
 
-            entries.addBefore(WAX_BRICK, RESONANT_POLLEN);
+            entries.addBefore(RESINANT_WAX, RESONANT_POLLEN);
             CompostingChanceRegistry.INSTANCE.add(RESONANT_POLLEN,.025F);
             entries.addBefore(RESONANT_POLLEN, MOSSY_BAG);
             FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(RESONANT_POLLEN,100));

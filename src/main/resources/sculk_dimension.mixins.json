@@ -15,13 +15,16 @@
     "SculkSensorBlockMixin",
     "SculkShriekerBlockEntityMixin",
     "SculkShriekerBlockMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "TrimMaterialMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
+    "AtlasDefinitionMixin",
     "GameRendererMixin",
+    "ModTrimMixins",
     "SplashTextMixin"
   ]
 }

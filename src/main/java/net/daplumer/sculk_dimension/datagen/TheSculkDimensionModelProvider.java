@@ -31,17 +31,19 @@ public class TheSculkDimensionModelProvider extends FabricModelProvider {
         ArrayList<Identifier> identifiers = new ArrayList<>(100);
         ArrayList<SelectItemModel.SwitchCase<Integer>> models = new ArrayList<>(1001);
         for (int i = 0; i <= 100; i++) {
-            identifiers.add(Models.GENERATED.upload(Identifier.of(TheSculkDimension.MOD_ID,"item/insanity/echo_"+i), TextureMap.layer0(Identifier.of(TheSculkDimension.MOD_ID, "item/echoes/echo_"+i)), itemModelGenerator.modelCollector));
+            identifiers.add(Models.GENERATED.upload(Identifier.of(TheSculkDimension.MOD_ID, "item/insanity/echo_" + i), TextureMap.layer0(Identifier.of(TheSculkDimension.MOD_ID, "item/echoes/echo_" + i)), itemModelGenerator.modelCollector));
         }
         for (int i = 0; i <= 1000; i++) {
-            models.add(ItemModels.switchCase(i,ItemModels.basic(identifiers.get(Math.floorDiv(i,10)))));
+            models.add(ItemModels.switchCase(i, ItemModels.basic(identifiers.get(Math.floorDiv(i, 10)))));
         }
-        itemModelGenerator.output.accept(ModItems.BROKEN_ECHO,ItemModels.select(new ComponentSelectProperty<>(ModDataComponentTypes.INSANITY),ItemModels.basic(identifiers.getFirst()),models));
-        itemModelGenerator.register(ModItems.SCULK_CLOTH,Models.GENERATED);
-        itemModelGenerator.register(ModBlocks.ECHOING_BLOOM_ITEM,Models.GENERATED);
-        itemModelGenerator.register(ModItems.INFECTED_BOAT,Models.GENERATED);
-        itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT,Models.GENERATED);
-        itemModelGenerator.register(ModItems.RESONATION_HELMET,Models.GENERATED);
-        itemModelGenerator.register(ModItems.SCULKEN_SOUL_BAG,Models.GENERATED);
+        itemModelGenerator.output.accept(ModItems.BROKEN_ECHO, ItemModels.select(new ComponentSelectProperty<>(ModDataComponentTypes.INSANITY), ItemModels.basic(identifiers.getFirst()), models));
+        itemModelGenerator.register(ModItems.SCULK_CLOTH, Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.ECHOING_BLOOM_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.INFECTED_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.INFECTED_CHEST_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RESONATION_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCULKEN_SOUL_BAG, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENCHANTMENT_SPONGE, Models.GENERATED);
+        itemModelGenerator.register();
     }
 }
