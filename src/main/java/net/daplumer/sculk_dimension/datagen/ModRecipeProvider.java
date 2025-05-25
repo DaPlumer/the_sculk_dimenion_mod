@@ -77,7 +77,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("soul_bags")
                         .criterion("get_soul_bag", InventoryChangedCriterion.Conditions.items(ModItems.SOUL_BAG))
                         .offerTo(exporter, "sculken_soul_bag");
-
+                createShaped(RecipeCategory.MISC, ModItems.ECHO_MEDALLION)
+                        .pattern("SGS")
+                        .pattern("GMG")
+                        .pattern("SGS")
+                        .input('S',ModItems.CRYSTALIZED_SOUL)
+                        .input('G',Items.GOLD_INGOT)
+                        .input('M',MEMORY_GEM_INGREDIENT)
+                        .criterion("get_gem", InventoryChangedCriterion.Conditions.items(ModItems.MEMORY_GEM))
+                        .offerTo(exporter,"echo_medallion");
             }
             @SuppressWarnings("SameParameterValue")
             private ShapedRecipeJsonBuilder createBagRecipe(ItemConvertible bag, ItemConvertible material){
