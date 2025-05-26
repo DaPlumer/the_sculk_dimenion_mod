@@ -73,7 +73,7 @@ public class EnchantmentDuplicationScreenHandler extends ForgingScreenHandler {
         }
     }
 
-    public int requiredSouls(ItemStack stack){
+    public static int requiredSouls(ItemStack stack){
         ItemEnchantmentsComponent component = stack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS,ItemEnchantmentsComponent.DEFAULT);
         return component.getEnchantments().stream().mapToInt((entry)-> 1 << (component.getLevel(entry)-1)).sum();
     }

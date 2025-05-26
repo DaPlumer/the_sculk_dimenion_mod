@@ -15,9 +15,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 
-import static net.daplumer.data_modification_utils.mod_registries.Registerer.EXP_DROPPER;
 import static net.daplumer.data_modification_utils.mod_registries.Registerer.registerBlockItem;
 import static net.daplumer.sculk_dimension.TheSculkDimension.MOD_ID;
 import static net.daplumer.sculk_dimension.TheSculkDimension.REGISTERER;
@@ -88,7 +86,8 @@ public class ModBlocks implements InfectedBlocks {
                     .strength(3.0F,3.0F)
                     .instrument(NoteBlockInstrument.BASS)
                     .requiresTool()
-                    .sounds(BlockSoundGroup.STONE)
+                    .sounds(BlockSoundGroup.STONE),
+            MemoryGemOre::new
     );
     public static final Block MEMORY_GEM_DEEPSLATE_ORE = BLOCKS.register("memory_gem_deepslate_ore",
             AbstractBlock.Settings.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
@@ -96,8 +95,8 @@ public class ModBlocks implements InfectedBlocks {
                     .strength(4.5F, 3.0F)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresTool()
-                    .sounds(BlockSoundGroup.DEEPSLATE)
-            , EXP_DROPPER(UniformIntProvider.create(3,7))
+                    .sounds(BlockSoundGroup.DEEPSLATE),
+            MemoryGemOre::new
     );
     public static final Block ENCHANTMENT_DUPLICATOR = BLOCKS.register("enchantment_duplicator",
             AbstractBlock.Settings.create()
@@ -120,8 +119,9 @@ public class ModBlocks implements InfectedBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Blocks.SCULK,SCULK_CAPTURE);
             entries.addAfter(Blocks.DEEPSLATE_DIAMOND_ORE,MEMORY_GEM_ORE);
-            entries.addAfter(MEMORY_GEM_ORE,MEMORY_GEM_DEEPSLATE_ORE);;
+            entries.addAfter(MEMORY_GEM_ORE,MEMORY_GEM_DEEPSLATE_ORE);
         });
+        //noinspection CodeBlock2Expr
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             InfectedBlocks.infected.addToItemGroups(entries, Shift.BEFORE,Blocks.CRIMSON_STEM);
         });

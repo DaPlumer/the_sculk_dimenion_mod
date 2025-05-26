@@ -15,7 +15,8 @@ base {
 repositories {
     mavenCentral()
 
-	maven { url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" }
+	maven {url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1"}
+	maven { url "https://maven.shedaniel.me" }
 	exclusiveContent {
 		forRepository {
 			//noinspection ForeignDelegate
@@ -49,7 +50,9 @@ dependencies {
 	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:${devauth_version}")
 
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
-
+	modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}")
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
+	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
 }
 
 processResources {

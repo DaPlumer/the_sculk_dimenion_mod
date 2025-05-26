@@ -18,5 +18,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE, oreDrops(ModBlocks.MEMORY_GEM_DEEPSLATE_ORE, ModItems.MEMORY_GEM));
         addDrop(ModBlocks.ENCHANTMENT_DUPLICATOR);
         addVinePlantDrop(ModBlocks.ECHOING_BLOOM_TIP,ModBlocks.ECHOING_BLOOM);
+        addDrop(ModBlocks.MEMORY_GEM_BLOCK);
     }
 }

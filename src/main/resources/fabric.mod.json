@@ -16,6 +16,9 @@
 	"icon": "assets/sculk_dimension/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"rei_client": [
+			"net.daplumer.sculk_dimension.rei.TheSculkDimensionREIClient"
+		],
 		"main": [
 			"net.daplumer.sculk_dimension.TheSculkDimension"
 		],

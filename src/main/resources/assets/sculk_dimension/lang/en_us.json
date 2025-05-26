@@ -94,5 +94,12 @@
   "tooltips.sculk_dimension.resonation_gem": "Throw your voice! Great for",
   "tooltips.sculk_dimension.resonation_gem_2": "pranking friends and enemies alike!",
   "tooltips.sculk_dimension.soul_bag": "Contains %1$s out of %2$s Souls ",
-  "tooltips.sculk_dimension.resonation_helm": "Press %1$s to toggle Depth View"
+  "tooltips.sculk_dimension.resonation_helm": "Press %1$s to toggle Depth View",
+  "category.rei.provide_exp": "Provide Experience",
+  "category.rei.duplicate_enchants": "Enchantment Duplication",
+  "info.sculk_dimension.soul_obtaining": "Obtaining Souls",
+  "info.lines.sculk_dimension.soul_obtaining": "Crystalized Souls can be obtained by killing mobs with either a scythe or a weapon with the Reaping enchantment.",
+  "info.lines.sculk_dimension.obtaining_pollen": "Pollen can be obtained by right clicking on an Echoing Bloom with an empty Mossy Bag.",
+  "info.lines.sculk_dimension.sponge_enchanting": "Right clicking on an Item with an Enchantment Sponge will copy a random enchantment from it for use in an Enchantment Duplicator.",
+  "info.lines.sculk_dimension.memory_gem": "Memory Gems repair with exp as though they had Mending. Only fully repaired Memory Gems can be used in crafting recipes."
 }
